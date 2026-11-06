@@ -5,6 +5,8 @@
 // Consultations reach sums 13–113 only; rows 114–115 are printed but
 // unreachable. Empty grc/en = Hercher prints nothing (no prophet name
 // at sum 13; no interpretation on the lines listed in docs/PILOT.md).
+// Sum 13's row carries an extra `note` field (phase 4b, lead decision):
+// the blank is recorded faithfully and the UI displays the note.
 // Field licences: licences export below. Style: docs/STYLE.md.
 export const table = [
   {
@@ -17,7 +19,8 @@ export const table = [
       "grc": "θεοῦ κράτος",
       "en": "strength of God"
     },
-    "decade": 20
+    "decade": 20,
+    "note": "Hercher prints no prophet name for sum 13 — the name column is blank in his table, and the blank is recorded as printed. (Pitra conjectured Ezekiel; the conjecture is not adopted.)"
   },
   {
     "sum": 14,

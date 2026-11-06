@@ -21,7 +21,7 @@ test('mechanism: q + k = s -> prophet -> decade d, line k (fixture arithmetic)',
   assert.equal(a.question.n, 16);
   const b = consult(fixtureData, 16, 10);
   assert.equal(b.sum, 26);
-  assert.equal(b.decade, 58);
+  assert.equal(b.decade, 18); // not 58: ιη misread as νη — see docs/PILOT.md
   assert.equal(b.line, 10);
   // Every fixture consultation lands on a tagged, non-filler answer to its own question.
   for (const q of [12, 13, 16]) {

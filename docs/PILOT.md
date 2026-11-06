@@ -363,3 +363,193 @@ numbers (the other run's files); device γ-sign check (not a text).
   *"horum sunt tripudia solistima"* is correct as printed there.
 - Tier `balbus` and nearest-tier stubs from the pilot (§3.2 above)
   are unchanged and still await the lead's PLAN §3 decision.
+
+## 7. Phase 4b — Sortes completion (Greek + English)
+
+All Sortes text is now complete. Greek was transcribed in batches
+of ~10 decades from the Hercher page images
+(`scripts/.cache/sources/hercher-pages/p014–p061.png`; OCR used only
+to locate lines), translated per [docs/STYLE.md](/Users/jakeproctor/augury/docs/STYLE.md),
+assembled into the data files, and checked with `node --test`
+(111 tests, all passing at the end of the phase). Batch JSON is
+retained under `scripts/.cache/work4b/` with the assembler
+(`assemble.mjs`) that produced the data files, so every line can be
+traced to its batch. Pilot records were preserved verbatim:
+re-transcription of decades 8 and 18 from the images in 4b agreed
+with the 4a pilot on every field (0 diffs) — an independent
+corroboration of the pilot.
+
+### Counts
+
+| File | Records | Complete |
+|---|---|---|
+| [data/sortes-questions.js](/Users/jakeproctor/augury/data/sortes-questions.js) | 92 (n 12–103) | 92 Greek + English + themes |
+| [data/sortes-table.js](/Users/jakeproctor/augury/data/sortes-table.js) | 103 (sums 13–115) | as 4a, plus sum-13 `note` |
+| [data/sortes-decades.js](/Users/jakeproctor/augury/data/sortes-decades.js) | 103 × 10 = 1,030 lines | 1,030 Greek + English (all 110 filler lines translated too) |
+| [data/sortes-moon.js](/Users/jakeproctor/augury/data/sortes-moon.js) | 30 moon days + 4 favourable hours | new in 4b (Hercher printed p. 3) |
+| [data/sortes-frame.js](/Users/jakeproctor/augury/data/sortes-frame.js) | 3 passage-shaped records | new in 4b (Hercher printed pp. 1–3) |
+
+Mechanism on the real data (`validateSortesData`): no errors, 920
+reachable (decade, line) cells, 110 unreachable, no duplicate
+routes, no missing sums. Every one of the 920 consultations lands
+on a complete, non-filler answer; the content test asserts this
+exhaustively. Lead decisions applied: fixture decade 58 → 18 in
+[tests/sortes-fixture.mjs](/Users/jakeproctor/augury/tests/sortes-fixture.mjs)
+and [tests/sortes.test.mjs](/Users/jakeproctor/augury/tests/sortes.test.mjs);
+deleted (`* *`) lines carry the transmitted wording in `grc`/`en`
+with an apparatus note (below); the two new modules were added to
+PLAN §7/§9; sum 13's empty prophet is recorded as a blank with a
+`note` field for the UI to display.
+
+### Apparatus notes: 19
+
+By kind: **11 Hercher deletions** (`* *` in his text; `grc`/`en` =
+the transmitted apparatus wording, note gives his *responderi
+debebat* remark) — 36.1, 46.1, 51.1, 63.2, 63.7, 82.3, 88.4, 88.5,
+91.5, 103.1, 103.10; **2 Hercher additions** — 43.9 (πίστεως added,
+*addidi*), 95.4 (μετά added); **6 corrupt/suspect printed texts** —
+40.3, 47.5, 92.8 (*verba corrupta*), 68.3 (μᾶλλον *suspectum*),
+95.7 (printed οἱ unconstruable), 97.10 (μωροποιεῖ doubted). Of the
+11 deleted lines, 4 are reachable (46.1, 51.1, 63.7, 103.10), so
+the adopted policy was load-bearing: without it those
+consultations would have landed on asterisks. The content test
+pins the exact list. Ordinary L/M/P variants — including the many
+sense-changing manuscript splits and wholesale displaced L answers
+(cf. decade 58 in §5 of the pilot) — do not raise the flag, per
+STYLE §8; the noteworthy ones are listed as doubtful readings
+below.
+
+### Tag defects: 12 mismatches + 10 untaggable lines (reported, not hidden)
+
+Tags were read off each line's wording before the table was
+consulted. `validateSortesData` then reports 12 disagreements
+between wording and routing. They are kept as tagged and pinned
+by name in [tests/content.test.mjs](/Users/jakeproctor/augury/tests/content.test.mjs)
+(`TAG_DEFECTS`): 46.1 (a deleted line), 27.3, 22.10, 58.6, 58.7,
+58.8 (the decade-58 displacement: 58.7/58.8 read as a swapped
+pair), 26.9, 67.7, 72.9, 51.1 (deleted), 51.5, 103.10 (deleted).
+Three further alerted lines were re-tagged on purely lexical
+grounds — δέδοται (43.1) and ἑτέρῳ (64.5, 66.10) are q76's
+distinctive words (εἰ δοθήσεταί μοι ἑτέρῳ συναλλάξαι) — and are
+not defects. Ten lines are tagged `null` because their wording
+names no single question: six bare "you will inherit" lines
+(1.7, 6.1, 7.6, 17.10, 59.5, 90.9 — the table happens to route
+all six to q62, εἰ κληρονομήσω τὸ πρόσωπον, but the object is
+absent from every one of them) and four deleted filler lines
+about working (63.2, 82.3, 88.4, 91.5; Hercher says each "ought
+to have answered question 13"). `consult()` does not read tags,
+so none of this affects a consultation; it is the tradition's
+defect list, as PLAN §7 intends.
+
+### Doubtful readings for the lead (4c collation list)
+
+In rough order of consequence:
+
+1. **τοῦ κλήρου (q96 and its 13 tagged answers) is rendered
+   inconsistently**: 9 lines "the clergy", 4 "the lot" (51.8,
+   54.2, 73.4, 77.1), and q96 itself "the lot". STYLE §7 fixes
+   κλῆρος = "lot" for the spoken number; in q96's context the
+   Byzantine "clergy" sense is at least as likely. The lead
+   should pick one sense for q96's family and a later batch can
+   harmonise; 4b did not silently harmonise 14 records.
+2. **Byzantine office/loan words left transliterated** across
+   batches: κομητᾶτον/κομητάτον (*komitaton*; q78 and answers),
+   βιοπράγος (*biopragos*; q85's English says "merchant" —
+   possibly a slave-dealer; answers transliterate), δεκάπρωτος
+   (q95 descriptive "one of the ten chief men"; answers
+   *dekaprotos*). λεγάτον (q92) is rendered "legacy" (*legatum*).
+   One policy for the three would be cleaner.
+3. **Deleted-line choices where the manuscripts split**: 91.5
+   (second hand of M ἐὰν ἐργάζῃ ὠφελεῖ adopted; L reads a sailing
+   answer duplicating line 6); 103.10 tagged 90 from its
+   transmitted wording although Hercher's note says 93; 51.1
+   tagged 73, Hercher's note says 102; 46.1's note as read says
+   "ought to have answered 21" where the wording is plainly q48
+   (γονεῖς) — small-type numeral, re-check in 4c.
+4. **95.7**: printed οἱ before νικήσεις does not construe
+   (apparatus-flagged). If it is a misprint for οὐ the sense
+   reverses. Translated as printed as far as it construes.
+5. **Sense-changing manuscript splits not flagged** (STYLE §8),
+   most sharply: 94.4, 99.2, 100.8 (printed 2nd vs LM 3rd person
+   σωθήσ- swaps the q42/q54 reading); 57.3 and 69.3 (printed
+   "be rid of" vs LM "be reconciled to"); 63.5 (opposite senses);
+   63.7's rM variant μοιχὸς οὐκ εἶ against transmitted μοιχὸς εἶ
+   (recorded inside that line's apparatus note); 55.5/60.1
+   (active/passive πωληθ- splits); 103.5 (LM wholly different
+   line). If the lead wants these flagged too, STYLE §8 and this
+   list are the starting point — the pilot's §3.7 question,
+   still open.
+6. **Single-word reading/sense doubts** (Greek best-read from the
+   images, listed for 4c): q41 σοφιστείσω; q69 παραβόλον (image;
+   OCR παραβόλιον); q60 οἰκονομήσω "become a steward"; q67/95.3
+   ἐπίκλησις "appeal"/"invocation"; q82 προσγραφήσεται
+   "confiscated"; q89 λάθος…τῷ δρασμῷ; 53.4 προτελευτήσεις;
+   54.2/56.4 δυνηθῇ; 68.6 δωρεάν (Hercher queries it); 101.1's
+   in-line overlined numeral γ transcribed as plain γ ("third
+   hour" in English).
+7. **Frame/moon minutiae**: the four planet glyphs on printed
+   p. 3 are transcribed ♂♃♄☉ by weekday equivalence (glyphs not
+   certainly legible at scan size; stated in the record's
+   `orthography`); πρωΐας and ὥρᾳ τρίτῃ pointing in the small
+   moon-table type follows the pilot; the method's `**` lacuna
+   after κληρούμενος is kept in both columns.
+8. **Accent-level residue**: grave/acute and iota-subscript detail
+   before enclitics and in small apparatus type sits at the limit
+   of the scan resolution throughout (the pilot's §4 classes).
+   4c should re-collate accents line by line; letters and senses
+   are not in doubt where this applies. Batch-level doubtful-item
+   lists were returned for the questions, decades 51–70 and
+   91–103, and moon/frame; the corresponding lists for decades
+   1–50 and 71–90 were not preserved from the batch run, so for
+   those ranges the data's apparatus flags are the only residue
+   record — 4c should treat those decades as unreviewed at
+   accent level. The assembler's own spot checks (printed p. 7
+   questions 87–103 + decade 1 lines 1–8; printed p. 48 decade
+   103 including both `* *` apparatus entries) agreed with the
+   data letter for letter.
+
+### 4b → UI
+
+For the agent working on UI/PWA (`js/` was off-limits this phase;
+nothing below was implemented):
+
+1. **Load the two new modules with the Sortes payload.** `js/app.js`
+   currently lazy-imports `sortes-questions.js`, `sortes-table.js`,
+   `sortes-decades.js`. Add `../data/sortes-moon.js` and
+   `../data/sortes-frame.js` to that import group (and to the
+   service-worker list in `sw.js`, which names the three existing
+   modules, with the usual cache-version bump). Sizes: decades
+   ≈258 KB, frame ≈21 KB, questions ≈17 KB, table ≈23 KB, moon
+   ≈6 KB.
+2. **Moon advice is ready to inject**: `moonAdvice` from
+   `data/sortes-moon.js` is the 30 English strings in day order —
+   pass as `isPropitious(date, { moonAdvice })`. For a richer
+   display use `moonDays` (`{day, grc, en, slot}`; `slot` one of
+   morning/evening/all-day/third-hour/do-not-use) and
+   `favourableHours` (`{weekdayGrc, weekdayEn, weekday, hour, grc,
+   en}`), which the content test keeps in agreement with
+   `FAVOURABLE_HOURS` in `js/sortes.js`. Suggested Greek cite in
+   UI copy: "Hercher 1863, printed p. 3".
+3. **Prayer/frame display**: `framePassages` in
+   `data/sortes-frame.js` holds `sortes-frame-letter-method`,
+   `sortes-prayer`, `sortes-hours-moon-intro`, in the same shape
+   as `data/passages.js` records but with tier `sortes-frame`
+   (a new tier string the texts view does not know yet). PLAN §7
+   wants the prayer shown translated as optional text on the
+   Sortes screen; the method record also carries Hercher's two
+   worked examples if an About/how-it-works panel wants them.
+4. **Sum 13**: when `consult()` returns sum 13, `prophet` is
+   `{grc: '', en: ''}` by design. The table row now has a `note`
+   field ("Hercher prints no prophet name for sum 13…"); `consult`
+   does not surface it, so read it from the table row (or extend
+   `consult`'s return) and display it where the prophet name
+   would stand.
+5. **Apparatus footnote mark**: 19 answer lines now carry a
+   non-null `apparatus` string (list above; 4 of them reachable
+   deleted lines whose Greek/English are the manuscripts'
+   wording, not Hercher's asterisks). PLAN §7: show a footnote
+   mark on such answers; the string is display-ready English.
+6. **Stale comment**: `js/sortes.js` still says "verify: against
+   Hercher p.1 in phase 4a" above `FAVOURABLE_HOURS`. Values are
+   correct; the locus is printed p. 3 (pilot §5, repeated here
+   because `js/` remains untouched).

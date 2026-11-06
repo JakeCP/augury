@@ -10,9 +10,10 @@
 //   decades:   [{ n, lines: [{ grc, en, answersQuestion, apparatus, filler }] x10 }]
 
 // Sums 13..26. Decade = sum, except the two routes of Hercher's worked
-// examples (q16 k5 -> s21 -> decade 8; q16 k10 -> s26 -> decade 58), mirrored
-// here as *arithmetic only* against invented answers.
-const OVERRIDES = { 21: 8, 26: 58 };
+// examples (q16 k5 -> s21 -> decade 8; q16 k10 -> s26 -> decade 18 — not
+// 58: ιη misread as νη, corrected in phase 4a/4b, see docs/PILOT.md),
+// mirrored here as *arithmetic only* against invented answers.
+const OVERRIDES = { 21: 8, 26: 18 };
 const decadeForSum = (s) => OVERRIDES[s] ?? s;
 
 export const fixtureQuestions = [

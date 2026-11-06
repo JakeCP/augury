@@ -606,6 +606,18 @@ apparatus, filler}]}` where `answersQuestion` is the semantic tag read off
 the answer's own wording *before* consulting the table, and `apparatus`
 records the Hercher flag (may be null, never missing). Questions are
 `{n, grc, en, themes}` with `themes` plainly our editorial grouping.
+Phase 4b adds two modules (lead decision): `sortes-moon.js` — the
+30-day moon table as `{day, grc, en, slot}` records (`slot` our
+grouping: morning/evening/all-day/third-hour/do-not-use) plus a
+ready-to-inject `moonAdvice` string array and the favourable hours as
+`{weekdayGrc, weekdayEn, weekday, hour, grc, en}` records, all with
+Hercher printed p. 3 as the cited source; and `sortes-frame.js` — the
+frame letter + method, the Byzantine prayer, and the hours/moon
+instructions (Hercher printed pp. 1–3) as passage-shaped records
+(`lang: 'grc'`, our English) in the lazy-loaded Sortes payload rather
+than in `data/passages.js`. Sum 13's table row carries an extra
+`note` field: Hercher prints no prophet name there, the blank is
+recorded faithfully, and the UI displays the note.
 
 **Extras, with the calendrical decisions made and labelled:**
 
@@ -622,14 +634,16 @@ records the Hercher flag (may be null, never missing). Questions are
   label it an approximation. `isPropitious(date)` reports the weekday, the
   favourable hour (if any) and whether the current local hour is it.
 - Days of the moon (morning, evening, all day, or μὴ χρῶ, "do not use"): the
-  advice table is transcribed in phase 4 and injected; `moonDay(date)` is
+  advice table lives in `data/sortes-moon.js` (phase 4b; Hercher printed
+  p. 3) and is injected as `moonAdvice`; `moonDay(date)` is
   pure astronomy now — mean synodic month 29.530588853 days from the new
   moon of 2000-01-06, day 1 = the local calendar day containing the (mean)
   new moon, evaluated at local noon to avoid timezone flips for evening
   consultations. Tested against known new and full moons to ±1 day, which is
   all a mean-moon table can promise. **Reconstruction**: epoch, rounding and
   day-boundary choices.
-- The Byzantine prayer before consulting is shown, translated, as optional text.
+- The Byzantine prayer before consulting is shown, translated, as optional text
+  (record `sortes-prayer` in `data/sortes-frame.js`, phase 4b).
 
 **Integrity, reported rather than asserted.** The tradition may not be
 perfect, and the tests must describe the real table, not demand an ideal
@@ -749,7 +763,8 @@ js/
   views/*.js          one module per view
 data/
   passages.js         Latin/Greek + English + citation + speaker/date/tier + licence per field
-  sortes-questions.js, sortes-decades.js, sortes-table.js   (lazy-loaded; §7)
+  sortes-questions.js, sortes-decades.js, sortes-table.js,
+  sortes-moon.js, sortes-frame.js                  (lazy-loaded; §7)
 docs/                 PLAN.md, SOURCES.md, PLAN_REVIEW.md, DECISIONS.md
 scripts/              serve.mjs, build-fonts.py, build-icons.mjs,
                       check-contrast.mjs, validate.mjs, provenance.json
