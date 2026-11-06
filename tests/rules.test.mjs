@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  interpret, BIRDS, BIRD_IDS, RULE_EVIDENCE, VERDICTS, RULES_VERSION,
+  interpret, BIRDS, BIRD_IDS, RULE_EVIDENCE, RULE_NAMES, VERDICTS, RULES_VERSION,
   countFactor, flightFactor, modeFactor, favouredSide, isDireSign,
 } from '../js/rules.js';
 
@@ -82,6 +82,7 @@ test('B-* table is complete and every rule the engine emits has an evidence tier
     'R-DIRA', 'R-PRAEPES', 'R-REMORA', 'R-COUNT', 'R-TANAQUIL', 'R-TRIP-ANY', 'R-WEIGH',
     'R-NONE', 'R-CLEAR', 'R-MIXED', 'R-SILENTIUM', 'R-REPEAT', 'R-FALSE']) {
     assert.ok(RULE_EVIDENCE[id]?.length > 0, `no tier for ${id}`);
+    assert.ok(RULE_NAMES[id]?.length > 8, `no human name for ${id}`);
   }
   assert.equal(VERDICTS.ADMITTUNT.latin, 'AVES ADMITTVNT');
   assert.equal(typeof RULES_VERSION, 'number');
@@ -254,6 +255,33 @@ test('R-COUNT canonical case: Romulus twelve vultures vs Remus six ends ALIO DIE
   assert.deepEqual(r.unfavourable, frac(15, 2));
   assert.equal(r.verdict, 'ALIO_DIE');
   assert.ok(r.glosses.includes('romulus-remus')); // first sign favourable, greater weight against
+});
+
+test('R-MIXED gloss: Romulus/Remus only when priority vs weight leaves it undecided', () => {
+  // The lead's screenshot case, exactly: F 5/4 against U 9/2 is decisive
+  // (U >= 2F), first sign favourable — the gloss must NOT appear.
+  const crows2 = sign({ relDeg: L, count: 2 }); // crow by voice, left: F = 5/4
+  const vultures6 = sign({ bird: 'vulture', kinds: ['flight'], flight: 'across', relDeg: R, count: 6 }); // U = 2 x 9/4 = 9/2
+  const decisive = interpret(obs({ signs: [crows2, vultures6] }));
+  assert.deepEqual(decisive.favourable, frac(5, 4));
+  assert.deepEqual(decisive.unfavourable, frac(9, 2));
+  assert.equal(decisive.verdict, 'NON_ADMITTUNT');
+  assert.ok(!decisive.glosses.includes('romulus-remus'), 'decisive mixed verdict carries no Romulus/Remus gloss');
+  // Mirror image (decisive ADMITTVNT, first sign against): also no gloss.
+  const mirror = interpret(obs({ signs: [
+    sign({ relDeg: R, count: 2 }), // U = 5/4 first
+    sign({ bird: 'vulture', kinds: ['flight'], flight: 'across', relDeg: L, count: 6 }), // F = 9/2
+  ] }));
+  assert.equal(mirror.verdict, 'ADMITTUNT');
+  assert.ok(!mirror.glosses.includes('romulus-remus'));
+  // Exactly at the 2:1 line is decisive too: no gloss (the canonical
+  // ALIO DIE case above, inside the band, keeps it).
+  const atLine = interpret(obs({ signs: [
+    sign({ relDeg: L }), // F = 1 first
+    sign({ bird: 'raven', relDeg: L }), // U = 2 under the Roman exception
+  ] }));
+  assert.equal(atLine.verdict, 'NON_ADMITTUNT');
+  assert.ok(!atLine.glosses.includes('romulus-remus'));
 });
 
 test('R-WEIGH hierarchy: one eagle outweighs four crows flying onward', () => {

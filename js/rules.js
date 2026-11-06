@@ -14,6 +14,31 @@ export const VERDICTS = Object.freeze({
 
 // Evidence tiers (PLAN §3): what kind of witness attests each rule. Shown in
 // the UI, so Quintus is never passed off as "Cicero says".
+// Human names for the rules, shown in the UI ahead of the bare IDs.
+// One short sentence each; the ID stays visible, small, beside it.
+export const RULE_NAMES = Object.freeze({
+  'R-SIDE': 'Left favours Romans, right favours Greeks',
+  'R-EXCEPT': 'Raven favours the right; crow and woodpecker the left',
+  'R-MODE': 'A bird counts less outside its own mode — voice or flight',
+  'R-TEMPLUM': 'Only signs inside the marked templum count',
+  'R-ASK': 'Signs asked for beforehand are impetrative',
+  'R-DECLINE': 'An unasked, non-dire sign may be declined',
+  'R-LINE': 'A sign on the line — ahead, behind, overhead — is not weighed',
+  'R-DIRA': 'A dire sign forbids outright',
+  'R-PRAEPES': 'Onward or high flight strengthens a sign; low flight weakens it',
+  'R-REMORA': 'A bird turning back makes you wait — it cannot forbid',
+  'R-COUNT': 'Number strengthens a sign, up to Romulus’s twelve',
+  'R-TANAQUIL': 'An eagle stooping to you is the highest favourable sign',
+  'R-TRIP-ANY': 'Any bird dropping food as it feeds makes a tripudium',
+  'R-WEIGH': 'Each sign is weighed; the strengths and totals are shown',
+  'R-NONE': 'No sign by the end of the watch means: another day',
+  'R-CLEAR': 'Signs all one way settle it',
+  'R-MIXED': 'Mixed signs need a two-to-one weight, or it waits',
+  'R-SILENTIUM': 'A fault in the watch vitiates it — another day',
+  'R-REPEAT': 'The auspices may be taken again; every attempt is counted',
+  'R-FALSE': 'A false report falls on the one who makes it',
+});
+
 export const RULE_EVIDENCE = Object.freeze({
   'R-SIDE': Object.freeze(['marcus', 'natural-history', 'technical', 'poetry']),
   'R-EXCEPT': Object.freeze(['quintus', 'comedy', 'reconstruction']),
@@ -325,7 +350,13 @@ export function interpret(observation) {
   // ---- glosses (V7) ----
   const glosses = [];
   const firstWeighed = classified.find((s) => s.classification === 'weighed');
-  if (F.num > 0 && U.num > 0 && !fracEqual(F, U) && firstWeighed
+  // Romulus/Remus only where priority vs number is what leaves the watch
+  // undecided: mixed signs inside the 2:1 band (otherwise the threshold
+  // itself settles it and the analogy explains nothing — a decisive
+  // 5/4 against 9/2 needs no founders' quarrel gloss).
+  const undecidedByWeight = F.num > 0 && U.num > 0
+    && !atLeastTimes(F, U, 2) && !atLeastTimes(U, F, 2);
+  if (undecidedByWeight && !fracEqual(F, U) && firstWeighed
     && firstWeighed.favourable !== (F.value > U.value)) {
     glosses.push('romulus-remus');
   }

@@ -55,7 +55,12 @@ test('register records the provenance rule and the licence files on the yijing p
   assert.ok(fs.existsSync(path.join(ROOT, 'LICENSE-content.md')));
 });
 
-test('no UI artefacts in phase 2 (no index.html, no css)', () => {
-  assert.equal(fs.existsSync(path.join(ROOT, 'index.html')), false);
-  assert.equal(fs.existsSync(path.join(ROOT, 'css')), false);
+test('phase 3 UI artefacts exist (index.html, css, views, birds, fonts)', () => {
+  for (const rel of ['index.html', '404.html', '.nojekyll', 'css/base.css', 'css/views.css',
+    'js/app.js', 'js/router.js', 'js/store.js', 'js/sensors.js',
+    'fonts/cinzel.woff2', 'fonts/eb-garamond.woff2', 'scripts/build-fonts.py', 'scripts/serve.mjs']) {
+    assert.ok(fs.existsSync(path.join(ROOT, rel)), `${rel} missing`);
+  }
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert.ok(!/https?:\/\/(fonts|cdn)/.test(html), 'no third-party font/CDN requests');
 });
