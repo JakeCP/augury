@@ -1,9 +1,9 @@
 // Rite views: home, question, tradition, templum, watch, verdict, record, shared record.
-import { BIRDS, BIRD_IDS, interpret, VERDICTS, RULE_EVIDENCE, RULE_NAMES } from '../rules.js';
+import { BIRDS, BIRD_IDS, interpret, VERDICTS, RULE_EVIDENCE, RULE_NAMES, modeFactor, countFactor, flightFactor } from '../rules.js';
 import { norm, relBearing, frontForOrientation } from '../compass.js';
 import { encodeRecord, decodeRecord } from '../share.js';
 import { domeSVG } from './dome.js';
-import { esc, fracText, compassPoint, formatElapsed, canDecline, describeRegion } from './helpers.js';
+import { esc, fracText, compassPoint, formatElapsed, canDecline, describeRegion, tierLabel, tierTitle, liveTallyText } from './helpers.js';
 import { signSheetHTML, readSignSheet, BIRD_ID_LINES } from './signsheet.js';
 
 export const LITUUS = `<svg class="lituus" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 L32 22 Q32 8 44 8 Q54 8 54 17 Q54 25 46 25" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>`;
@@ -86,8 +86,10 @@ export function templumHTML(w) {
 }
 export function watchHTML(w, elapsedSec = 0) {
   const obs = observationFromWatch(w);
-  let interim = '';
-  try { const v = interpret(obs); interim = `${v.signs.filter((s) => s.classification === 'weighed').length} weighed · F ${fracText(v.favourable)} / U ${fracText(v.unfavourable)}`; } catch { interim = ''; }
+  let interim = null;
+  try { interim = liveTallyText(interpret(obs)); } catch { interim = null; }
+  const hasRecorded = obs.signs.length > 0;
+  const tallyText = interim ?? (hasRecorded ? '' : 'No signs yet');
   const rows = w.signs.map((s, i) => `<li class="sign-row"><span><strong>${esc(BIRDS[s.bird]?.ui ?? s.bird)}</strong> · ${esc(s.kinds.join(' + '))} · ${esc(describeRegion(s.relDeg))}${s.stub ? ' · <em>details needed</em>' : ''}</span><span class="row"><button class="btn small" data-edit="${i}">Edit</button><button class="btn small" data-del="${i}">Delete</button></span></li>`).join('');
   return `<section class="view watch"><h1 tabindex="-1" lang="la">Silentium</h1>
   <p class="watch-clock"><span id="elapsed">${formatElapsed(elapsedSec)}</span> elapsed <span class="note">of about ${w.suggestedMin ?? 20} — the watch ends only when you end it</span></p>
@@ -99,8 +101,8 @@ export function watchHTML(w, elapsedSec = 0) {
   <p class="note">Point the phone at the bird and tap. Bearing, height and time are captured at once — even mid-sheet, as a stub for later.</p>
   <p class="note" lang="la">Qui auspicio adest, si quid falsi nuntiat, in semet ipsum religionem recipit.</p>
   <p class="note">A false report falls on the one who makes it. (Livy)</p>
-  <h2>Signs <span class="note">${esc(interim)}</span></h2>
-  ${w.signs.length ? `<ul class="sign-list">${rows}</ul>` : '<p class="note">No signs yet. Keep watching.</p>'}
+  <h2>Signs${tallyText ? ` <span class="note">${esc(tallyText)}</span>` : ''}</h2>
+  ${w.signs.length ? `<ul class="sign-list">${rows}</ul>` : '<p class="note">Keep watching.</p>'}
   <div id="undo-bar" hidden><span>Sign deleted.</span> <button class="btn small" id="undo">Undo</button></div>
   <label class="check card"><input type="checkbox" id="vitium" ${w.vitium ? 'checked' : ''}><span>The watch was disturbed — a fault occurred <span lang="la">(vitium)</span></span></label>
   <div class="row"><button class="btn primary big" data-act="end">End the watch</button></div>
@@ -144,24 +146,65 @@ export function ruleHref(ruleId, passages) {
   return p ? `#/texts/${encodeURIComponent(p.id)}` : '#/texts';
 }
 function ruleLine(ruleId, passages) {
-  const tiers = (RULE_EVIDENCE[ruleId] ?? []).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
+  const tiers = (RULE_EVIDENCE[ruleId] ?? []).map((t) => `<span class="tag" title="${esc(tierTitle(t))}">${esc(tierLabel(t))}</span>`).join('');
   return `<li><a class="rule-name" href="${esc(ruleHref(ruleId, passages))}">${esc(ruleName(ruleId))}</a><span class="rule-meta"><span class="rule-id">${esc(ruleId)}</span>${tiers}</span></li>`;
 }
-function signLine(s, passages) {
+// One quiet line of factors per sign — plain text, no links. The single
+// rule list below the breakdown is where every rule is named and linked.
+export function signFactorLine(s) {
+  const kinds = s.kinds ?? [];
+  const notes = s.notes ?? [];
+  if (s.classification === 'dira') return 'dire — forbids outright';
+  const extraNotes = notes.filter((n) => n !== 'wrong-mode-half').map((n) => NOTE_TEXT[n] ?? n);
+  if (s.classification !== 'weighed') {
+    const where = s.side && s.side !== 'line' ? s.side : s.relDeg === null || s.relDeg === undefined ? 'no bearing' : 'on the line';
+    // Notes already end "— not weighed" where that is the point, and the
+    // on-line / no-bearing notes already name the place, so say it once.
+    const wherePart = notes.includes('on-line') || notes.includes('no-bearing') ? '' : where;
+    return [wherePart, kinds.join(' + '), s.count > 1 ? `${s.count} counted` : '', ...extraNotes, extraNotes.length ? '' : 'not weighed'].filter(Boolean).join(' · ');
+  }
+  const parts = [];
+  if (s.tripudium) parts.push('feeding, food fell — favourable');
+  else if ((s.ruleIds ?? []).includes('R-TANAQUIL')) parts.push('stoop — favourable');
+  else {
+    const sideWord = s.side && s.side !== 'line' ? s.side : 'on the line';
+    parts.push(`${sideWord} — ${s.favourable ? 'favourable' : 'unfavourable'}`);
+  }
+  const weighable = kinds.filter((k) => k === 'voice' || k === 'flight');
+  if (weighable.length && !s.tripudium) {
+    let mF = null;
+    try { mF = modeFactor(s.bird, weighable); } catch { mF = null; }
+    const ownMode = mF && mF.num === 1 && mF.den === 1;
+    parts.push(ownMode ? `${weighable.join(' + ')}, its own mode` : `${weighable.join(' + ')}, outside its own mode · half strength`);
+    let fF = null;
+    try { fF = flightFactor({ kinds: weighable, flight: s.flight, height: s.height }); } catch { fF = null; }
+    if (fF && !(fF.num === 1 && fF.den === 1) && !(s.ruleIds ?? []).includes('R-TANAQUIL')) {
+      const flightWord = s.flight === 'onward' ? 'onward' : s.height === 'high' ? 'high' : s.height === 'low' ? 'low' : 'flight';
+      parts.push(`${flightWord} ×${fracText(fF)}`);
+    }
+  }
+  if (s.count > 1) {
+    let cF = null;
+    try { cF = countFactor(s.count); } catch { cF = null; }
+    parts.push(cF ? `${s.count} counted ×${fracText(cF)}` : `${s.count} counted`);
+  }
+  if (s.remora) parts.push('turning back (remora)');
+  parts.push(...extraNotes);
+  return parts.filter(Boolean).join(' · ');
+}
+function signLine(s) {
   const bird = BIRDS[s.bird]?.ui ?? s.bird;
-  const where = s.quarter ? `${s.quarter}${s.side && s.side !== 'line' ? `, ${s.side}` : ', on the line'}` : 'no bearing';
-  const notes = (s.notes ?? []).map((n) => NOTE_TEXT[n] ?? n).join('; ');
   let outcome;
   if (s.classification === 'weighed') outcome = `<strong>${s.favourable ? 'Favourable' : 'Unfavourable'} ${fracText(s.strength)}</strong>`;
   else if (s.classification === 'dira') outcome = '<strong>Dire — forbids outright</strong>';
   else outcome = 'Not weighed';
-  const detail = [where, (s.kinds ?? []).join(' + '), s.count > 1 ? `${s.count} counted` : '', s.remora ? 'turning back (remora)' : '', notes].filter(Boolean).join(' · ');
-  const rules = (s.ruleIds ?? []).map((r) => `<a href="${esc(ruleHref(r, passages))}">${esc(ruleName(r))}</a> <span class="rule-id">${esc(r)}</span>`).join('; ');
-  return `<li><strong>${esc(bird)}</strong> — ${outcome}<br><span class="note">${esc(detail)}</span>${rules ? `<br><span class="note">${rules}</span>` : ''}</li>`;
+  return `<li><strong>${esc(bird)}</strong> — ${outcome}<br><span class="sign-factors">${esc(signFactorLine(s))}</span></li>`;
 }
 export function verdictHTML(w, result, passages = null) {
   const deciding = [...new Set(result.decidedBy ?? [])];
-  const weighedBy = [...new Set(result.signs.flatMap((s) => s.ruleIds))].filter((r) => !deciding.includes(r));
+  // One rule list for the whole verdict: deciding rules first, then every
+  // rule that weighed a sign — each once, linked, with its ID small.
+  const allRules = [...new Set([...deciding, ...result.signs.flatMap((s) => s.ruleIds ?? [])])];
   const glosses = (result.glosses ?? []).map((g) => `<p class="note">${esc(GLOSS[g] ?? g)}</p>`).join('');
   const hasMarks = result.signs.some((s) => s.relDeg !== null && s.relDeg !== undefined);
   return `<section class="view verdict-view"><div class="verdict-head"><p class="step">The verdict</p>
@@ -170,11 +213,10 @@ export function verdictHTML(w, result, passages = null) {
   ${result.wouldBeVerdict ? `<p class="note">The watch was vitiated by a fault. Without the fault it would have been: <strong lang="la">${esc(VERDICTS[result.wouldBeVerdict].latin)}</strong>.</p>` : ''}
   <p>Favourable strength <strong>${fracText(result.favourable)}</strong> · unfavourable <strong>${fracText(result.unfavourable)}</strong>. <span class="note">The numbers are ours — a reconstruction, shown rather than hidden.</span></p></div>
   <div class="verdict-layout"><div>${glosses}
-  <h2>Decided by</h2><ul class="rule-list">${deciding.map((r) => ruleLine(r, passages)).join('')}</ul>
   <h2>Each sign, weighed</h2>
-  ${result.signs.length ? `<ul class="sign-breakdown">${result.signs.map((s) => signLine(s, passages)).join('')}</ul>` : '<p class="note">No signs were seen.</p>'}
+  ${result.signs.length ? `<ul class="sign-breakdown">${result.signs.map((s) => signLine(s)).join('')}</ul>` : '<p class="note">No signs were seen.</p>'}
   <p class="note">Totals: favourable <strong>${fracText(result.favourable)}</strong> against unfavourable <strong>${fracText(result.unfavourable)}</strong>.</p>
-  ${weighedBy.length ? `<h2>How the signs were weighed</h2><ul class="rule-list">${weighedBy.map((r) => ruleLine(r, passages)).join('')}</ul>` : ''}
+  ${allRules.length ? `<h2>How the signs were weighed</h2><p class="note">Deciding rules first. Each name opens its passage.</p><ul class="rule-list">${allRules.map((r) => ruleLine(r, passages)).join('')}</ul>` : ''}
   <div class="row"><button class="btn" data-act="again">Take the auspices again</button><a class="btn primary" href="#/record">The record</a></div>
   <p class="note">Retaking is allowed; every attempt stays counted.</p></div>
   <figure class="verdict-dome">${domeSVG({ frontDeg: w.frontDeg, tradition: w.tradition, signs: result.signs, halfWidth: w.templumHalfWidthDeg ?? 180, small: true })}

@@ -5,11 +5,13 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--bronze:#c49a5c;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#1f1b14;--focus:#e0705a}}
 :root[data-theme=dark]{--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--bronze:#c49a5c;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#1f1b14;--focus:#e0705a}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;overflow-x:clip}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.5;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.5;overflow-x:clip;display:flex;flex-direction:column;min-height:100dvh}
 img,svg{max-width:100%}
 h1,h2,.wordmark,.verdict-latin{font-family:Cinzel,serif;letter-spacing:.04em}
 h1{font-size:1.7rem;line-height:1.2;margin:.2em 0 .4em;overflow-wrap:break-word}h1:focus{outline:none}
-a{color:var(--red)}:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+/* Body links wear ink with a quiet underline; red is the verdict/accent. */
+a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--ink) 45%,transparent)}
+a:hover{text-decoration-color:var(--red)}:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 /* Header: brand + theme always on the first row; nav wraps to its own
    short row on phones so nothing is pushed off-screen (320-430px). */
 .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand theme" "nav nav";align-items:center;column-gap:.8rem;row-gap:.1rem;padding:.45rem 1rem .55rem;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:5}
@@ -21,7 +23,8 @@ a{color:var(--red)}:focus-visible{outline:3px solid var(--focus);outline-offset:
 .topbar nav a[aria-current="page"]{color:var(--red);text-decoration:underline;text-underline-offset:.18em}
 .theme-cycle{grid-area:theme;justify-self:end;min-height:48px;min-width:48px;background:none;border:1px solid var(--ink);color:var(--ink);border-radius:999px;font:inherit;font-size:.95rem;padding:.3rem .9rem;cursor:pointer}
 @media(min-width:700px){.topbar{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand nav theme";row-gap:0}.topbar nav{margin-left:1.2rem;flex-wrap:nowrap}}
-main{max-width:1180px;margin:0 auto;padding:1rem 1rem 3rem;min-width:0}
+main{max-width:1180px;margin:0 auto;padding:1rem 1rem 3rem;min-width:0;width:100%;flex:1 0 auto}
+footer{flex:none}
 .view{max-width:720px;margin:0 auto;min-width:0}.view.templum,.view.watch,.view.verdict-view{max-width:1180px}
 .lede{font-size:1.22rem}.note{font-size:.95rem;opacity:.85}.fine{font-size:.9rem;text-align:center;opacity:.8}
 .step{font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}

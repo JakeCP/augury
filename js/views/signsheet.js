@@ -17,12 +17,13 @@ export const BIRD_ID_LINES = {
 const SVG_FILE = { raven: 'raven', crow: 'crow', noctua: 'little-owl', bubo: 'eagle-owl', owlUnsure: 'little-owl', eagle: 'eagle', vulture: 'vulture', buteo: 'buzzard', picus: 'woodpecker', pulli: 'chickens', other: 'other' };
 export function signSheetHTML(sign, askedFor) {
   const birds = BIRD_IDS.map((id) => `<label class="bird-pick"><input type="radio" name="bird" value="${id}" ${sign.bird === id ? 'checked' : ''}>
-    <img src="img/birds/${SVG_FILE[id]}.svg" alt="" width="44" height="44"><span><strong>${esc(BIRDS[id].ui)}</strong><small lang="la">${esc(BIRDS[id].latin ?? '')}</small><small>${esc(BIRD_ID_LINES[id][0])} ${esc(BIRD_ID_LINES[id][1])}</small></span></label>`).join('');
+    <span class="bird-head"><img src="img/birds/${SVG_FILE[id]}.svg" alt="" width="28" height="28"><span class="bird-names"><strong>${esc(BIRDS[id].ui)}</strong>${BIRDS[id].latin ? ` <small class="bird-latin" lang="la">${esc(BIRDS[id].latin)}</small>` : ''}</span></span><small class="bird-desc">${esc(BIRD_ID_LINES[id][0])} ${esc(BIRD_ID_LINES[id][1])}</small></label>`).join('');
   const kind = (v, label) => `<label class="check"><input type="checkbox" name="kinds" value="${v}" ${sign.kinds?.includes(v) ? 'checked' : ''}><span>${label}</span></label>`;
   const showDecline = canDecline(sign, askedFor);
   return `<div class="sheet-backdrop"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h">
   <h2 id="sheet-h" tabindex="-1">What was it?</h2>
-  <form id="sign-form">
+  <form id="sign-form" class="sheet-form">
+  <div class="sheet-scroll">
   <fieldset><legend>Bird</legend><div class="bird-grid">${birds}</div></fieldset>
   <fieldset><legend>Kind of sign</legend>${kind('voice', 'Voice — heard it call')}${kind('flight', 'Flight — saw it fly')}${kind('feeding', 'Feeding')}${kind('ostentum', 'Ostentum — thunder and the like')}
   <p class="note">Voice and flight may go together. A crow is <em>meant</em> to be heard; seen silent, it counts at half strength.</p></fieldset>
@@ -48,7 +49,8 @@ export function signSheetHTML(sign, askedFor) {
   ${showDecline ? `<fieldset><legend>An unasked sign <span lang="la">(oblativum)</span></legend>
    <label class="choice"><input type="radio" name="accept" value="accept" checked><span>Accept it</span></label>
    <label class="choice"><input type="radio" name="accept" value="decline"><span>Decline — “I did not ask for this” <span lang="la">(non observavi)</span></span></label></fieldset>` : ''}
-  <div class="row"><button type="button" class="btn" data-sheet="cancel">Cancel</button><button type="submit" class="btn primary">Enter the sign</button></div>
+  </div>
+  <div class="sheet-actions"><button type="button" class="btn" data-sheet="cancel">Cancel</button><button type="submit" class="btn primary">Enter the sign</button></div>
   </form></div></div>`;
 }
 export function readSignSheet(root, base) {

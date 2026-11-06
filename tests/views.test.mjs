@@ -1,10 +1,11 @@
 import test from 'node:test'; import assert from 'node:assert/strict';
-import { relToXY, describeRegion, canDecline, SIGN_FIELDS, sharedRecordContainsQuestion, esc } from '../js/views/helpers.js';
+import { relToXY, describeRegion, canDecline, SIGN_FIELDS, sharedRecordContainsQuestion, esc, tierLabel, tierTitle, liveTallyText } from '../js/views/helpers.js';
 import { domeSVG } from '../js/views/dome.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { recordHTML, observationFromWatch, verdictHTML, homeHTML, ruleName, ruleHref, templumHTML, watchHTML } from '../js/views/rite.js';
+import { recordHTML, observationFromWatch, verdictHTML, homeHTML, ruleName, ruleHref, templumHTML, watchHTML, signFactorLine } from '../js/views/rite.js';
+import { aboutHTML } from '../js/views/texts.js';
 import { signSheetHTML } from '../js/views/signsheet.js';
 import { interpret } from '../js/rules.js';
 import { passages } from './fixtures/passages.js';
@@ -35,16 +36,29 @@ test('escaping and fixture passage shape', () => {
   assert.equal(passages[0].tier, 'quintus'); assert.ok(passages[0].original.licence.length > 0);
   assert.match(describeRegion(270), /sinistra/);
 });
-test('dome lettering stays inside the rim with clear space', () => {
-  const svg = domeSVG({});
-  // Every label carries a textLength and sits at radius <= 67 of 92 from centre.
-  for (const m of svg.matchAll(/<text x="([\d.]+)" y="([\d.]+)" class="dome-lab"[^>]*textLength="([\d.]+)"[^>]*>([A-Z]+)<\/text>/g)) {
-    const [, xs, ys, ls, word] = m; const x = +xs, y = +ys, len = +ls;
-    const worst = Math.hypot(Math.max(Math.abs(x - len / 2 - 100), Math.abs(x + len / 2 - 100)), Math.abs(y - 100));
-    assert.ok(worst < 84, `${word} reaches radius ${worst.toFixed(1)} (rim 92)`);
-    assert.ok(x - len / 2 > 0 && x + len / 2 < 200, `${word} inside viewBox width`);
+test('dome lettering sits outside the rim and sign dots never meet it', () => {
+  const signs = [0, 45, 90, 135, 180, 225, 270, 315].map((relDeg) => ({ bird: 'crow', relDeg, classification: 'weighed', favourable: relDeg > 180 }));
+  const svg = domeSVG({ signs });
+  const labels = [];
+  for (const m of svg.matchAll(/<text x="([-\d.]+)" y="([-\d.]+)" class="dome-(?:lab|sub)" text-anchor="(middle|start|end)" textLength="([\d.]+)"[^>]*>([^<]+)<\/text>/g)) {
+    const [, xs, ys, anchor, ls, word] = m; const x = +xs, y = +ys, len = +ls;
+    const x1 = anchor === 'middle' ? x - len / 2 : anchor === 'start' ? x : x - len;
+    const box = { x1, x2: x1 + len, y1: y - 9, y2: y + 2, word };
+    labels.push(box);
+    const closest = Math.hypot(Math.min(Math.max(100, box.x1), box.x2) - 100, Math.min(Math.max(100, box.y1), box.y2) - 100);
+    assert.ok(closest > 92, `${word} is outside the rim (closest ${closest.toFixed(1)})`);
   }
-  assert.match(svg, /viewBox="-6 -6 212 212"/);
+  assert.equal(labels.length, 8); // ANTICA/front, POSTICA/behind, SINISTRA/left, DEXTRA/right
+  const marks = [...svg.matchAll(/<circle cx="([-\d.]+)" cy="([-\d.]+)" r="([\d.]+)" class="dome-mark-/g)];
+  assert.equal(marks.length, 8);
+  for (const m of marks) {
+    const cx = +m[1], cy = +m[2], r = +m[3];
+    assert.ok(Math.abs(Math.hypot(cx - 100, cy - 100) / 92 - 0.7) < 0.02, 'dots plotted at ~70% radius');
+    for (const b of labels) {
+      const overlap = cx - r < b.x2 && cx + r > b.x1 && cy - r < b.y2 && cy + r > b.y1;
+      assert.equal(overlap, false, `dot at ${cx},${cy} must not sit on ${b.word}`);
+    }
+  }
 });
 test('verdict: human rule names, small IDs, passage links, per-sign strengths, F/U dome', () => {
   const obs = { tradition: 'roman', orientation: 'varro', frontDeg: 180, templumHalfWidthDeg: 180, declinationDeg: 0,
@@ -64,6 +78,35 @@ test('verdict: human rule names, small IDs, passage links, per-sign strengths, F
   assert.ok(!html.includes('Romulus and Remus'), 'decisive verdict: no founders gloss');
   assert.match(html, /dome-mark-fav/); assert.match(html, /dome-mark-unfav/); // plotted F/U
   assert.match(html, /Where each sign was seen/);
+  // Round 2: one rule list only; per-sign lines are plain factors, no links.
+  assert.equal((html.match(/class="rule-list"/g) ?? []).length, 1, 'exactly one rule list');
+  assert.equal((html.match(/R-SIDE/g) ?? []).length, 1, 'each rule named once');
+  const perSign = html.slice(html.indexOf('Each sign, weighed'), html.indexOf('class="rule-list"'));
+  assert.ok(!perSign.includes('<a '), 'no links inside the per-sign breakdown');
+  const result = interpret(obs);
+  assert.equal(signFactorLine(result.signs[0]), 'left — favourable · voice, its own mode · 2 counted ×5/4');
+  assert.equal(signFactorLine(result.signs[1]), 'right — unfavourable · flight, its own mode · 6 counted ×9/4');
+  assert.ok(html.includes('left — favourable · voice, its own mode · 2 counted ×5/4'));
+  // Round 2: human tier labels, never the raw slugs, each chip titled.
+  for (const slug of ['marcus', 'quintus', 'natural-history', 'comedy']) {
+    assert.ok(!html.includes(`>${slug}<`), `slug ${slug} must not be chip text`);
+  }
+  assert.match(html, /Quintus in Cicero’s dialogue/);
+  assert.match(html, /<span class="tag" title="[^"]+">/);
+});
+test('evidence tiers read as people and kinds, with a key on About', () => {
+  assert.equal(tierLabel('marcus'), 'Cicero, in his own voice');
+  assert.equal(tierLabel('quintus'), 'Quintus in Cicero’s dialogue');
+  assert.equal(tierLabel('natural-history'), 'Pliny');
+  assert.equal(tierLabel('comedy'), 'comedy (Plautus)');
+  assert.equal(tierLabel('legend'), 'legend');
+  assert.equal(tierLabel('poetry'), 'poetry');
+  assert.equal(tierLabel('technical'), 'technical');
+  assert.equal(tierLabel('reconstruction'), 'our reconstruction');
+  assert.equal(tierLabel('draft-law'), 'Cicero’s draft laws');
+  assert.ok(tierTitle('quintus').length > 20);
+  assert.match(aboutHTML(), /How to read the evidence labels/);
+  assert.match(aboutHTML(), /Cicero, in his own voice/);
 });
 test('home carries the privacy line zero times (the footer says it once)', () => {
   assert.ok(!homeHTML(false).includes('Nothing leaves this device'));
@@ -80,6 +123,23 @@ test('sign sheet: bird picker is the compact grid, one pick per bird', () => {
   assert.match(html, /class="bird-grid"/);
   assert.equal((html.match(/class="bird-pick"/g) ?? []).length, 11); // incl. Other/thunder
   assert.match(html, /img\/birds\/chickens\.svg/);
+  // Round 2: icon + name + Latin share a row; description is its own small block.
+  assert.equal((html.match(/class="bird-head"/g) ?? []).length, 11);
+  assert.equal((html.match(/class="bird-desc"/g) ?? []).length, 11);
+  // Round 2: the primary action lives in a footer below the scrolling body.
+  assert.match(html, /class="sheet-scroll"/);
+  assert.match(html, /class="sheet-actions"[^>]*>[\s\S]*Enter the sign/);
+  assert.ok(html.indexOf('sheet-actions') > html.indexOf('sheet-scroll'), 'actions sit below the scroll body');
+});
+test('watch tally stays quiet until a sign is weighed', () => {
+  const base = { tradition: 'roman', orientation: 'varro', frontDeg: 180, templumHalfWidthDeg: 180, askedFor: ['crow'], signs: [], vitium: false, isDaylight: true, suggestedMin: 20, startedAt: Date.now() };
+  const empty = watchHTML(base, 0);
+  assert.ok(!empty.includes('0 weighed') && !empty.includes('F 0 / U 0'), 'no zero tally');
+  assert.match(empty, /No signs yet/);
+  assert.equal(liveTallyText(interpret({ tradition: 'roman', signs: [] })), null);
+  const busy = watchHTML({ ...base, signs: [{ bird: 'crow', kinds: ['voice'], relDeg: 270, height: 'na', flight: 'na', count: 2 }] }, 0);
+  assert.match(busy, /1 weighed · F 5\/4 \/ U 0/);
+  assert.ok(!busy.includes('No signs yet'));
 });
 test('watch: the vitium control is one boxed label, latin inside the same span', () => {
   const html = watchHTML({ tradition: 'roman', orientation: 'varro', frontDeg: 180, templumHalfWidthDeg: 180, askedFor: [], signs: [], vitium: false, isDaylight: true, suggestedMin: 20, startedAt: Date.now() }, 0);
