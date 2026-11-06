@@ -34,7 +34,7 @@
 .dome.small{width:min(100%,360px)}
 .dome-rim{fill:transparent;stroke:var(--ink);stroke-width:2}.dome-wash{fill:var(--wash)}
 .dome-sector{fill:none;stroke:var(--bronze);stroke-width:1.5;stroke-dasharray:5 4}
-.dome-line{stroke:var(--ink);stroke-width:1.6}.dome-cross{stroke:var(--rule);stroke-width:1}
+.dome-line{stroke:var(--ink);stroke-width:1.6}.dome-cross{stroke:var(--bronze);stroke-width:1}
 .dome-front{stroke:var(--red);stroke-width:3.5;stroke-linecap:round}
 .dome-needle{stroke:var(--ink);stroke-width:1.6}.dome-mark{fill:var(--red)}.dome-centre{fill:var(--ink)}
 .dome-mark-fav{fill:var(--red)}
@@ -64,7 +64,7 @@
 @media(min-width:760px){.sheet-backdrop{align-items:center}.sheet{border-radius:16px}.sheet-actions{border-radius:0 0 16px 16px}}
 .bird-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;min-width:0}
 .bird-grid>*{min-width:0}
-.bird-pick{position:relative;display:flex;flex-direction:column;gap:.25rem;border:1.5px solid var(--ink);border-radius:10px;padding:.45rem .5rem;cursor:pointer;align-items:stretch;min-width:0}
+.bird-pick{position:relative;display:flex;flex-direction:column;gap:.25rem;border:1.5px solid var(--ink);border-radius:10px;padding:.45rem .5rem;cursor:pointer;align-items:stretch;min-width:0;min-height:48px}
 .bird-pick:has(input:checked){outline:3px solid var(--red);outline-offset:-1px}
 .bird-pick:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
 .bird-pick input{position:absolute;opacity:0;width:1px;height:1px}
@@ -100,7 +100,8 @@
 .rule-list{list-style:none;padding:0;text-align:left}
 .rule-list li{padding:.55rem 0;border-bottom:1px solid var(--rule);min-width:0}
 .rule-list li:last-child{border-bottom:none}
-.rule-name{font-size:1.05rem}
+.rule-name{font-size:1.05rem;display:inline-flex;align-items:center;min-height:48px}
+.theme-jumps a{display:inline-flex;align-items:center;min-height:48px;padding:0 .3rem}
 .rule-meta{display:block;margin-top:.15rem}
 .rule-id{font-size:.78rem;letter-spacing:.06em;opacity:.7;margin-right:.45rem}
 .rule-meta .tag{margin:.1rem .3rem .1rem 0}
@@ -129,4 +130,4 @@ th,td{border-bottom:1px solid var(--rule);padding:.35rem .4rem;text-align:left;o
 .feeding .crumb{opacity:1;animation:fall .8s ease-in infinite}.feeding .crumb.two{animation-delay:.4s;margin-left:60px}
 @keyframes peck{from{transform:rotate(-3deg)}to{transform:rotate(5deg) translateY(5px)}}
 @keyframes fall{from{transform:translateY(-22px);opacity:0}30%{opacity:1}to{transform:translateY(8px)}}
-@media(prefers-reduced-motion:reduce){.feeding .chick,.feeding .crumb{animation:none}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.feeding .chick,.feeding .crumb{animation:none}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

@@ -23,7 +23,7 @@ let watchTimer = null, wakeLock = null, hiddenAt = null, deletedStack = [];
 let passagesPromise = null, sortesPromise = null;
 
 function announce(msg) { if (live) { live.textContent = ''; requestAnimationFrame(() => { live.textContent = msg; }); } }
-function render(html) { app.innerHTML = html; const h = app.querySelector('h1[tabindex="-1"]'); if (h) h.focus({ preventScroll: true }); scrollTo(0, 0); }
+function render(html) { app.innerHTML = html; const h = app.querySelector('h1[tabindex="-1"]'); if (h) { h.focus({ preventScroll: true }); document.title = `${h.textContent.trim()} — Augury`; } scrollTo(0, 0); }
 function getWatch() { return sessionStore.get(KEYS.watch); }
 function saveWatch(w) { sessionStore.set(KEYS.watch, w); }
 function defaultAsked() { return BIRD_IDS.filter((id) => BIRDS[id].augural); }
@@ -233,10 +233,13 @@ function openSheet(idx) {
   slot.innerHTML = signSheetHTML(w.signs[idx], w.askedFor);
   const sheet = slot.querySelector('.sheet'); const prevFocus = document.activeElement;
   sheet.querySelector('#sheet-h')?.focus();
-  // focus trap (simple): cycle Tab within sheet
+  // Focus trap: cycle Tab within the sheet (visible controls only —
+  // the detail questions hide with display:none); Escape cancels.
   sheet.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); close(idx); return; }
     if (e.key !== 'Tab') return;
-    const f = [...sheet.querySelectorAll('button,input,select,textarea,[tabindex="-1"]')].filter((el) => !el.disabled);
+    const visible = (el) => !el.disabled && (el.checkVisibility ? el.checkVisibility() : el.offsetParent !== null);
+    const f = [...sheet.querySelectorAll('button,input,select,textarea,[tabindex="-1"]')].filter(visible);
     const first = f[0], last = f[f.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -250,11 +253,16 @@ function openSheet(idx) {
   };
   sheet.addEventListener('change', syncDetails); syncDetails();
   sheet.querySelectorAll('[data-count]').forEach((b) => b.addEventListener('click', () => { const o = sheet.querySelector('#count-out'); o.textContent = String(Math.min(12, Math.max(1, Number(o.textContent) + Number(b.dataset.count)))); }));
-  const close = () => { slot.innerHTML = ''; document.getElementById('there')?.focus(); const x = getWatch(); const n = x?.signs.findIndex((s) => s.stub); if (n >= 0) openSheet(n); };
-  sheet.querySelector('[data-sheet="cancel"]').addEventListener('click', close);
-  sheet.querySelector('#sign-form').addEventListener('submit', (e) => {
+  // Cancelling closes without reopening the same stub (it stays in the
+  // list for Edit); a *different* queued stub is asked next. Focus
+  // returns to There! either way (PLAN §8).
+  const close = (skipIdx = -1) => { slot.innerHTML = ''; document.getElementById('there')?.focus(); const x = getWatch(); const n = x?.signs.findIndex((s, i) => s.stub && i !== skipIdx); if (n >= 0) openSheet(n); };
+  sheet.querySelector('[data-sheet="cancel"]').addEventListener('click', () => close(idx));
+  sheet.querySelector('#sign-form').addEventListener('submit', async (e) => {
     e.preventDefault(); const x = getWatch();
-    x.signs[idx] = readSignSheet(sheet, x.signs[idx]); saveWatch(x); dispatch();
+    x.signs[idx] = readSignSheet(sheet, x.signs[idx]); saveWatch(x);
+    await dispatch(); // re-renders the watch, opening any next stub sheet
+    if (!document.querySelector('.sheet')) document.getElementById('there')?.focus();
   });
 }
 function renderTripudium() {
@@ -276,4 +284,19 @@ function renderTripudium() {
   document.getElementById('scatter').addEventListener('click', run);
 }
 addEventListener('hashchange', dispatch);
+// The skip button moves focus to the current view's heading. (A plain
+// "#app" link would be swallowed by the hash router as an unknown route.)
+document.getElementById('skip-link')?.addEventListener('click', () => {
+  app.querySelector('h1[tabindex="-1"]')?.focus({ preventScroll: true });
+  app.querySelector('h1[tabindex="-1"]')?.scrollIntoView();
+});
+// Offline support for the installed app. Relative path on purpose: the
+// site ships under /augury/ on GitHub Pages, so the worker scope is
+// this directory, never the domain root. Bump APP_VERSION in sw.js
+// whenever any precached file changes.
+if ('serviceWorker' in navigator) {
+  addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => { /* offline is an enhancement */ });
+  });
+}
 dispatch();

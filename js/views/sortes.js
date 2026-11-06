@@ -21,7 +21,7 @@ export function sortesQuestionsHTML(questions) {
   return `<section class="view"><h1 tabindex="-1">Choose your question</h1>
   <p class="note">Headings are our editorial grouping. Some questions belong to a slave-owning world — recovering a fugitive, buying freedom. They are kept, and framed as history, not offered as neutral menu items.</p>
   <label class="field"><span>Search the questions</span><input id="q-search" type="search" placeholder="marry, travel, recover…"></label>
-  <p class="note">Themes: ${jumps || '—'}</p><ol class="q-list">${list}</ol></section>`;
+  <p class="note theme-jumps">Themes: ${jumps || '—'}</p><ol class="q-list">${list}</ol></section>`;
 }
 export function sortesLotHTML(q) {
   const tokens = Array.from({ length: 10 }, (_, i) => `<button class="token" data-k="${i + 1}" aria-label="Speak ${i + 1}">${i + 1}</button>`).join('');

@@ -25,6 +25,7 @@ export function formatElapsed(sec) {
 const TIERS = Object.freeze({
   marcus: Object.freeze({ label: 'Cicero, in his own voice', title: 'Marcus in Cicero’s De Divinatione, book 2, dismantling divination — often our best evidence for what the practice was.' }),
   quintus: Object.freeze({ label: 'Quintus in Cicero’s dialogue', title: 'Quintus in Cicero’s De Divinatione, book 1, making the Stoic case for divination — a character’s argument, not Cicero’s own view.' }),
+  balbus: Object.freeze({ label: 'Balbus in Cicero’s dialogue', title: 'Balbus, the Stoic speaker in Cicero’s De Natura Deorum — a character’s argument, not Cicero’s own view.' }),
   'natural-history': Object.freeze({ label: 'Pliny', title: 'Pliny the Elder’s Natural History, reporting lore and belief.' }),
   comedy: Object.freeze({ label: 'comedy (Plautus)', title: 'A character in a comedy by Plautus, inventing convenient signs.' }),
   legend: Object.freeze({ label: 'legend', title: 'Foundation legend and early “history”, such as Livy’s first book.' }),

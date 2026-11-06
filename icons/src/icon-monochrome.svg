@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Augury">
+<title>Augury — the lituus seal</title>
+<!-- Monochrome variant for Android themed icons: one ink colour on
+     transparency, the lituus knocked out of the seal. The system tints it.
+     Same geometry as icon-maskable.svg so shape masks cannot crop it. -->
+<defs>
+<mask id="cut">
+<rect x="118" y="118" width="276" height="276" rx="16" fill="#fff"/>
+<g transform="translate(118 118) scale(2.76)"><path d="M50 86 L50 36 Q50 16 67 16 Q82 16 82 28 Q82 39 71 39" fill="none" stroke="#000" stroke-width="6.5" stroke-linecap="round"/></g>
+</mask>
+</defs>
+<g transform="rotate(-2 256 256)"><rect x="118" y="118" width="276" height="276" rx="16" fill="#000" mask="url(#cut)"/></g>
+</svg>

@@ -13,7 +13,7 @@ export function tripudiumHTML(attempts) {
    <p class="note">Chances of the full tripudium: fed 40%, hungry 70%, starved 92%. Our numbers, shown openly.</p></fieldset>
   <p class="note">Attempts today: ${attempts}. Every attempt is counted; there are no hidden retries.</p>
   <div class="row"><button class="btn primary big" id="scatter">Scatter the grain</button></div>
-  <div id="trip-result" aria-live="polite"></div>
+  <div id="trip-result"></div>
   <div class="card"><h2>Claudius Pulcher, 249 BC</h2><p>The chickens would not eat before the battle at Drepana, so Publius Claudius Pulcher had them thrown into the sea — <em lang="la">“ut biberent, quoniam ēsse nollent”</em>, so that they might drink, since they would not eat — and lost the fleet. Polybius, our main source for the battle, never mentions the chickens at all. The story is later Roman moralising, and a better tale for knowing it.</p></div>
   </section>`;
 }

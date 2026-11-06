@@ -15,10 +15,10 @@ a:hover{text-decoration-color:var(--red)}:focus-visible{outline:3px solid var(--
 /* Header: brand + theme always on the first row; nav wraps to its own
    short row on phones so nothing is pushed off-screen (320-430px). */
 .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand theme" "nav nav";align-items:center;column-gap:.8rem;row-gap:.1rem;padding:.45rem 1rem .55rem;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:5}
-.brand{grid-area:brand;display:flex;align-items:center;gap:.4rem;min-width:0;color:var(--ink);text-decoration:none;font-family:Cinzel,serif;font-size:1.1rem}
+.brand{grid-area:brand;display:flex;align-items:center;gap:.4rem;min-width:0;min-height:48px;color:var(--ink);text-decoration:none;font-family:Cinzel,serif;font-size:1.1rem}
 .brand .lituus{width:26px;height:26px;flex:none;color:var(--red)}
 .topbar nav{grid-area:nav;display:flex;flex-wrap:wrap;gap:.15rem .85rem;min-width:0}
-.topbar nav a{color:var(--ink);text-decoration:none;padding:.3rem 0;min-height:2rem}
+.topbar nav a{color:var(--ink);text-decoration:none;padding:.3rem 0;min-height:48px;display:inline-flex;align-items:center}
 .topbar nav a:hover,.topbar nav a:focus-visible{text-decoration:underline;text-underline-offset:.18em}
 .topbar nav a[aria-current="page"]{color:var(--red);text-decoration:underline;text-underline-offset:.18em}
 .theme-cycle{grid-area:theme;justify-self:end;min-height:48px;min-width:48px;background:none;border:1px solid var(--ink);color:var(--ink);border-radius:999px;font:inherit;font-size:.95rem;padding:.3rem .9rem;cursor:pointer}
@@ -50,6 +50,8 @@ fieldset{border:1px solid var(--ink);border-radius:10px;margin:1rem 0;padding:.6
 legend{max-width:100%}
 .tag{display:inline-block;font-size:.8rem;border:1px solid currentColor;border-radius:999px;padding:.05rem .5rem;overflow-wrap:anywhere}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:1rem;top:1rem;z-index:20;background:var(--paper)}
+.skip-link{position:absolute;left:-9999px;font:inherit;min-height:48px;padding:.5rem 1.1rem;border:1.5px solid var(--ink);border-radius:999px;color:var(--ink);cursor:pointer}.skip-link:focus{left:1rem;top:1rem;z-index:20;background:var(--paper)}
 footer{border-top:1px solid var(--rule);padding:1rem;display:flex;gap:.4rem 1rem;justify-content:space-between;font-size:.9rem;flex-wrap:wrap;min-width:0}
+footer a{display:inline-flex;align-items:center;min-height:48px}
+summary{min-height:48px;display:flex;align-items:center;cursor:pointer}
 @media(min-width:960px){.spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:start}.spread>*{min-width:0}}

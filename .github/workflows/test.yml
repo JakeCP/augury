@@ -1,0 +1,24 @@
+name: tests + validate + contrast + fonts
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tests (engine, share codec, router, views, PWA, scripts)
+        run: node --test
+      - name: Validate content and licences
+        run: node scripts/validate.mjs
+      - name: Check colour contrast per use
+        run: node scripts/check-contrast.mjs
+      - name: Verify font subset coverage
+        run: |
+          python3 -m pip install --quiet fonttools brotli
+          python3 scripts/build-fonts.py --check

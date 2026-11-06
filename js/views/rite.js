@@ -208,8 +208,8 @@ export function verdictHTML(w, result, passages = null) {
   const glosses = (result.glosses ?? []).map((g) => `<p class="note">${esc(GLOSS[g] ?? g)}</p>`).join('');
   const hasMarks = result.signs.some((s) => s.relDeg !== null && s.relDeg !== undefined);
   return `<section class="view verdict-view"><div class="verdict-head"><p class="step">The verdict</p>
-  <h1 tabindex="-1" class="verdict-latin" aria-live="polite" lang="la">${esc(result.latin)}</h1>
-  <p class="lede" aria-live="polite">${esc(result.english)}</p>
+  <h1 tabindex="-1" class="verdict-latin" lang="la">${esc(result.latin)}</h1>
+  <p class="lede">${esc(result.english)}</p>
   ${result.wouldBeVerdict ? `<p class="note">The watch was vitiated by a fault. Without the fault it would have been: <strong lang="la">${esc(VERDICTS[result.wouldBeVerdict].latin)}</strong>.</p>` : ''}
   <p>Favourable strength <strong>${fracText(result.favourable)}</strong> · unfavourable <strong>${fracText(result.unfavourable)}</strong>. <span class="note">The numbers are ours — a reconstruction, shown rather than hidden.</span></p></div>
   <div class="verdict-layout"><div>${glosses}

@@ -45,7 +45,7 @@ export function signSheetHTML(sign, askedFor) {
    <option value="0">Straight ahead</option><option value="180">Straight behind</option><option value="none">Overhead / no direction</option>
    <option value="270">Left quarter (sinistra)</option><option value="90">Right quarter (dextra)</option></select></label>
   <div class="field"><span>Number (birds seen, or calls heard; 12 = twelve or more)</span>
-   <div class="row"><button type="button" class="btn small" data-count="-1">−</button><output id="count-out">${sign.count ?? 1}</output><button type="button" class="btn small" data-count="1">+</button></div></div>
+   <div class="row"><button type="button" class="btn small" data-count="-1" aria-label="One fewer">−</button><output id="count-out" aria-live="polite" aria-label="Number counted">${sign.count ?? 1}</output><button type="button" class="btn small" data-count="1" aria-label="One more">+</button></div></div>
   ${showDecline ? `<fieldset><legend>An unasked sign <span lang="la">(oblativum)</span></legend>
    <label class="choice"><input type="radio" name="accept" value="accept" checked><span>Accept it</span></label>
    <label class="choice"><input type="radio" name="accept" value="decline"><span>Decline — “I did not ask for this” <span lang="la">(non observavi)</span></span></label></fieldset>` : ''}

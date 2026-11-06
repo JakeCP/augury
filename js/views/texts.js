@@ -7,15 +7,15 @@ export function textsHTML(passages) {
 export function textHTML(p) {
   if (!p) return `<section class="view"><h1 tabindex="-1">Text in preparation</h1><p class="card">This passage has not arrived yet.</p><a class="btn" href="#/texts">All texts</a></section>`;
   const orig = p.original ?? {};
-  const trans = (p.translations ?? []).map((t) => `<div class="facing"><h3>${esc(t.label ?? 'English')}</h3><p>${t.text ? esc(t.text) : '<em>Text in preparation.</em>'}</p><p class="licence">${esc(t.licence ?? '')}</p></div>`).join('');
+  const trans = (p.translations ?? []).map((t) => `<div class="facing"><h2>${esc(t.label ?? 'English')}</h2><p>${t.text ? esc(t.text) : '<em>Text in preparation.</em>'}</p><p class="licence">${esc(t.licence ?? '')}</p></div>`).join('');
   return `<section class="view"><p class="step">${esc(p.citation ?? '')}</p><h1 tabindex="-1">${esc(p.citation ?? p.id)}</h1>
   <p class="note">${esc(p.speaker ?? '')} · ${esc(p.date ?? '')} · <span class="tag" title="${esc(tierTitle(p.tier ?? ''))}">${esc(tierLabel(p.tier ?? ''))}</span> · rules: ${esc((p.rules ?? []).join(', '))}</p>
-  <div class="spread"><div class="facing"><h3>${orig.lang === 'grc' ? 'Greek' : 'Latin'}</h3>
+  <div class="spread"><div class="facing"><h2>${orig.lang === 'grc' ? 'Greek' : 'Latin'}</h2>
   <p lang="${esc(orig.lang ?? 'la')}" class="original">${orig.text ? esc(orig.text) : '<em>Text in preparation.</em>'}</p><p class="licence">${esc(orig.licence ?? '')}</p></div>
   <div>${trans || '<p class="card">Translation in preparation.</p>'}</div></div>
   <a class="btn" href="#/texts">All texts</a></section>`;
 }
-const TIER_ORDER = ['technical', 'quintus', 'marcus', 'draft-law', 'legend', 'history', 'comedy', 'natural-history', 'poetry', 'reconstruction'];
+const TIER_ORDER = ['technical', 'quintus', 'marcus', 'balbus', 'draft-law', 'legend', 'history', 'comedy', 'natural-history', 'poetry', 'reconstruction'];
 export function aboutHTML() {
   const tierKey = TIER_ORDER.map((slug) => `<li><span class="tag" title="${esc(TIER_TITLES[slug])}">${esc(TIER_LABELS[slug])}</span> — ${esc(TIER_TITLES[slug])}</li>`).join('');
   return `<section class="view prose"><h1 tabindex="-1">About</h1>
