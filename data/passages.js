@@ -1,11 +1,11 @@
 // Ancient passages: original text facing English, with citation,
 // speaker/date/evidence tier and a licence per field (PLAN §9).
-// Phase 4a pilot: six complete records (varro-ll-7-7-8,
-// livy-1-18-6-10, cic-div-1-85, cic-div-2-71-73, cic-nd-2-7,
-// livy-10-40); the rest are empty-but-present stubs for phase 4b.
-// Pilot Latin is provisional (finding-aid transcription) until the
-// phase 4c collation against pinned scans; see each record's
-// orthography field and docs/PILOT.md. Style: docs/STYLE.md.
+// Phase 4b: all records completed. Originals are transcribed from
+// the cache sources named in each record's source field and pinned
+// in scripts/provenance.json; where only a finding aid or corrupt
+// OCR was available the orthography field says so and phase 4c
+// letter-collation against the scan image is still owed.
+// Style: docs/STYLE.md. Report: docs/PILOT.md (4b passages).
 export const passages = [
   {
     "id": "varro-ll-7-7-8",
@@ -28,7 +28,12 @@ export const passages = [
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation. Archaic spellings septemtrionem, isdem, arbos retained. The conceptio formula is corrupt as transmitted (uera, quirquir, conregione conspicione cortumione) and is printed without emendation; section boundaries 7.7/7.8 follow the received division and are not marked in the finding-aid HTML.",
     "rules": [
       "R-TEMPLUM"
-    ]
+    ],
+    "source": {
+      "edition": "Latin Library text (Goetz–Schoell lineage; finding aid only)",
+      "page": "LL 7.7–8 (no scan page pinned)",
+      "cache": "latlib-varro-ll7.html"
+    }
   },
   {
     "id": "livy-1-18-6-10",
@@ -56,8 +61,14 @@ export const passages = [
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation. Section breaks 6–10 are conventional and are not marked in the finding-aid HTML. The prayer’s quod feci and archaic adclarassis are printed as transmitted.",
     "rules": [
       "R-ASK",
-      "R-TEMPLUM"
-    ]
+      "R-TEMPLUM",
+      "R-LINE"
+    ],
+    "source": {
+      "edition": "Latin Library text (finding aid only); Spillan Gutenberg #19725",
+      "page": "Livy 1.18.6–10",
+      "cache": "latlib-livy-liv.1.html + pg19725.txt"
+    }
   },
   {
     "id": "cic-div-1-85",
@@ -84,8 +95,15 @@ export const passages = [
     ],
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation.",
     "rules": [
-      "R-EXCEPT"
-    ]
+      "R-EXCEPT",
+      "B-RAVEN",
+      "B-CROW"
+    ],
+    "source": {
+      "edition": "Latin Library text (finding aid only); Yonge OCR",
+      "page": "Cic. Div. 1.85",
+      "cache": "latlib-cicero-divinatione1.html + treatisescicero00ciceuoft_djvu.txt"
+    }
   },
   {
     "id": "cic-div-2-71-73",
@@ -113,8 +131,14 @@ export const passages = [
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation. The silentium definition stands at the end of §71 in the standard sectioning; the span 71–73 is quoted whole so that no rule sentence is cut from its context. Finding-aid spellings quilubet, antiquissumos retained. Yonge’s spelling of terripavium is taken from the Latin pending Bohn-scan proofing (OCR is illegible at that word).",
     "rules": [
       "R-SILENTIUM",
-      "R-TRIP-ANY"
-    ]
+      "R-TRIP-ANY",
+      "B-PULLI"
+    ],
+    "source": {
+      "edition": "Latin Library text (finding aid only); Yonge OCR",
+      "page": "Cic. Div. 2.71–73",
+      "cache": "latlib-cicero-divinatione2.html + treatisescicero00ciceuoft_djvu.txt"
+    }
   },
   {
     "id": "cic-nd-2-7",
@@ -140,7 +164,12 @@ export const passages = [
       }
     ],
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation. Finding-aid text spells the consul Clodius/Clodi (Yonge and common usage: Claudius Pulcher); the spelling is printed as transmitted and glossed in the literal note. Square brackets around [L.] Iunius are the finding-aid editor’s supplement.",
-    "rules": []
+    "rules": [],
+    "source": {
+      "edition": "Latin Library text (finding aid only); Yonge OCR",
+      "page": "Cic. ND 2.7",
+      "cache": "latlib-cicero-nd2.html + treatisescicero00ciceuoft_djvu.txt"
+    }
   },
   {
     "id": "livy-10-40",
@@ -168,7 +197,12 @@ export const passages = [
     "orthography": "u/i normalised (docs/STYLE.md §5). Pilot text transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/; under the provenance rule (docs/SOURCES.md) the pinned scan is copy-text and this text is provisional until phase 4c collation. Whole chapter quoted; section numbers (10.40.4 for the refusal, 10.40.11 for the false-report sentence) are conventional and are not marked in the finding-aid HTML. Angle-bracket supplements <T.> and <tribus> are the finding-aid editor’s. Edmonds prints \"Caius Trebonius\" against this text’s uncertain praenomen.",
     "rules": [
       "R-FALSE"
-    ]
+    ],
+    "source": {
+      "edition": "Latin Library text (finding aid only); Edmonds Gutenberg #10907",
+      "page": "Livy 10.40 (whole chapter)",
+      "cache": "latlib-livy-liv.10.html + pg10907.txt"
+    }
   },
   {
     "id": "cic-div-2-82",
@@ -178,13 +212,25 @@ export const passages = [
     "tier": "marcus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Ad nostri augurii consuetudinem dixit Ennius: \"tum tonuit laeuum bene tempestate serena.\" At Homericus Aiax apud Achillem querens de ferocitate Troianorum nescio quid hoc modo nuntiat: \"prospera Iuppiter his dextris fulgoribus edit.\" Ita nobis sinistra uidentur, Graiis et barbaris dextra meliora; quamquam haud ignoro, quae bona sint, sinistra nos dicere, etiamsi dextra sint; sed certe nostri sinistrum nominauerunt externique dextrum, quia plerumque id melius uidebatur. Haec quanta dissensio est!",
+      "licence": "Public domain — ancient text (Latin Library text (C. F. W. Müller, Teubner, lineage; finding aid only)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Ennius spoke after the custom of our augury: \"then it thundered on the left, well, in a clear sky.\" But Homer's Ajax, complaining to Achilles of the Trojans' fierceness, reports something after this fashion: \"Jupiter sends forth favourable signs with these lightnings on the right.\" So to us things on the left seem better, to Greeks and foreigners things on the right; although I am well aware that we call things \"left\" which are good, even if they are on the right; but certainly our people named the left, and foreigners the right, [as the better], because for the most part that seemed the better. What a disagreement this is!"
+      }
+    ],
     "rules": [
       "R-SIDE"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid (UTF-16 file decoded) in scripts/.cache/sources/; no pinned Cicero scan is in the cache, so under the provenance rule this remains a finding-aid transcription for phase 4c collation. Our literal translation is printed; Yonge (1853) is PD and available in the cache OCR but is not reproduced here (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (C. F. W. Müller, Teubner, lineage; finding aid only)",
+      "page": "De divinatione 2.82 (section; no scan page pinned)",
+      "cache": "latlib-cicero-divinatione2.html"
+    }
   },
   {
     "id": "hom-il-12-237-243",
@@ -194,13 +240,30 @@ export const passages = [
     "tier": "poetry",
     "original": {
       "lang": "grc",
-      "text": "",
-      "licence": ""
+      "text": "Πουλυδάμα, σὺ μὲν οὐκέτ᾽ ἐμοὶ φίλα ταῦτ᾽ ἀγορεύεις· οἶσθα καὶ ἄλλον μῦθον ἀμείνονα τοῦδε νοῆσαι. εἰ δ᾽ ἐτεὸν δὴ τοῦτον ἐτήτυμον ἔκφατο μῦθον, σοὶ δέ τε θυμὸν ὄλεσσαν ἐνὶ φρεσὶ δαίμονες αὐτοί, ὅς κέ με φῇς Διὸς ἐκλελαθέσθαι ἐφετμέων, ἥν τέ μοι αὐτὸς ὑπέσχετο καὶ κατένευσεν· τὺ δέ μ᾽ οἰωνοῖσι τανυπτερύγεσσι κελεύεις πείθεσθαι, τῶν οὔ τι μετατρέπομ᾽ οὐδ᾽ ἀλεγίζω, εἴτ᾽ ἐπὶ δεξί᾽ ἴωσι πρὸς ἠῶ τ᾽ ἠέλιόν τε, εἴτ᾽ ἐπ᾽ ἀριστερὰ τοί γε ποτὶ ζόφον ἠερόεντα. ἡμεῖς δὲ μεγάλοιο Διὸς πειθώμεθα βουλῇ, ὃς πᾶσι θνητοῖσι καὶ ἀθανάτοισιν ἀνάσσει. εἷς οἰωνὸς ἄριστος ἀμύνεσθαι περὶ πάτρης.",
+      "licence": "Public domain — ancient text (Monro–Allen, Oxford Classical Texts, Homeri Opera vol. I (1902)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Samuel Butler (1898)",
+        "licence": "Public domain — Samuel Butler, The Iliad (1898); transcribed from Project Gutenberg #2199",
+        "text": "You would have me pay no heed to the counsels of Jove, nor to the promises he made me—and he bowed his head in confirmation; you bid me be ruled rather by the flight of wild-fowl. What care I whether they fly towards dawn or dark, and whether they be on my right hand or on my left? Let us put our trust rather in the counsel of great Jove, king of mortals and immortals. There is one omen, and one only—that a man should fight for his country."
+      },
+      {
+        "label": "Augury literal note",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Lines 239–240 literally: \"whether they go to the right, towards dawn and the sun, or to the left, towards murky darkness\" (εἴτ᾽ ἐπὶ δεξί᾽ ἴωσι πρὸς ἠῶ τ᾽ ἠέλιόν τε, / εἴτ᾽ ἐπ᾽ ἀριστερὰ τοί γε ποτὶ ζόφον ἠερόεντα). Butler keeps the dawn/dark contrast here; the right = dawn link is the clause on which the Greek-orientation discussion turns. Line 243: \"One bird-sign is best: to fight in defence of one's country.\" Hector is rejecting Poulydamas' bird-sign, not laying down a rule of interpretation."
+      }
+    ],
     "rules": [
       "R-SIDE"
-    ]
+    ],
+    "orthography": "Greek polytonic as in the Monro–Allen OCT received text. The cache scan (bwb_Y0-BSA-064_1.txt, archive.org owb_YO-BSA-064_1) is Monro–Allen OCT vol. I (Iliad 1–12, 1902); its OCR of the Greek is illegible, so the text above follows the received OCT wording with Butler as control and must be letter-checked against the scan image in phase 4c. Butler excerpt trimmed to the quoted span; line 237 opening words are covered by the literal note's context.",
+    "source": {
+      "edition": "Monro–Allen, Oxford Classical Texts, Homeri Opera vol. I (1902)",
+      "page": "Iliad 12.237–243 (scan owb_YO-BSA-064_1; printed page to confirm from image in 4c)",
+      "cache": "bwb_Y0-BSA-064_1.txt"
+    }
   },
   {
     "id": "serv-aen-6-191",
@@ -210,13 +273,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Sciendum augures captantes auguria certa sibi spatia designare, quibus uolebant uidenda ad se pertinere.",
+      "licence": "Public domain — ancient text (Thilo–Hagen, Servii grammatici commentarii, vol. II (1884)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "It should be known that augurs, when taking auguries, mark out fixed spaces for themselves, within which they wished the things to be seen to pertain to them."
+      }
+    ],
     "rules": [
       "R-TEMPLUM"
-    ]
+    ],
+    "orthography": "u/i normalised. Wording as quoted in PLAN §3.2 (R-TEMPLUM) from Servius on Aeneid 6.191. The cache holds Thilo–Hagen vol. II OCR (Aeneid 6–12: serviigrammatic02thilgoog.txt); the OCR at this locus is too corrupt to letter-verify the sentence, so the text is printed as received and flagged for image collation in 4c. No PD English exists (SOURCES); translation ours.",
+    "source": {
+      "edition": "Thilo–Hagen, Servii grammatici commentarii, vol. II (1884)",
+      "page": "ad Aen. 6.191 (Thilo–Hagen II; OCR locus corrupt, page to confirm from scan in 4c)",
+      "cache": "serviigrammatic02thilgoog.txt"
+    }
   },
   {
     "id": "serv-aen-6-190",
@@ -226,13 +301,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Auguria aut oblatiua sunt, quae non poscuntur, aut inpetratiua, quae optata ueniunt.",
+      "licence": "Public domain — ancient text (Thilo–Hagen, vol. II (1884)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Auguries are either oblative, which are not asked for, or impetrative (inpetratiua), which come in answer to a wish."
+      }
+    ],
     "rules": [
       "R-ASK"
-    ]
+    ],
+    "orthography": "u/i normalised; inpetratiua spelling retained as quoted in PLAN §3.2 (R-ASK). Same Thilo–Hagen vol. II cache and same collation caveat as serv-aen-6-191. Translation ours (no PD English).",
+    "source": {
+      "edition": "Thilo–Hagen, vol. II (1884)",
+      "page": "ad Aen. 6.190 (page to confirm from scan in 4c)",
+      "cache": "serviigrammatic02thilgoog.txt"
+    }
   },
   {
     "id": "serv-aen-3-89",
@@ -242,11 +329,23 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Auguriorum genera quinque sunt: ex caelo, ex auibus, ex tripudiis, ex quadrupedibus, ex diris.",
+      "licence": "Public domain — ancient text (Thilo–Hagen, vol. I (1881) — not in local cache); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "There are five kinds of auguries: from the sky, from birds, from feeding-signs (tripudia), from four-footed animals, from dire signs."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised. The five-genera list as cited in PLAN §3.1 scope note. The cache Servius volume covers Aeneid 6–12 only, so Aen. 3.89 cannot be verified from local sources; the locus itself was already marked verify: in PLAN/SOURCES and remains open (see docs/PILOT.md, 4b passages). Text printed in the received form; translation ours.",
+    "source": {
+      "edition": "Thilo–Hagen, vol. I (1881) — not in local cache",
+      "page": "ad Aen. 3.89 (unverified; no local scan)",
+      "cache": "— (no local copy; Thilo vol. I wanting)"
+    }
   },
   {
     "id": "serv-aen-12-259",
@@ -256,13 +355,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Oblatiua auguria refutari possunt: non enim necesse est ea quae non poscuntur accipere.",
+      "licence": "Public domain — ancient text (Thilo–Hagen, vol. II (1884)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Oblative auguries can be refused: there is no necessity to accept signs that were not asked for."
+      }
+    ],
     "rules": [
       "R-DECLINE"
-    ]
+    ],
+    "orthography": "u/i normalised. Sense as cited for R-DECLINE in PLAN §3.2; the exact lemma wording at Aen. 12.259 could not be letter-verified in the corrupt Thilo vol. II OCR and is printed in received form for 4c image collation. This record must not be quoted as letter-exact until then. Translation ours.",
+    "source": {
+      "edition": "Thilo–Hagen, vol. II (1884)",
+      "page": "ad Aen. 12.259 (lemma wording unverified in OCR; confirm from scan in 4c)",
+      "cache": "serviigrammatic02thilgoog.txt"
+    }
   },
   {
     "id": "fest-oscines",
@@ -272,13 +383,32 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Oscines aues Ap. Claudius esse ait, quae ore canentes faciant auspicium, ut coruus, cornix, noctua; alites, quae alis ac uolatu, ut buteo, sanqualis, aquila, inmusulus, uulturius; picus autem Martius Feroniusque et parra et in oscinibus et in alitibus habentur.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Appius Claudius says that oscines are the birds which make an auspice by singing with the mouth, as the raven, the crow, the little owl; alites those which [do so] by wings and flight, as the buzzard (buteo), the sanqualis, the eagle, the inmusulus, the vulture; but the woodpecker of Mars and of Feronia and the parra are counted both among the oscines and among the alites. Sanqualis, inmusulus and parra are unidentified and are left in Latin (STYLE §3)."
+      }
+    ],
     "rules": [
-      "R-MODE"
-    ]
+      "R-MODE",
+      "B-RAVEN",
+      "B-CROW",
+      "B-NOCTUA",
+      "B-EAGLE",
+      "B-VULTURE",
+      "B-HAWK",
+      "B-PICUS"
+    ],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt): OCR reads \"alis ae volatu\", \"aquia\", \"qTpicam autt\" — corrected to ac, aquila, picus autem against sense and the Thewrewk OCR; every correction is listed here per STYLE §9. Lindsay p. 197 area (Müller p. 197 M in PLAN). Translation ours (no PD English).",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.v. Oscines, Lindsay p. 197 (Müller p. 197 M); OCR leaf headed 228/197 in cache file",
+      "cache": "bwb_C0-AXI-081.txt"
+    }
   },
   {
     "id": "plaut-asin-259-264",
@@ -288,14 +418,29 @@ export const passages = [
     "tier": "comedy",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "impetritum, inauguratumst: quouis admittunt aues, picus et cornix ab laeua, coruos parra ab dextera consuadent; certum hercle est uostram consequi sententiam. Sed quid hoc, quod picus ulmum tundit? Non temerarium est. Certe hercle ego quantum ex augurio eius pici intellego, aut mihi in mundo sunt uirgae aut atriensi Saureae.",
+      "licence": "Public domain — ancient text (Latin Library text (Leo/Lindsay lineage; finding aid only)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Obtained by auspice, inaugurated: the birds allow [me to go] anywhere — woodpecker and crow on the left, raven and parra on the right advise it together; by Hercules, I am resolved to follow your judgement. But what is this, that a woodpecker is hammering an elm? That is not without meaning. Certainly, by Hercules, so far as I understand from that woodpecker's augury, either I have a beating in store, or Saurea the steward has.\" Parra is unidentified and left in Latin. The speaker is the slave Libanus, inventing convenient signs; the comedy is the point."
+      }
+    ],
     "rules": [
       "R-EXCEPT",
-      "R-CLEAR"
-    ]
+      "R-CLEAR",
+      "B-RAVEN",
+      "B-CROW",
+      "B-PICUS"
+    ],
+    "orthography": "u/i normalised; line numbers 259–264 (Latin Library numbers 260 at coruos). Transcribed from the Latin Library finding aid; Riley's PD translation (Bohn, 1852) is not in the local cache, so our literal translation is printed (SOURCES allows Riley when fetched).",
+    "source": {
+      "edition": "Latin Library text (Leo/Lindsay lineage; finding aid only)",
+      "page": "Asinaria 259–264 (lines; act 2)",
+      "cache": "latlib-plautus-asinaria.html"
+    }
   },
   {
     "id": "pliny-nh-10-33",
@@ -305,13 +450,26 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Pessima eorum significatio, cum gluttiunt uocem uelut strangulati.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Their signification is worst when they swallow their voice as if choked.\" The sentence closes Pliny's raven chapter; the preceding sentence (ravens leaving the Peloponnese and Attica when guest-friends were murdered) is narrative and is not part of the rule span. Bostock–Riley: \"They are of the very worst omen when they swallow their voice, as if they were being choked\" (Book 10, ch. 15 in Bohn chapter numbering)."
+      }
+    ],
     "rules": [
-      "R-DIRA"
-    ]
+      "R-DIRA",
+      "B-RAVEN"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.33 (Mayhoff §33; Bostock–Riley Book 10 ch. 15)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-10-30",
@@ -321,11 +479,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Ipsa ales est inauspicatae garrulitatis, a quibusdam tamen laudata. Inauspicatissima fetus tempore, hoc est post solstitium.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The bird itself is one of unfavourable chattering, though praised by some. [It is] most unfavourable at breeding time, that is, after the solstice.\" Inauspicatae is kept as \"unfavourable\", not the banned \"inauspicious\" as a verdict word (STYLE §§1, 7); the Latin adjective is Pliny's. Shown as a gloss; the engine does not weigh season."
+      }
+    ],
+    "rules": [
+      "B-CROW"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.30 (Mayhoff §30)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-10-34-35",
@@ -335,13 +507,26 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Bubo, funebris et maxime abominatus publicis praecipue auspiciis, deserta incolit nec tantum desolata, sed dira etiam et inaccessa, noctis monstrum, nec cantu aliquo uocalis, sed gemitu. Itaque in urbibus aut omnino in luce uisus dirum ostentum est.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The eagle-owl (bubo), funereal and most abhorred especially in public auspices, lives in desert places — and not only desolate ones, but dire and unapproachable — a monster of the night, vocal not in any song but in a groan. And so, seen in cities or in daylight at all, it is a dire ostentum.\" Bostock–Riley render bubo \"horned owl\"; the engine's bird is the eagle-owl (STYLE §3). The daylight clause is the dire criterion; at night the bird is weighed normally."
+      }
+    ],
     "rules": [
-      "R-DIRA"
-    ]
+      "R-DIRA",
+      "B-BUBO"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.34–35 (Mayhoff §§34–35; Bostock–Riley Book 10 ch. 16, 'The horned owl')",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-10-6",
@@ -351,11 +536,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Ex his quas nouimus aquilae maximus honos, maxima et uis.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Of the [birds] we know, the eagle has the greatest honour, and the greatest strength too.\" The sentence opens Pliny's eagle chapters and states the hierarchy the weights reconstruct; the numbers are ours, not Pliny's."
+      }
+    ],
+    "rules": [
+      "B-EAGLE"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.6 (Mayhoff §6)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "livy-1-34-8-9",
@@ -365,13 +564,31 @@ export const passages = [
     "tier": "legend",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Ad Ianiculum forte uentum erat; ibi ei carpento sedenti cum uxore aquila suspensis demissa leuiter alis pilleum aufert, superque carpentum cum magno clangore uolitans rursus uelut ministerio diuinitus missa capiti apte reponit; inde sublimis abiit. Accepisse id augurium laeta dicitur Tanaquil, perita ut uolgo Etrusci caelestium prodigiorum mulier. Excelsa et alta sperare complexa uirum iubet: eam alitem ea regione caeli et eius dei nuntiam uenisse; circa summum culmen hominis auspicium fecisse; leuasse humano superpositum capiti decus ut diuinitus eidem redderet.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "D. Spillan (1849)",
+        "licence": "Public domain — D. Spillan, Livy Books 1–8 (Bohn, 1849); transcribed from Project Gutenberg #19725",
+        "text": "They happened to have reached the Janiculum; there, as he sat in the chariot with his wife, an eagle, suspended on her wings, gently stooping, takes off his cap, and flying round the chariot with loud screams, as if she had been sent from heaven for the very purpose, orderly replaced it on his head, and then flew aloft. Tanaquil is said to have received this omen with great joy, being a woman well skilled, as the Etrurians generally are, in celestial prodigies, and embracing her husband, bids him hope for high and elevated fortune: that such bird had come from such a quarter of the heavens, and the messenger of such a god: that it had exhibited the omen around the highest part of man: that it had lifted the ornament placed on the head of man, to restore it to the same, by direction of the gods."
+      },
+      {
+        "label": "Augury literal note",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Literally the eagle \"made an auspice around the highest point of the man\" (circa summum culmen hominis auspicium fecisse) — Spillan's \"exhibited the omen\" weakens auspicium fecisse. Tarquin was travelling, not taking the auspices; Tanaquil reads a private oblative sign. The engine's \"stoop\" is the nearest recordable act, and the rule built on the story is labelled reconstruction."
+      }
+    ],
     "rules": [
-      "R-TANAQUIL"
-    ]
+      "R-TANAQUIL",
+      "B-EAGLE"
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Livy 1.34.8–9",
+      "cache": "latlib-livy-liv.1.html + pg19725.txt (Spillan)"
+    }
   },
   {
     "id": "livy-1-7-1",
@@ -381,14 +598,33 @@ export const passages = [
     "tier": "legend",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Palatium Romulus, Remus Auentinum ad inaugurandum templa capiunt. Priori Remo augurium uenisse fertur, sex uoltures; iamque nuntiato augurio cum duplex numerus Romulo se ostendisset, utrumque regem sua multitudo consaluutauerat: tempore illi praecepto, at hi numero auium regnum trahebant. Inde cum altercatione congressi certamine irarum ad caedem uertuntur; ibi in turba ictus Remus cecidit.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "D. Spillan (1849)",
+        "licence": "Public domain — D. Spillan, Livy Books 1–8 (Bohn, 1849); transcribed from Project Gutenberg #19725",
+        "text": "Romulus chose the Palatine and Remus the Aventine hill as their stands to make their observations. It is said, that to Remus an omen came first, six vultures; and now, the omen having been declared, when double the number presented itself to Romulus, his own party saluted each king; the former claimed the kingdom on the ground of priority of time, the latter on account of the number of birds. Upon this, having met in an altercation, from the contest of angry feelings they turn to bloodshed; there Remus fell from a blow received in the crowd."
+      },
+      {
+        "label": "Augury literal note",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Literally: \"those [Remus' men] dragged the kingship to themselves by priority of time, these [Romulus'] by the number of the birds\" (tempore illi praecepto, at hi numero auium regnum trahebant). Livy's finding-aid spelling uoltures/consaluutauerat is normalised in the Latin above to uoltures retained, consaluutauerat retained as transmitted. Two observers, two favourable signs, rival criteria — the Romulus/Remus gloss in the engine is an analogy, honestly labelled."
+      }
+    ],
     "rules": [
       "R-COUNT",
-      "R-MIXED"
-    ]
+      "R-MIXED",
+      "B-VULTURE",
+      "R-WEIGH"
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). R-WEIGH is attached as supporting context only: Livy narrates competing favourable signs weighed by rival criteria (priority against number); the strength arithmetic itself remains our reconstruction (PLAN §3.2 gives R-WEIGH no ancient source).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Livy 1.7.1 (ch. 6 end–7.1 in some divisions)",
+      "cache": "latlib-livy-liv.1.html + pg19725.txt (Spillan)"
+    }
   },
   {
     "id": "cic-div-1-107-108-enn",
@@ -398,14 +634,26 @@ export const passages = [
     "tier": "poetry",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Itaque Romulus augur, ut apud Ennium est, cum fratre item augure: \"Curantes magna cum cura, tum cupientes regni dant operam simul auspicio augurioque. In monte Remus auspicio se deuouet atque secundam solus auem seruat; at Romulus pulcher in alto quaerit Auentino, seruat genus altiuolantum. Certabant, urbem Romam Remoramne uocarent; omnibus cura uiris uter esset induperator. Exspectant, ueluti consul cum mittere signum uolt, omnes auidi spectant ad carceris oras, quam mox emittat pictis e faucibus currus: sic exspectabat populus atque ore timebat rebus, utri magni uictoria sit data regni. Interea sol albus recessit in infera noctis. Exin candida se radiis dedit icta foras lux, et simul ex alto longe pulcherruma praepes laeua uolauit auis. Simul aureus exoritur sol, cedunt de caelo ter quattuor corpora sancta auium, praepetibus sese pulchrisque locis dant. Conspicit inde sibi data Romulus esse priora, auspicio regni stabilita scamna solumque.\"",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "Quintus introduces Ennius: \"And so Romulus the augur, as in Ennius, with his brother likewise an augur: 'Taking thought with great thought, then desiring the kingship, they give their attention together to auspice and augury. On the hill Remus devotes himself to the auspice and alone watches for a favourable bird; but handsome Romulus on high Aventine seeks, watches the high-flying kind. They were contending whether to call the city Roma or Remora; every man was anxious which of the two would be commander. They wait, as when a consul is about to give the signal, all eagerly look to the barriers' edges, how soon he will send the chariots from the painted jaws: so the people waited and feared in their faces for the issue, to which of the two the victory of the great kingship would be given. Meanwhile the white sun withdrew into the depths of night. Then bright light, struck by rays, gave itself forth, and at once from on high, far off, a most beautiful onward-flying (praepes) bird flew on the left. At once the golden sun rises; down from the sky come three times four holy bodies of birds; they betake themselves to onward-flying and beautiful places. Romulus sees from this that the first place has been given to him, the bench and ground of kingship made firm by auspice.'\" Ennius names no species; Livy supplies the vultures. Seruat genus altiuolantum (\"watches the high-flying kind\") is description, not a height rule."
+      }
+    ],
     "rules": [
       "R-PRAEPES",
       "R-COUNT"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from the Latin Library Divinatione 1 finding aid. The finding aid's \"cedunt ce caelo\" is a known typo (SOURCES) and is printed de caelo; \"veduti\" in the aid is printed ueluti. Both corrections are recorded here. Verse translated as prose (STYLE §6); Yonge's version is PD but not reproduced.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 1.107–108 (Ennius, Annales I)",
+      "cache": "latlib-cicero-divinatione1.html"
+    }
   },
   {
     "id": "pliny-nh-10-21",
@@ -415,11 +663,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Triorchem a numero testium, cui principatum in auguriis Phemonoe dedit, buteonem hunc appellant Romani, familia etiam cognominata, cum prospero auspicio in ducis naui sedisset.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The triorches, [named] from the number of its testicles, to which Phemonoe gave the chief place in auguries — this the Romans call buteo, a family even having taken its surname [from it], when with favourable auspice it had settled on a commander's ship.\" Buteo is the engine's buzzard/hawk; the family is the Buteones. The settled-on-the-ship detail is an oblative story, not a mode rule."
+      }
+    ],
+    "rules": [
+      "B-HAWK"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.21 (Mayhoff §21)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-10-40",
@@ -429,11 +691,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Sunt et paruae aues uncorum unguium, ut pici Martio cognomine insignes et in auspiciis magni.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"There are also small birds with hooked claws, as the woodpeckers, distinguished by the surname 'of Mars' and of great account in auspices.\" In auspiciis magni — \"great in auspices\" — supports the woodpecker's weight; the number remains our reconstruction."
+      }
+    ],
+    "rules": [
+      "B-PICUS"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.40 (Mayhoff §40)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-10-49",
@@ -443,11 +719,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Horum sunt tripudia solistima, hi magistratus nostros cotidie regunt domusque ipsis suas claudunt aut reserant. Habent ostenta et praeposteri eorum uespertinique cantus.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"From these [cocks] come the full feeding-signs (tripudia solistima); these rule our magistrates day by day and shut or open their own houses to them. Their untimely and evening crowings also count as ostenta.\" Tripudia solistima is Pliny's plural spelling; the singular technical form in Cicero is tripudium solistimum. Evening crowing is an ostentum — recorded, not weighed."
+      }
+    ],
+    "rules": [
+      "B-PULLI"
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.49 (Mayhoff §49)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "cic-div-2-76",
@@ -457,11 +747,25 @@ export const passages = [
     "tier": "marcus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Quam multi anni sunt, cum bella a proconsulibus et a propraetoribus administrantur, qui auspicia non habent? Itaque nec amnis transeunt auspicato, nec tripudio auspicantur. Vbi ergo auium diuinatio? Quae, quoniam ab iis qui auspicia nulla habent bella administrantur, ab urbanis retenta uidetur, a bellicis esse sublata.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"How many years has it been since wars are conducted by proconsuls and propraetors, who do not hold the auspices? And so they neither cross rivers after taking the auspices, nor take auspices by the tripudium. Where then is divination by birds? Since wars are conducted by men who hold no auspices, it seems retained in city business, removed from war.\" Marcus' point is decay of practice; B-OTHER's not-weighed policy for non-augural birds is our reconstruction built beside it, not a quotation of it."
+      }
+    ],
+    "rules": [
+      "B-OTHER"
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 2.76–77 init.",
+      "cache": "latlib-cicero-divinatione2.html"
+    }
   },
   {
     "id": "pliny-nh-10-20",
@@ -471,11 +775,23 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Sanqualem auem atque inmusulum augures Romani magnae quaestioni habent. Inmusulum aliqui uulturis pullum arbitrantur esse et sanqualem ossifragum. Masurius sanqualem ossifragam esse dicit, inmusulum autem pullum aquilae prius quam albicet cauda.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The Roman augurs treat the sanqualis bird and the inmusulus as a great puzzle. Some think the inmusulus is a vulture's chick and the sanqualis the osprey (ossifragus, 'bone-breaker'). Masurius says the sanqualis is the osprey, and the inmusulus an eagle's chick before its tail turns white.\" Sanqualis and inmusulus stay in Latin: even the augurs disputed them, which is why no user bird is offered for either."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.20 (Mayhoff §20)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-2-142",
@@ -485,13 +801,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Laeua prospera existimantur, quoniam laeua parte mundi ortus est.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"[Thunders] on the left are thought favourable, since sunrise is in the left part of the world.\" Pliny is speaking of thunder (ex caelo), outside this instrument's bird scope; the sentence is quoted for the left-favourable rationale only, and the About page must not present it as a bird rule."
+      }
+    ],
     "rules": [
       "R-SIDE"
-    ]
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 2.142 (Mayhoff §142)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "fest-sinistrum",
@@ -501,14 +829,26 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Sinistrae aues sinistrumque auspicium, id est quod sinat fieri. Varro lib. V epistolicarum quaestionum ait: \"A deorum sede cum in meridiem spectes, ad sinistram sunt partes mundi exorientes, ad dexteram occidentes; factum arbitror, ut sinistra meliora auspicia, quam dextra esse existimentur.\" Idem fere sentiunt Sinnius Capito et Cincius. Silentio surgere dicitur, ubi qui post mediam noctem auspicandi causa ex lectulo suo silens surrexit et liberatus a lecto in solido sedetque, ne quid eo tempore deiiciat cauens, donec se in lectum reposuit: hoc enim est proprie silentium, omnis uitii in auspiciis uacuitas.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Left-hand birds and a left-hand auspice — that is, one which allows [a thing] to be done. Varro in book 5 of his Epistolary Questions says: 'From the seat of the gods, when you look towards the south, on the left are the rising parts of the world, on the right the setting; hence, I think, it came about that left-hand auspices are thought better than right-hand.' Sinnius Capito and Cincius think much the same. [Silentio surgere:] 'To rise in silentium' is said when a man after midnight has risen silently from his bed to take the auspices and, freed from the bed, sits on solid [ground], taking care to throw nothing down in that time until he has placed himself back in bed: for this is properly silentium — emptiness of every ritual fault in auspices.'\" Two lemmata are combined in one record (Sinistrae aues; Silentio surgere) because PLAN cites them together for R-SIDE and R-SILENTIUM; Lindsay's Farnese-fragment text is lacunose and the joins follow his supplements."
+      }
+    ],
     "rules": [
       "R-SIDE",
       "R-SILENTIUM"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. OCR at Sinistrae: \"test} sinistinium\", \"parte(s»\" — supplements printed without their brackets and recorded here; at Silentio the OCR is fragmentary (..t, <noctem») and the sense-joins follow Lindsay's printed supplements. Letter-exact 4c check against the scan image is still owed.",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.vv. Sinistrae aues (Lindsay pp. 502–504, Farnese frag. L. XIX, Müller p. 339 M) and Silentio surgere (Lindsay p. 524 area)",
+      "cache": "bwb_C0-AXI-081.txt"
+    }
   },
   {
     "id": "cic-div-1-120",
@@ -518,13 +858,25 @@ export const passages = [
     "tier": "quintus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Eademque efficit in auibus diuina mens, ut tum huc, tum illuc uolent alites, tum in hac, tum in illa parte se occultent, tum a dextra, tum a sinistra parte canant oscines.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"And the same divine mind brings it about in birds, that the flight-birds (alites) fly now this way, now that, hide themselves now in this quarter, now in that, and the voice-birds (oscines) sing now on the right side, now on the left.\" Quintus is supplying a Stoic mechanism for the classification Festus states as fact; the half-strength factor for wrong-mode signs is our reconstruction."
+      }
+    ],
     "rules": [
       "R-MODE"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 1.120",
+      "cache": "latlib-cicero-divinatione1.html"
+    }
   },
   {
     "id": "pliny-nh-10-43",
@@ -534,13 +886,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Nunc de secundo genere dicamus, quod in duas diuiditur species, oscines et alites. Illarum generi cantus oris, his magnitudo differentiam dedit.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Now let us speak of the second kind, which is divided into two sorts, oscines and alites. To the former kind, singing with the mouth gave the distinction; to the latter, size.\" Pliny's division matches Festus' — voice-birds and flight-birds — though his distinguishing mark for alites (size) is his own."
+      }
+    ],
     "rules": [
       "R-MODE"
-    ]
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 10.43 (Mayhoff §43)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "pliny-nh-28-17",
@@ -550,13 +914,25 @@ export const passages = [
     "tier": "natural-history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Haec satis sint, exemplis ut appareat, ostentorum uires et in nostra potestate esse ac, prout quaeque accepta sint, ita ualere. In augurum certe disciplina constat neque diras neque ulla auspicia pertinere ad eos, qui quamque rem ingredientes obseruare se ea negauerint, quo munere diuinae indulgentiae maius nullum est.",
+      "licence": "Public domain — ancient text (Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Let this be enough, so that it may appear from examples that the force of ostenta is also in our power, and that they hold good only as each has been accepted. In the augurs' discipline at any rate it is agreed that neither dire signs nor any auspices pertain to those who, on entering upon any matter, have declared that they will not observe them — than which gift of divine indulgence there is none greater.\" Pliny's sentence would let even dire signs be disclaimed in advance; the engine takes the stricter course (a pertinent dire sign cannot be declined) and says so — see PLAN R-DECLINE."
+      }
+    ],
     "rules": [
       "R-DECLINE"
-    ]
+    ],
+    "orthography": "u/i normalised. Latin from the Perseus TEI of Mayhoff's Teubner text in the cache (a collation/finding aid under SOURCES; the pinned scan remains copy-text for 4c). TEI word-spacing artefacts (\"sa n qualem\", spaces before punctuation) are closed up mechanically; no word is changed. Bostock–Riley (1855) is PD; our literal translation is printed and the Bostock–Riley chapter is named in the source field for checking.",
+    "source": {
+      "edition": "Mayhoff, Teubner (Perseus TEI perseus-lat2, collation/finding aid per SOURCES)",
+      "page": "NH 28.17 (Mayhoff §17; Bostock–Riley Book 28)",
+      "cache": "perseus-phi0978.phi001.perseus-lat2.xml + perseus-eng1.xml (Bostock–Riley)"
+    }
   },
   {
     "id": "cic-div-2-77",
@@ -566,13 +942,25 @@ export const passages = [
     "tier": "marcus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Nam ex acuminibus quidem, quod totum auspicium militare est, iam M. Marcellus ille quinquiens consul totum omisit, idem imperator idem augur optumus. Et quidem ille dicebat, si quando rem agere uellet, ne impediretur auspiciis, lectica operta facere iter se solere. Huic simile est, quod nos augures praecipimus, ne iuges auspicium obueniat, ut iumenta iubeant diiungere.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"For as to [auspices] from sharp points [the military auspice from the standards' points? — the phrase ex acuminibus is obscure], which is the whole military auspice, that famous Marcus Marcellus, five times consul, gave it up altogether — the same man commander and best of augurs. And indeed he used to say that, whenever he wished to transact business, so as not to be hindered by auspices, he habitually travelled in a closed litter. Like to this is what we augurs prescribe, lest a yoked-team auspice occur, that they order the draught animals to be unyoked.\" Marcellus avoids seeing signs at all; that is refusal by blindness, and the engine's narrower decline of a single oblative sign is a reconstruction beside it."
+      }
+    ],
     "rules": [
       "R-DECLINE"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 2.77",
+      "cache": "latlib-cicero-divinatione2.html"
+    }
   },
   {
     "id": "cic-leg-2-21",
@@ -582,13 +970,25 @@ export const passages = [
     "tier": "draft-law",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "\"Interpretes autem Iouis optumi maxumi, publici augures, signis et auspiciis operam danto, disciplinam tenento, sacerdotesque uineta uirgetaque et salutem populi auguranto, quique agent rem duelli quique popularem, auspicium praemonento ollique obtemperanto. Diuorumque iras prouidento sisque apparento, caelique fulgura regionibus ratis temperanto, urbemque et agros et templa liberata et effata habento. Quaeque augur iniusta nefasta uitiosa dira deixerit, inrita infectaque sunto, quique non paruerit, capital esto.\"",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"'Moreover the interpreters of Jupiter Best and Greatest, the public augurs, shall give attention to signs and auspices, shall keep the discipline, and the priests shall augur vineyards and osier-beds and the people's safety; and those who conduct war business and popular business shall give prior notice of the auspice and shall obey them. They shall foresee the anger of the gods and attend to them, shall govern the sky's lightnings by fixed regions, and shall hold city and fields and templa freed and declared. And whatever an augur has declared (deixerit) unjust, unlawful, faulty, dire, let it be void and undone (inrita infectaque sunto); and whoever does not obey, let it be a capital matter.'\" Archaic deixerit, sunto, ollique are retained and glossed (STYLE §5). This is Cicero's proposed law-code, not recorded augural law."
+      }
+    ],
     "rules": [
       "R-DIRA"
-    ]
+    ],
+    "orthography": "u/i normalised; archaic legal forms retained (deixerit, sunto, duelli, ollique, sisque). Transcribed from the Latin Library Legibus 2 finding aid (its section number [21] stands mid-law). Quotation marks mark the draft law's words. Our literal translation; Yonge PD not reproduced.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Leg. 2.20–21 (law text; §21 in received numbering)",
+      "cache": "latlib-cicero-leg2.html"
+    }
   },
   {
     "id": "cic-div-1-27-29",
@@ -598,15 +998,27 @@ export const passages = [
     "tier": "quintus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Nam nostri quidem magistratus auspiciis utuntur coactis; necesse est enim offa obiecta cadere frustum ex pulli ore, cum pascitur; quod autem scriptum habetis, tripudium fieri, si ex ea quid in solidum ceciderit, hoc quoque, quod dixi, coactum tripudium solistimum dicitis. Itaque multa auguria, multa auspicia, quod Cato ille sapiens queritur, neglegentia collegii amissa plane et deserta sunt. Nihil fere quondam maioris rei nisi auspicato ne priuatim quidem gerebatur. Itaque, sinistra dum non exquirimus, in dira et in uitiosa incurrimus. Vt P. Claudius, Appi Caeci filius, eiusque collega L. Iunius classis maxumas perdiderunt, cum uitio nauigassent. Sed quid uetera? M. Crasso quid acciderit uidemus, dirarum obnuntiatione neglecta.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"For our magistrates indeed use forced auspices (auspicia coacta); for when a lump of cake is thrown, a morsel must fall from the chicken's beak as it feeds; and what you have in writing — that a tripudium is made if anything from it has fallen onto solid ground — this too, as I have said, you call a forced tripudium solistimum. And so many auguries, many auspices, as wise Cato complains, have been utterly lost and abandoned by the college's negligence. Formerly almost nothing of greater moment was done, even in private, without first taking the auspices. And so, while we do not seek out favourable [left-hand] signs, we run into dire and faulty ones. As Publius Claudius, son of Appius Caecus, and his colleague Lucius Iunius lost very great fleets, when they had sailed with a ritual fault (uitio). But why [speak of] old cases? We see what happened to Marcus Crassus, with the announcement of dire signs neglected (dirarum obnuntiatione neglecta).\" Quintus laments decay while defending the art; the in solidum clause (\"onto solid ground\") is the tripudium criterion in his words."
+      }
+    ],
     "rules": [
       "R-TRIP-ANY",
       "R-DIRA",
       "R-REPEAT"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). The finding aid's bracketed [aut] before tripudium fieri is omitted as an editorial supplement; maxumas retained.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 1.27–29",
+      "cache": "latlib-cicero-divinatione1.html"
+    }
   },
   {
     "id": "fest-praepetes",
@@ -616,13 +1028,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Praepetes aues quidam dici aiunt, quia secundum auspicium faciant praeteruolantes; alii quod aut ea, quae praepetamus, indicent, aut quod praeteruolent. Ait ex Graeco tractum putant, quod ante conspectum uolent nostrum; ceterum poetae promiscue omnis aues ita appellant.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Some say birds are called praepetes because in flying past they make a favourable auspice; others, because they indicate the things we seek headlong (praepetamus), or because they fly past. [Some] think [the word] is drawn from Greek, because they fly before our sight; for the rest, the poets call all birds so indiscriminately.\" Paulus' shorter epitome, quoted in PLAN, runs: \"Praepetes aues dicuntur, quae se ante auspicantem ferunt\" — \"birds are called praepetes which bear themselves in front of the man taking the auspices.\" Festus' fuller text shows the definition was already disputed; the engine's single onward/high factor is a reconstruction over that dispute."
+      }
+    ],
     "rules": [
       "R-PRAEPES"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. OCR: \"indieent\" (indicent), lacuna before \"ait ex Graeco\" — printed as Lindsay gives it; the Paulus form is quoted in the translation note, not substituted into Festus' text.",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.v. Praepetes (Lindsay p. 245 area; Pauli exc. pp. 244–249 Th.; Müller p. 204/207 M)",
+      "cache": "bwb_C0-AXI-081.txt"
+    }
   },
   {
     "id": "gell-na-7-6",
@@ -632,13 +1056,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Iulius Hyginus in libro quem de Vergilio fecit temere reprehendit Vergilium, quod Daedali pennas 'praepetibus' dixerit, quasi non omnes aues praepetes dici possint. Aues enim, inquit Nigidius, praepetes sunt quae prospera ac secunda faciunt auguria ac praeteruolando ante conspectum nostrum feruntur; 'inferae' autem, quae humili et depresso uolatu aduersa significant.",
+      "licence": "Public domain — ancient text (Hertz–Hosius, Teubner 1903 (OCR agelliinoctiumat01gelluoft, bks 1–10)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Julius Hyginus in the book he wrote on Vergil rashly faulted Vergil for calling Daedalus' wings 'praepetes' [Aeneid 6.15], as if not all birds could be called praepetes. For birds, says Nigidius [as Gellius reports the debate], are praepetes which make favourable and prosperous auguries and in flying past are borne before our sight; 'inferae' [low ones] are those which with low, sunken flight signify adverse things.\" Gellius' chapter is a defence of Vergil's word-choice through the augural terminology; its value here is the praepes/infera opposition — onward/favourable against low/adverse — behind the engine's single flight factor."
+      }
+    ],
     "rules": [
       "R-PRAEPES"
-    ]
+    ],
+    "orthography": "u/i normalised. Chapter heading verified in Hertz–Hosius OCR (agelliinoctiumat01gelluoft.txt, Capitula lib. VII: \"Temere inepteque reprehensum esse a Iulio Hygino Vergilium, quod 'praepetes' Daedali pennas dixerit; atque inibi, quid sint aves praepetes et quid illae sint aves, quas Nigidius 'inferas' appellavit\"). Body wording above follows the received Hertz text in summary-quotation form; the OCR body at this chapter was not legible enough for letter-verification, so 4c must check every word against the scan. Do not quote as letter-exact until then. Translation ours (Rolfe Loeb not used, per SOURCES).",
+    "source": {
+      "edition": "Hertz–Hosius, Teubner 1903 (OCR agelliinoctiumat01gelluoft, bks 1–10)",
+      "page": "Noctes Atticae 7.6 [vulgo 6.6] (heading OCR-verified; body page to confirm in 4c)",
+      "cache": "agelliinoctiumat01gelluoft.txt"
+    }
   },
   {
     "id": "fest-remores-inebrae",
@@ -648,13 +1084,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Remores aues in auspicio dicuntur, quae acturum aliquid remorari conpellunt. Inebrae aues, quae in auguriis aliquid fieri prohibent; et prorsus omnia inebra appellantur, quae tardant uel morantur agentem.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Delaying birds (remores) in an auspice are those which compel a man about to act to delay. Inebrae birds are those which in auguries prohibit something from being done; and in short all things are called inebra which slow or delay the doer.\" Remores make you wait; the lemma does not say they forbid outright, and the engine follows it (favourable becomes ALIO DIE, never NON ADMITTVNT). Inebrae is the stronger word and is quoted so the distinction stays visible."
+      }
+    ],
     "rules": [
       "R-REMORA"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. Inebrae OCR variants (Inaebrae/Inebre in manuscripts) noted in Lindsay's apparatus; headword printed Inebrae as in PLAN.",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.vv. Remores (Lindsay, Farnese text) and Inebrae (Pauli exc., Lindsay p. 110 area)",
+      "cache": "bwb_C0-AXI-081.txt"
+    }
   },
   {
     "id": "cic-div-1-77",
@@ -664,13 +1112,25 @@ export const passages = [
     "tier": "quintus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Quid? Bello Punico secundo nonne C. Flaminius, consul iterum, neglexit signa rerum futurarum magna cum clade rei publicae? Idem, cum tripudio auspicaretur, pullarius diem proelii committendi differebat. Tum Flaminius ex eo quaesiuit, si ne postea quidem pulli pascerentur, quid faciendum censeret. Cum ille quiescendum respondisset, Flaminius: \"Praeclara uero auspicia, si esurientibus pullis res geri poterit, saturis nihil geretur!\" Itaque signa conuelli et se sequi iussit.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"What? In the Second Punic War did not Gaius Flaminius, consul for the second time, neglect signs of coming events, with great disaster to the state? When he was taking the auspices by the tripudium, the chicken-keeper (pullarius) kept putting off the day for joining battle. Then Flaminius asked him what he thought should be done if the chickens would not feed even later. When he had answered 'wait' (quiescendum), Flaminius [said]: 'Fine auspices indeed, if business can be done when the chickens are hungry, and nothing will be done when they are fed full!' And so he ordered the standards to be torn up and [the men] to follow him.\" The pullarius' advice to wait is the postponement shading of a refusal; PLAN §4 distinguishes it from the camp rite's positive refusal."
+      }
+    ],
     "rules": [
       "R-NONE"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 1.77",
+      "cache": "latlib-cicero-divinatione1.html"
+    }
   },
   {
     "id": "cic-leg-2-31",
@@ -680,13 +1140,25 @@ export const passages = [
     "tier": "draft-law",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Maximum autem et praestantissimum in re publica ius est augurum cum auctoritate coniunctum. Quid enim maius est, si de iure quaerimus, quam posse a summis imperiis et summis potestatibus comitiatus et concilia uel instituta dimittere uel habita rescindere? Quid grauius quam rem susceptam dirimi, si unus augur \"alio die\" dixerit?",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The greatest and most excellent right in the state is that of the augurs, joined with authority. For what is greater, if we ask about right, than to be able to dismiss assemblies and councils summoned by the highest commands and highest powers, or to annul them once held? What is weightier than that business undertaken be broken off, if one augur has said 'on another day' (alio die)?\" Cicero the augur praises his own college in commentary on his draft laws; the postponement formula is his."
+      }
+    ],
     "rules": [
       "R-NONE"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from the Latin Library Legibus 2 finding aid ([31] in the aid). The aid's supplied <die> is printed without brackets as the received formula requires it. Our literal translation; Yonge PD not reproduced.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Leg. 2.31",
+      "cache": "latlib-cicero-leg2.html"
+    }
   },
   {
     "id": "livy-1-36-3-6",
@@ -696,13 +1168,25 @@ export const passages = [
     "tier": "legend",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Id quia inaugurato Romulus fecerat, negare Attus Nauius, inclitus ea tempestate augur, neque mutari neque nouum constitui nisi aues addixissent posse. Ex eo ira regi mota; eludensque artem ut ferunt, \"Age dum\" inquit, \"diuine tu, inaugura fierine possit quod nunc ego mente concipio.\" Cum ille augurio rem expertus profecto futuram dixisset, \"Atqui hoc animo agitaui\" inquit, \"te nouacula cotem discissurum. Cape haec et perage quod aues tuae fieri posse portendunt.\" Tum illum haud cunctanter discidisse cotem ferunt. Auguriis certe sacerdotioque augurum tantus honos accessit ut nihil belli domique postea nisi auspicato gereretur, concilia populi, exercitus uocati, summa rerum, ubi aues non admisissent, dirimerentur.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Because Romulus had done it after inauguration, Attus Navius, a famous augur of that time, said that it could neither be changed nor newly established unless the birds assented. At this the king's anger was aroused; and mocking the art, as they say, 'Come now,' he said, 'you seer, inaugurate whether what I now conceive in my mind can be done.' When [Navius], having tried the matter by augury, had said it would certainly happen, 'Why, this is what I had in mind,' he said, 'that you should cut a whetstone with a razor. Take these and carry out what your birds portend can be done.' Then, they say, he cut the whetstone without hesitation. At any rate so much honour accrued to auguries and the augurs' priesthood that afterwards nothing in war or at home was done except after taking the auspices; assemblies of the people, armies summoned, the highest business — where the birds had not allowed (ubi aues non admisissent), they were broken off.\" Livy's subordinate clause is the ancient wording nearest our verdict formula; the pronouncement AVES NON ADMITTVNT is ours."
+      }
+    ],
     "rules": [
       "R-CLEAR"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Livy 1.36.3–6",
+      "cache": "latlib-livy-liv.1.html"
+    }
   },
   {
     "id": "fest-admissivae-cliviae",
@@ -712,13 +1196,25 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Admissiuae aues dicebantur ab auguribus, quae consulentem iuberent. Cliuiae aues, quae fieri aliquid prohibent.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"'Allowing' birds (admissiuae) were so called by the augurs, [birds] which bid the consulter [proceed]. 'Prohibiting' birds (cliuiae), which prohibit something from being done.\" Admissiuae is verbatim from Paulus (Lindsay p. 9: \"Admissivae aves dicebantur ab auguribus, quae consulentem iuberent\"). The Cliuiae lemma could not be located letter-for-letter in the Lindsay OCR in the cache; the wording printed is the received Paulus gloss and is flagged unverified — it must be checked against the scan (or Thewrewk) in 4c before being quoted as exact."
+      }
+    ],
     "rules": [
       "R-CLEAR"
-    ]
+    ],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. Admissiuae OCR-confirmed (\"consulen-tem iuberent\", hyphen rejoined). Cliuiae: search of both Festus OCR files found no legible lemma (see docs/PILOT.md, 4b passages) — received form printed, unverified.",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.v. Admissivae (Pauli exc. p. 31–22 M, Lindsay p. 9); s.v. Cliviae (unlocated in OCR)",
+      "cache": "bwb_C0-AXI-081.txt + deverborumsignif00festuoft_djvu.txt"
+    }
   },
   {
     "id": "livy-8-30-32",
@@ -728,13 +1224,25 @@ export const passages = [
     "tier": "history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Namque Papirius dictator a pullario monitus cum ad auspicium repetendum Romam proficisceretur, magistro equitum denuntiauit ut sese loco teneret neu absente se cum hoste manum consereret. Itemque illud interrogo, cum me incertis auspiciis profectum ab domo scirem, utrum mihi turbatis religionibus res publica in discrimen committenda fuerit an auspicia repetenda ne quid dubiis dis agerem.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"For the dictator Papirius, warned by the chicken-keeper (pullarius), when he was setting out to Rome to renew the auspice (ad auspicium repetendum), gave orders to his master of horse to keep his position and not join battle with the enemy in his absence. [Papirius, prosecuting Fabius:] 'And I ask this too: since I knew I had set out from home with uncertain auspices, ought I to have entrusted the state to danger with religious observances in disorder, or [ought] the auspices to be renewed (auspicia repetenda), lest I act in any matter with the gods in doubt?'\" Returning to Rome to renew flawed auspices is not re-asking until the answer improves; PLAN says so and the copy must not pretend otherwise."
+      }
+    ],
     "rules": [
       "R-REPEAT"
-    ]
+    ],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). Two loci in one record as cited (8.30.2 narrative; 8.32.4 direct speech); the join is marked in the translation.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Livy 8.30.2; 8.32.4",
+      "cache": "latlib-livy-liv.8.html"
+    }
   },
   {
     "id": "suet-tib-2-2",
@@ -744,11 +1252,23 @@ export const passages = [
     "tier": "history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Claudius Pulcher apud Siciliam non pascentibus in auspicando pullis ac per contemptum religionis mari demersis, quasi ut biberent quando esse nollent, proelium nauale iniit; superatusque, cum dictatorem dicere a senatu iuberetur, uelut iterum inludens discrimini publico Glycian uiatorem suum dixit.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Claudius Pulcher off Sicily, when the chickens would not feed in the taking of the auspices and he had plunged them into the sea in contempt of religion — as if [to make] them drink, since they would not eat (esse = ēsse, 'to eat') — joined naval battle; and having been defeated, when he was ordered by the senate to name a dictator, as if once more mocking the public danger, he named Glycias, his own messenger.\" Suetonius, like every Latin witness, gives the witticism indirectly; it stays indirect here."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). Finding-aid spelling Glycian retained (the man's name is usually given as M. Claudius Glycia). Translation ours (Rolfe not used, per SOURCES).",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Suetonius, Tiberius 2.2",
+      "cache": "latlib-suet-tib.html"
+    }
   },
   {
     "id": "valmax-1-4-3",
@@ -758,11 +1278,23 @@ export const passages = [
     "tier": "history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "P. Claudius bello Punico, cum proelium nauale committere uellet auspiciaque more maiorum petisset et pullarius non exire cauea pullos nuntiasset, abici eos in mare iussit dicens: \"Quia esse nolunt, bibant.\" L. Iunius P. Claudii collega neglectis auspiciis classem tempestate amisit damnationisque ignominiam uoluntaria morte praeuenit.",
+      "licence": "Public domain — ancient text (Kempf, Teubner 1888); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"Publius Claudius in the Punic War, when he wished to join naval battle and had sought the auspices in the ancestral manner and the chicken-keeper (pullarius) had reported that the chickens would not come out of the cage, ordered them to be thrown into the sea, saying: 'Since they will not eat (esse = ēsse), let them drink.' Lucius Iunius, Publius Claudius' colleague, with the auspices neglected lost his fleet in a storm and forestalled the disgrace of condemnation by voluntary death.\" Valerius is the one witness with the jibe in direct speech; his refusal-form is 'would not come out of the cage' — no flapping, crying or flying off. The avolant triad gains no primary here."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised. Transcribed from Kempf 1888 OCR (valeriimaximifac00vale.txt, Cap. IV §3, printed p. 19), cross-checked against the Perseus TEI (perseus-phi1038, finding aid). OCR reads \"nolunl\" (nolunt) — corrected and recorded here. Translation ours (no PD English relied on).",
+    "source": {
+      "edition": "Kempf, Teubner 1888",
+      "page": "1.4.3–4, printed p. 19 (Kempf OCR)",
+      "cache": "valeriimaximifac00vale.txt + perseus-phi1038.phi001.perseus-lat1.xml"
+    }
   },
   {
     "id": "fest-oscinum-tripudium",
@@ -772,11 +1304,23 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Oscinum tripudium est, quod oris cantu significat quid portendi; cum cecinit coruus, cornix, noctua, parra, picus.",
+      "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"An oscine tripudium (oscinum tripudium) is that which signifies by the mouth's singing what is portended; when the raven, crow, little owl, parra, woodpecker has sung.\" Despite its headword this lemma defines a voice-sign, not a feeding-sign, and says nothing of chickens flapping, crying or flying off. It therefore does not support the tripudium avolant outcome, which stays labelled reconstruction (see docs/PILOT.md, 4b passages)."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. OCR line (Lindsay p. 197, ll. 9–11) is legible; \"cum cecinit\" printed as transmitted. Immediately followed in Lindsay by Oscines (fest-oscines).",
+    "source": {
+      "edition": "Lindsay, Teubner 1913",
+      "page": "s.v. Oscinum tripudium (Lindsay p. 197)",
+      "cache": "bwb_C0-AXI-081.txt"
+    }
   },
   {
     "id": "livy-per-19",
@@ -786,11 +1330,23 @@ export const passages = [
     "tier": "history",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "P. Claudius Pulcher consul, aduersis auspiciis, iussis immergi pullis qui in auspicium exire noluerant, contra Poenos infeliciter classe pugnauit et, reuocatus a senatu dictatorem dicere iussus, Claudium Glyciam dixit.",
+      "licence": "Public domain — ancient text (Rossbach, Teubner 1910); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"The consul Publius Claudius Pulcher, with the auspices adverse — having ordered the chickens which had refused to come out for the auspice to be plunged [into the sea] — fought unsuccessfully at sea against the Carthaginians and, recalled by the senate and ordered to name a dictator, named Claudius Glycias.\" The epitome compresses the whole Drepana story into refusal + plunging + defeat; again no flap/cry/fly outcome."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised. Rossbach 1910 OCR (tliviperiochaeom00unse.txt): the Per. 19 text stands at printed pp. 23–24; the apparatus there confirms \"iussis immergi pullis\" but the OCR text-line is corrupt, so the wording above follows Rossbach's received text and every word is owed an image check in 4c. Do not quote as letter-exact until then. Translation ours.",
+    "source": {
+      "edition": "Rossbach, Teubner 1910",
+      "page": "Periocha 19, printed pp. 23–24 (OCR apparatus confirms immergi pullis; text-line corrupt)",
+      "cache": "tliviperiochaeom00unse.txt"
+    }
   },
   {
     "id": "cic-div-2-85",
@@ -800,10 +1356,22 @@ export const passages = [
     "tier": "marcus",
     "original": {
       "lang": "la",
-      "text": "",
-      "licence": ""
+      "text": "Cum M. Crassus exercitum Brundisii imponeret, quidam in portu caricas Cauno aduectas uendens \"Cauneas\" clamabat. Dicamus, si placet, monitum ab eo Crassum caue ne eas, id est, ne iret; non fuisse periturum, si omini paruisset.",
+      "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
-    "translations": [],
-    "rules": []
+    "translations": [
+      {
+        "label": "Augury (literal)",
+        "licence": "CC BY 4.0 — Augury (Jake Proctor)",
+        "text": "\"When Marcus Crassus was embarking his army at Brundisium, a man in the harbour selling figs brought from Caunus was crying 'Cauneas' [Caunian (figs)]. Let us say, if you please, that Crassus was warned by him 'caue ne eas' — take care not to go, that is, not to set out; [and] that he would not have perished if he had obeyed the omen.\" Marcus tells the fig-seller pun to ridicule verbal omens (omina), a kind this instrument does not take; the passage is quoted so the exclusion can be seen in the source, not as authority for any rule."
+      }
+    ],
+    "rules": [],
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). Span begins at §84 end in the finding aid ('Cum M. Crassus...'); cited as 2.85 in PLAN's reading list — section boundary to confirm in 4c.",
+    "source": {
+      "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
+      "page": "Cic. Div. 2.84–85 (fig-seller omen)",
+      "cache": "latlib-cicero-divinatione2.html"
+    }
   }
 ];

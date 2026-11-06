@@ -277,3 +277,89 @@ the spec's own terms):
    true of the local cache (Thewrewk 1889 OCR only), and
    `scripts/provenance.json` does not exist. No pilot quotation
    depends on Festus.
+
+## 7. 4b passages
+
+All 47 records in [data/passages.js](/Users/jakeproctor/augury/data/passages.js)
+are now complete (6 pilot kept as approved + 41 completed); no PLAN
+citation lacked a record, so none was added. Each record gained a
+`source` field (edition + page/section + cache file), pinned again in
+[scripts/provenance.json](/Users/jakeproctor/augury/scripts/provenance.json)
+(yijing pattern, with sha256/bytes of the first cache file per pin).
+Coverage tests live in the new
+[tests/passages.test.mjs](/Users/jakeproctor/augury/tests/passages.test.mjs)
+(separate file, per the Sortes-run constraint); the passage block in
+[tests/content.test.mjs](/Users/jakeproctor/augury/tests/content.test.mjs)
+had its stub-emptiness assertion replaced by non-emptiness — the only
+edit there, and it will conflict trivially if the Sortes run rewrites
+that block.
+
+Translations: verbatim PD English is printed only where it was
+extracted word-for-word from the cache (Butler for Homer; Spillan for
+Livy 1.7, 1.34; plus the pilot Yonge/Spillan/Edmonds). Every other new
+record carries our literal translation (STYLE §2), even where SOURCES
+also allows Yonge/Bostock–Riley — their cache OCR was not proofed to
+reproduction standard in this run, and inventing their wording from
+memory would have been worse. Swapping in proofed PD versions later
+touches only `translations`; lead to decide whether 4c does that
+proofing. Bird-rule IDs (`B-*`) were added to the passages that source
+them (chiefly `fest-oscines`) so every ID in `js/rules.js` has a
+passage, with the test asserting full coverage and no exceptions.
+`R-WEIGH` is attached to `livy-1-7-1` as supporting context only
+(competing signs weighed by priority against number); the record's
+orthography note states the arithmetic itself remains reconstruction.
+`R-LINE` is attached to `livy-1-18-6-10` on PLAN's own rationale
+("Livy's line divides the halves").
+
+### verify: notes resolved in 4b
+
+Resolved (PLAN/SOURCES corrected in place): Festus Müller→Lindsay
+pages and scan pin (`bwb_C0-AXI-081`); *Sinistrae aues* /
+*Silentio surgere* lemmata confirmed (Lindsay pp. 502–504, 524);
+Gellius, Valerius Maximus, *Periochae* editions/scans pinned
+(Hertz–Hosius 1903; Kempf 1888, 1.4.3 at p. 19; Rossbach 1910,
+*Per.* 19 at pp. 23–24); Homer printing/scan pinned (OCT 1902 vol. I,
+`owb_YO-BSA-064_1`); Pliny chapter equivalences for 10.33 (ch. 15)
+and 10.34–35 (ch. 16); the `avolant` check (below).
+Still open, unsettleable from the local texts: Conway–Walters on
+Livy 1.18 (no scan); Servius 3.89 locus (Thilo vol. I absent — cache
+holds 6–12 only) and 12.259 lemma wording (OCR corrupt); Hagen,
+Hertz, Kempf, Rossbach, Monro/Allen, Spillan, Edmonds, Falconer dates
+(not in the texts; need reference lookup with network); Sortes table
+numbers (the other run's files); device γ-sign check (not a text).
+
+### Rules the texts contradicted (PLAN corrected; engine untouched)
+
+1. **`avolant` has no primary.** Val. Max. 1.4.3: the chickens "would
+   not come out of the cage" (*non exire cauea pullos*) and the jibe
+   is direct speech there alone ("Quia esse nolunt, bibant"). Festus
+   *Oscinum tripudium* (Lindsay p. 197) defines a voice-sign.
+   *Cliviae* was not located in either Festus OCR. PLAN §4 now
+   states the settled negative; whether the outcome stays in
+   `js/tripudium.js` is the lead's call — `js/` was off-limits.
+2. **R-PRAEPES' Festus quotation is Paulus' epitome, not Festus.**
+   Lindsay's Festus text (*fest-praepetes*) presents *praepetes* as a
+   disputed etymology ("quidam… alii…"), not the neat "quae se ante
+   auspicantem ferunt". PLAN §3.2 now says so. The single-factor
+   reconstruction is unaffected in arithmetic but its "attested term"
+   framing should keep the dispute visible, as the record does.
+3. **Servius 6.190/6.191 quotations in PLAN could not be
+   letter-verified** in the Thilo vol. II OCR (too corrupt at those
+   loci); records print the received wording and flag it. If 4c image
+   collation finds different wording, R-TEMPLUM/R-ASK source cells
+   need rewording — flagging for the lead, not silently harmonising.
+
+### Judgement calls for the lead
+
+- Records flagged in `orthography` as finding-aid / corrupt-OCR /
+  received-form (`serv-aen-*`, `gell-na-7-6` body, `livy-per-19`,
+  `fest-admissivae-cliviae` *Cliviae* half, Homer Greek) are complete
+  in shape but must not be quoted as letter-exact until 4c reads the
+  scan images. That is ~8 records; the rest are OCR/TEI-confirmed
+  with corrections listed per STYLE §9.
+- `cic-div-2-85`'s fig-seller span begins at §84 in the finding aid;
+  citation kept as PLAN's 2.85 with the boundary noted.
+- Pliny 10.49 prints *tripudia solistima* (plural); PLAN §4's
+  *"horum sunt tripudia solistima"* is correct as printed there.
+- Tier `balbus` and nearest-tier stubs from the pilot (§3.2 above)
+  are unchanged and still await the lead's PLAN §3 decision.
