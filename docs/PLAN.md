@@ -392,7 +392,7 @@ chickens' response is the sign.
 |---|---|---|---|
 | `solistimum` | They rush out and eat so greedily that food falls from their beaks and strikes the ground. | ADMITTVNT | Quintus, Cic. *Div.* 1.28; Marcus, *Div.* 2.72; Pliny *NH* 10.49 "*horum sunt tripudia solistima*" |
 | `pascuntur` | They eat, but neatly; nothing falls. | ALIO DIE | **Reconstruction**: Cic. *Div.* 1.28 makes the *tripudium* depend on something falling, so eating alone is no sign. |
-| `non_pascuntur` | They will not eat. | NON ADMITTVNT | Livy 10.40.4; Marcus, Cic. *ND* 2.7; Suet. *Tib.* 2.2 (our translation). Quintus, *Div.* 1.77 has Flaminius advised to *wait* — but a positive refusal in the camp rite, ignored, is what ruined Claudius Pulcher (below); we read refusal here as a positive unfavourable sign, and reserve R-NONE's postponement for *absence* of signs in the sky watch. The texts support both shadings and the About page shows both. |
+| `non_pascuntur` | They will not eat. | NON ADMITTVNT | Livy 10.40.4; Balbus, Cic. *ND* 2.7; Suet. *Tib.* 2.2 (our translation). Quintus, *Div.* 1.77 has Flaminius advised to *wait* — but a positive refusal in the camp rite, ignored, is what ruined Claudius Pulcher (below); we read refusal here as a positive unfavourable sign, and reserve R-NONE's postponement for *absence* of signs in the sky watch. The texts support both shadings and the About page shows both. |
 | `avolant` | They flap, cry, or fly off. | NON ADMITTVNT | **Reconstruction, pending verification.** The triad comes via Smith, *DGRA* s.v. *Augurium* (orientation only, never authority here), gesturing at Livy 10.40 and Valerius Maximus 1.4.3; Festus s.vv. *Oscinum tripudium* / *Clivia* — already on our reading list and otherwise unused — may support a prohibiting flutter. We could not confirm a primary passage from the sandbox, so the outcome as specified is ours until 4c checks those lemmata against scans: `verify:` Val. Max. 1.4.3; Festus *Oscinum tripudium*, *Clivia* (Lindsay). |
 
 **Probabilities**: these are real, seeded and injectable (`tripudium(rng,
@@ -595,7 +595,7 @@ the figures are gods). The user is in effect told "ask Noah". So:
    tested against a clearly-marked fixture): *q* = 16 "εἰ προκόψω ἐν τιμῇ"
    (*will I advance in honour?*), *k* = 5 → *s* = 21 → decade 8 → line 5,
    "προκόψεις μετὰ χρόνον καθὼς ἐπιθυμεῖς" (*you will advance in time, as
-   you wish*); and *q* = 16, *k* = 10 → *s* = 26 → decade 58 → line 10.
+   you wish*); and *q* = 16, *k* = 10 → *s* = 26 → decade 18 → line 10.
    `verify:` decade numbers and Greek against the page images in phase 4.
 
 Data shape (fixed in phase 2, so phase 4 fills records rather than migrating
@@ -608,13 +608,14 @@ records the Hercher flag (may be null, never missing). Questions are
 
 **Extras, with the calendrical decisions made and labelled:**
 
-- Question 13, "is it the hour to put my question?" (`verify:` exact Greek —
-  χρησμῷ or χρησμᾷ — against the scan in 4a). The text tells you to ask this
+- Question 13, "is it the hour to put my question?" (Greek verified in 4a:
+  the question list prints χρησμᾷ, the method prose χρησμῷ; each is
+  transcribed where it stands). The text tells you to ask this
   first; the UI offers it first, and if its answer says "not the hour" the
   screen says the book has advised waiting, shows the answer, and leaves the
   choice with the enquirer. It advises; it never refuses, and never loops.
 - Favourable days and hours: Sunday hour 3, Tuesday hour 3, Thursday hour 5,
-  Saturday hour 6 (`verify:` against Hercher p. 1 in 4a). These are Byzantine
+  Saturday hour 6 (verified against Hercher printed p. 3 in 4a). These are Byzantine
   day-hours counted from sunrise, not 03:00 clock time. **Reconstruction**:
   we render hour *h* as the local clock hour beginning 06:00 + (*h* − 1) and
   label it an approximation. `isPropitious(date)` reports the weekday, the
