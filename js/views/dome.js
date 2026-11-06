@@ -1,7 +1,8 @@
 // Sky-dome SVG (PLAN §8): halves washed + lettered, quarters labelled, signs as marks.
 // Lettering sits well inside the rim (radius ~56-67 of 92) and carries an
 // explicit textLength, so no label can reach the rim whatever font loads.
-// The cross-lines stop short of the label blocks instead of striking through.
+// The cross-lines stop short of the label blocks instead of striking
+// through, and the lettering paints above the marks and needle.
 import { esc, relToXY, favourableHalf } from './helpers.js';
 import { norm } from '../compass.js';
 
@@ -40,9 +41,10 @@ export function domeSVG({ frontDeg = 180, headingDeg = null, tradition = 'roman'
   <path d="M100 8 L100 23 M100 48 L100 153 M100 178 L100 192" class="dome-line"/>
   <path d="M8 100 L17 100 M71 100 L129 100 M177 100 L192 100" class="dome-cross"/>
   <path d="M100 48 L100 100 M100 10 L100 23" class="dome-front"/>
+  ${marks}${needle}
   <text x="100" y="33" class="dome-lab" text-anchor="middle" textLength="34" lengthAdjust="spacingAndGlyphs">ANTICA</text><text x="100" y="43" class="dome-sub" text-anchor="middle">front</text>
   <text x="100" y="163" class="dome-lab" text-anchor="middle" textLength="38" lengthAdjust="spacingAndGlyphs">POSTICA</text><text x="100" y="173" class="dome-sub" text-anchor="middle">behind</text>
   <text x="44" y="97" class="dome-lab" text-anchor="middle" textLength="44" lengthAdjust="spacingAndGlyphs">SINISTRA</text><text x="44" y="107" class="dome-sub" text-anchor="middle">left</text>
   <text x="156" y="97" class="dome-lab" text-anchor="middle" textLength="36" lengthAdjust="spacingAndGlyphs">DEXTRA</text><text x="156" y="107" class="dome-sub" text-anchor="middle">right</text>
-  ${marks}${needle}<circle cx="100" cy="100" r="3.5" class="dome-centre"/></svg>`;
+  <circle cx="100" cy="100" r="3.5" class="dome-centre"/></svg>`;
 }

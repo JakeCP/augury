@@ -1,7 +1,11 @@
 import test from 'node:test'; import assert from 'node:assert/strict';
 import { relToXY, describeRegion, canDecline, SIGN_FIELDS, sharedRecordContainsQuestion, esc } from '../js/views/helpers.js';
 import { domeSVG } from '../js/views/dome.js';
-import { recordHTML, observationFromWatch, verdictHTML, homeHTML, ruleName, ruleHref } from '../js/views/rite.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { recordHTML, observationFromWatch, verdictHTML, homeHTML, ruleName, ruleHref, templumHTML, watchHTML } from '../js/views/rite.js';
+import { signSheetHTML } from '../js/views/signsheet.js';
 import { interpret } from '../js/rules.js';
 import { passages } from './fixtures/passages.js';
 test('dome geometry: front at top, right to the east', () => {
@@ -64,6 +68,38 @@ test('verdict: human rule names, small IDs, passage links, per-sign strengths, F
 test('home carries the privacy line zero times (the footer says it once)', () => {
   assert.ok(!homeHTML(false).includes('Nothing leaves this device'));
   assert.match(homeHTML(false), /hl-name">Tripudium/);
+});
+test('templum: asked-for signs are a chip grid with all/none, not a long column', () => {
+  const html = templumHTML({ tradition: 'roman', frontDeg: 180, templumHalfWidthDeg: 180, declinationDeg: 0, askedFor: ['crow'], isDaylight: true });
+  assert.match(html, /class="asked-grid"/);
+  assert.match(html, /data-asked="all"/); assert.match(html, /data-asked="none"/);
+  assert.equal((html.match(/class="chip"/g) ?? []).length, 10); // augural birds
+});
+test('sign sheet: bird picker is the compact grid, one pick per bird', () => {
+  const html = signSheetHTML({ bird: 'crow', kinds: ['flight'], relDeg: 90, height: 'na', flight: 'across', count: 1, foodFell: false, chokedVoice: false, daylight: true }, ['crow']);
+  assert.match(html, /class="bird-grid"/);
+  assert.equal((html.match(/class="bird-pick"/g) ?? []).length, 11); // incl. Other/thunder
+  assert.match(html, /img\/birds\/chickens\.svg/);
+});
+test('watch: the vitium control is one boxed label, latin inside the same span', () => {
+  const html = watchHTML({ tradition: 'roman', orientation: 'varro', frontDeg: 180, templumHalfWidthDeg: 180, askedFor: [], signs: [], vitium: false, isDaylight: true, suggestedMin: 20, startedAt: Date.now() }, 0);
+  assert.match(html, /<label class="check card"><input type="checkbox" id="vitium"[^>]*><span>The watch was disturbed — a fault occurred <span lang="la">\(vitium\)<\/span><\/span><\/label>/);
+});
+test('ink birds: every file is a small currentColor line drawing on the 64 grid', () => {
+  const dir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../img/birds');
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.svg')).sort();
+  assert.deepEqual(files, ['buzzard.svg', 'chickens.svg', 'crow.svg', 'eagle-owl.svg', 'eagle.svg', 'little-owl.svg', 'other.svg', 'raven.svg', 'vulture.svg', 'woodpecker.svg']);
+  for (const f of files) {
+    const svg = fs.readFileSync(path.join(dir, f), 'utf8');
+    assert.match(svg, /viewBox="0 0 64 64"/, f);
+    assert.match(svg, /stroke="currentColor"/, f);
+    assert.ok(Buffer.byteLength(svg) < 4096, `${f} under 4 KB`);
+  }
+  // The three soaring raptors must not share one silhouette.
+  const read = (f) => fs.readFileSync(path.join(dir, f), 'utf8');
+  assert.notEqual(read('eagle.svg'), read('vulture.svg'));
+  assert.notEqual(read('eagle.svg'), read('buzzard.svg'));
+  assert.notEqual(read('vulture.svg'), read('buzzard.svg'));
 });
 test('observationFromWatch drops stubs', () => {
   const obs = observationFromWatch({ tradition: 'roman', orientation: 'varro', frontDeg: 180, templumHalfWidthDeg: 180, signs: [{ bird: 'crow', kinds: ['voice'], stub: true }] });

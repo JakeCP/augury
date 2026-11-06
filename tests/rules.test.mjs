@@ -282,6 +282,22 @@ test('R-MIXED gloss: Romulus/Remus only when priority vs weight leaves it undeci
   ] }));
   assert.equal(atLine.verdict, 'NON_ADMITTUNT');
   assert.ok(!atLine.glosses.includes('romulus-remus'));
+  // In-band totals (F 5/4, U 2) with first sign against the greater weight
+  // carry the gloss on their own — but not when something else decided.
+  const inBand = [
+    sign({ relDeg: L, count: 2 }), // F = 5/4, first
+    sign({ bird: 'vulture', kinds: ['flight'], flight: 'across', relDeg: R }), // U = 2
+  ];
+  assert.ok(interpret(obs({ signs: inBand })).glosses.includes('romulus-remus'));
+  const byDire = interpret(obs({ signs: [...inBand,
+    sign({ bird: 'bubo', kinds: ['flight'], flight: 'across', relDeg: R, daylight: true })] }));
+  assert.equal(byDire.verdict, 'NON_ADMITTUNT');
+  assert.deepEqual(byDire.decidedBy, ['R-DIRA']);
+  assert.ok(!byDire.glosses.includes('romulus-remus'), 'dire sign decided: no founders gloss');
+  const byFault = interpret(obs({ vitium: true, signs: inBand }));
+  assert.equal(byFault.verdict, 'ALIO_DIE');
+  assert.equal(byFault.wouldBeVerdict, 'ALIO_DIE');
+  assert.ok(!byFault.glosses.includes('romulus-remus'), 'fault decided: no founders gloss');
 });
 
 test('R-WEIGH hierarchy: one eagle outweighs four crows flying onward', () => {

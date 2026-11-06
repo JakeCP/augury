@@ -356,7 +356,12 @@ export function interpret(observation) {
   // 5/4 against 9/2 needs no founders' quarrel gloss).
   const undecidedByWeight = F.num > 0 && U.num > 0
     && !atLeastTimes(F, U, 2) && !atLeastTimes(U, F, 2);
-  if (undecidedByWeight && !fracEqual(F, U) && firstWeighed
+  // Only when R-MIXED itself produced the final ALIO DIE: a dire sign (V2)
+  // or a fault (V1) can decide over the same in-band totals, and then the
+  // founders' quarrel decided nothing.
+  const mixedDecided = baseVerdict === 'ALIO_DIE' && decidedBy.includes('R-MIXED')
+    && observation.vitium !== true;
+  if (mixedDecided && undecidedByWeight && !fracEqual(F, U) && firstWeighed
     && firstWeighed.favourable !== (F.value > U.value)) {
     glosses.push('romulus-remus');
   }

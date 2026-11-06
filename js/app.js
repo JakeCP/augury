@@ -173,7 +173,7 @@ async function dispatch() {
       app.querySelector('[data-act="copy-share"]').addEventListener('click', async () => {
         const url = `${location.origin}${location.pathname}#/record/${encodeRecord(obs)}`;
         try { await navigator.clipboard.writeText(url); announce('Share link copied. It contains no question.'); }
-        catch { document.getElementById('share-fallback').innerHTML = `<label class="field"><span>Copy this link by hand</span><input readonly value="${url}" onclick="this.select()"></label>`; }
+        catch { document.getElementById('share-fallback').innerHTML = `<label class="field"><span>Copy this link by hand</span><input type="text" readonly value="${url}" onclick="this.select()"></label>`; }
       });
       break; }
     case 'shared-record': {
