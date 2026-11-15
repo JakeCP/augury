@@ -50,7 +50,7 @@ export const table = [
     "sum": 16,
     "prophet": {
       "grc": "Λούδ",
-      "en": "Loud"
+      "en": "Lud"
     },
     "interpretation": {
       "grc": "",

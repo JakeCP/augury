@@ -22,7 +22,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἐπιτεύξῃ τῆς ἐπικλήσεως ἄρτι",
-        "en": "You will not attain the invocation now.",
+        "en": "You will not succeed in the appeal now.",
         "answersQuestion": 67,
         "apparatus": null,
         "filler": false
@@ -90,7 +90,7 @@ export const decades = [
     "lines": [
       {
         "grc": "ἀπαλλαγήσῃ τῆς φίλης σου",
-        "en": "You will be separated from your girlfriend.",
+        "en": "You will be separated from the woman you love.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": false
@@ -139,9 +139,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ταχέως",
-        "en": "You will soon become a dekaprotos.",
+        "en": "You will soon become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -465,7 +465,7 @@ export const decades = [
     "lines": [
       {
         "grc": "ἐπιτεύξῃ τῆς ἐπικλήσεως",
-        "en": "You will attain the invocation.",
+        "en": "You will succeed in the appeal.",
         "answersQuestion": 67,
         "apparatus": null,
         "filler": false
@@ -549,7 +549,7 @@ export const decades = [
         "grc": "εὐτυχήσεις ἐπ’ ἐσχάτων μακρὰν γηράσας",
         "en": "You will be fortunate in the end, having grown old to a great age.",
         "answersQuestion": 19,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read μικρὸν ('a little') for the printed μακρὰν ('to a great age').",
         "filler": false
       },
       {
@@ -615,7 +615,7 @@ export const decades = [
     "lines": [
       {
         "grc": "οὐχ ἁμαρτήσεις. πρέσβευσον",
-        "en": "You will not go wrong. Serve as envoy.",
+        "en": "You will not go wrong. Intercede.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -629,9 +629,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ ποτὲ βιοπράγος",
-        "en": "You will never become a man of business.",
+        "en": "You will never become a merchant.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -678,9 +678,9 @@ export const decades = [
       },
       {
         "grc": "λήψῃ κομητᾶτον ἄρτι",
-        "en": "You will receive a komitaton now.",
+        "en": "You will receive a place in the imperial retinue now.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       }
     ]
@@ -868,7 +868,7 @@ export const decades = [
       },
       {
         "grc": "οὐ πρεσβεύσεις μόνος. μὴ ἔλπιζε",
-        "en": "You will not go on an embassy alone. Do not hope for it.",
+        "en": "You will not intercede alone. Do not hope for it.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -882,9 +882,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ βιοπράγος τελείως",
-        "en": "You will not become a biopragos completely.",
+        "en": "You will not become a merchant completely.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -929,7 +929,7 @@ export const decades = [
       },
       {
         "grc": "πρεσβεύσεις μόνος καὶ ὠφεληθήσῃ",
-        "en": "You will go on an embassy alone, and you will be benefited.",
+        "en": "You will intercede alone, and you will be benefited.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -943,9 +943,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ βιοπράγος",
-        "en": "You will not become a biopragos.",
+        "en": "You will not become a merchant.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -1182,9 +1182,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ταχέως",
-        "en": "You will soon become dekaprotos.",
+        "en": "You will soon become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -1503,9 +1503,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ὅτε οὐκ οἶδας",
-        "en": "You will become dekaprotos when you do not know it.",
+        "en": "You will become one of the ten chief men when you do not know it.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": true
       }
     ]
@@ -1556,8 +1556,8 @@ export const decades = [
         "filler": false
       },
       {
-        "grc": "κληρονομήσεις τὴν μητέρα ἐξ ἡμισείες",
-        "en": "You will inherit from your mother to the half.",
+        "grc": "κληρονομήσεις τὴν μητέρα ἐξ ἡμισείας",
+        "en": "You will inherit a half share from your mother.",
         "answersQuestion": 34,
         "apparatus": null,
         "filler": false
@@ -1843,7 +1843,7 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τῆς γυναικὸς γελώμενος",
-        "en": "You will part from your wife, laughing.",
+        "en": "You will part from your wife, laughed at.",
         "answersQuestion": 90,
         "apparatus": null,
         "filler": false
@@ -1857,14 +1857,14 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ βουλευτὴς καὶ φυρατής",
-        "en": "You will become a councillor and a phyratēs.",
+        "en": "You will become a councillor and a kneader of dough.",
         "answersQuestion": 88,
-        "apparatus": null,
+        "apparatus": "φυρατής (phyratēs), literally 'one who kneads (dough)'; what trade or office is meant is uncertain.",
         "filler": false
       },
       {
         "grc": "πρεσβεύσεις καὶ εὐημερήσεις, ἐὰν σπεύσῃς",
-        "en": "You will serve as an envoy, and you will prosper, if you hurry.",
+        "en": "You will intercede, and you will prosper, if you hurry.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -1878,9 +1878,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ βιοπράγος καὶ δοξασθήσῃ",
-        "en": "You will become a biopragos, and you will be honoured.",
+        "en": "You will become a merchant, and you will be honoured.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       }
     ]
@@ -1904,7 +1904,7 @@ export const decades = [
       },
       {
         "grc": "οὐ προσγραφήσεται τὰ σά. μὴ μερίμνα",
-        "en": "What is yours will not be proscribed. Do not worry.",
+        "en": "What is yours will not be confiscated. Do not worry.",
         "answersQuestion": 82,
         "apparatus": null,
         "filler": false
@@ -1932,9 +1932,9 @@ export const decades = [
       },
       {
         "grc": "οὐ λήψῃ ἀρτίως κομητάτον",
-        "en": "You will not receive a komitaton just now.",
+        "en": "You will not receive a place in the imperial retinue just now.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -2103,9 +2103,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος",
-        "en": "You will become a dekaprotos.",
+        "en": "You will become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       }
     ]
@@ -2157,7 +2157,7 @@ export const decades = [
       },
       {
         "grc": "πρεσβεύσεις, οὐ μόνος δέ",
-        "en": "You will serve as an envoy, but not alone.",
+        "en": "You will intercede, but not alone.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -2171,9 +2171,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ βιοπράγος ἐξαπίνης",
-        "en": "You will become a biopragos suddenly.",
+        "en": "You will become a merchant suddenly.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -2197,9 +2197,9 @@ export const decades = [
       },
       {
         "grc": "λήψῃ κομητάτον κόπῳ πολλῷ",
-        "en": "You will receive a komitaton with much labour.",
+        "en": "You will receive a place in the imperial retinue with much labour.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -2375,9 +2375,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ δεκάπρωτος ἄρτι",
-        "en": "You will not become dekaprotos now.",
+        "en": "You will not become one of the ten chief men now.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -2628,7 +2628,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἀπαλλαγήσῃ τῆς φίλης σου",
-        "en": "You will not be parted from your girlfriend.",
+        "en": "You will not be parted from the woman you love.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": true
@@ -2661,7 +2661,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἀπαλλαγήσῃ τῆς φίλης σου",
-        "en": "You will not be parted from your girlfriend.",
+        "en": "You will not be parted from the woman you love.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": false
@@ -3228,7 +3228,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἐπιτεύξῃ τῆς ἐπικλήσεως νῦν",
-        "en": "You will not attain the invocation now.",
+        "en": "You will not succeed in the appeal now.",
         "answersQuestion": 67,
         "apparatus": null,
         "filler": false
@@ -3772,7 +3772,7 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τῆς φίλης σου ἄρτι",
-        "en": "You will be rid of your girlfriend now.",
+        "en": "You will be rid of the woman you love now.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": false
@@ -3814,16 +3814,16 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τοῦ κλήρου. φρόντιζε",
-        "en": "You will be rid of the lot. Take thought.",
+        "en": "You will be rid of the clergy. Take thought.",
         "answersQuestion": 96,
         "apparatus": null,
         "filler": false
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ἐν τάχει",
-        "en": "You will become a dekaprotos soon.",
+        "en": "You will become one of the ten chief men soon.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -3996,17 +3996,17 @@ export const decades = [
         "filler": false
       },
       {
-        "grc": "οὐ δυνηθῇ ἀπαλλαγῆναι τοῦ κλήρου",
-        "en": "You will not be able to be rid of the lot.",
+        "grc": "οὐ δυνήσῃ ἀπαλλαγῆναι τοῦ κλήρου",
+        "en": "You will not be able to be rid of the clergy.",
         "answersQuestion": 96,
         "apparatus": null,
         "filler": false
       },
       {
         "grc": "οὐ γενήσῃ δεκάπρωτος. μὴ ἐλπίζε",
-        "en": "You will not become a dekaprotos. Do not hope.",
+        "en": "You will not become one of the ten chief men. Do not hope.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -4065,9 +4065,9 @@ export const decades = [
     "lines": [
       {
         "grc": "οὐ λήψῃ κομητᾶτον",
-        "en": "You will not receive a komitaton.",
+        "en": "You will not receive a place in the imperial retinue.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -4095,7 +4095,7 @@ export const decades = [
         "grc": "οὐ πωληθήσῃ. οὐ συμφέρει σοι. περίμεινον",
         "en": "You will not be sold. It does not profit you. Wait.",
         "answersQuestion": 74,
-        "apparatus": null,
+        "apparatus": "Manuscript L reads the active, 'You will not sell', and M a prohibition, 'Do not sell'; Hercher prints the passive, 'You will not be sold', translated here.",
         "filler": false
       },
       {
@@ -4121,7 +4121,7 @@ export const decades = [
       },
       {
         "grc": "οὐ γαμήσεις τὴν φίλην. μὴ πλανῶ",
-        "en": "You will not marry your girlfriend. Do not be deceived.",
+        "en": "You will not marry the woman you love. Do not be deceived.",
         "answersQuestion": 70,
         "apparatus": null,
         "filler": false
@@ -4160,7 +4160,7 @@ export const decades = [
         "filler": false
       },
       {
-        "grc": "οὐ δυνηθῇ δανείσασθαι ἄρτι. περίμεινον",
+        "grc": "οὐ δυνήσῃ δανείσασθαι ἄρτι. περίμεινον",
         "en": "You will not be able to borrow now. Wait.",
         "answersQuestion": 25,
         "apparatus": null,
@@ -4231,7 +4231,7 @@ export const decades = [
         "grc": "ἀπαλλαγήσῃ τῆς γυναικὸς καὶ μεταμεληθήσῃ",
         "en": "You will be rid of your wife, and you will regret it.",
         "answersQuestion": 90,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read διαλλαγήσῃ τῇ γυναικί, 'You will be reconciled to your wife' — the opposite of the printed text.",
         "filler": false
       },
       {
@@ -4259,14 +4259,14 @@ export const decades = [
         "grc": "οὐ φυγαδευθήσῃ. μὴ φοβοῦ. εὐθύμει",
         "en": "You will not be exiled. Do not fear. Be cheerful.",
         "answersQuestion": 86,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will not see your homeland now.'",
         "filler": false
       },
       {
         "grc": "γενήσῃ βιοπράγος καὶ εὐχαριστήσεις",
-        "en": "You will become a biopragos, and you will give thanks.",
+        "en": "You will become a merchant, and you will give thanks.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer. Manuscript L here reads a different answer entirely: 'You will not complete what you undertake.'",
         "filler": false
       },
       {
@@ -4280,7 +4280,7 @@ export const decades = [
         "grc": "οὐχ εὑρήσεις ἄρτι πωλῆσαι. περίμεινον",
         "en": "You will not find [a way] to sell now. Wait.",
         "answersQuestion": 83,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will not find what is lost now.'",
         "filler": false
       }
     ]
@@ -4292,14 +4292,14 @@ export const decades = [
         "grc": "κερδανεῖς ὀλίγον ἀπὸ τοῦ πράγματος",
         "en": "You will gain a little from the matter.",
         "answersQuestion": 81,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will not have hope of faith.'",
         "filler": false
       },
       {
         "grc": "ζῇ ὁ ἀπόδημος καὶ ἔρχεται μετὰ χρόνου",
         "en": "The man abroad is alive, and he is coming after a time.",
         "answersQuestion": 80,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will not have a long time of life.'",
         "filler": false
       },
       {
@@ -4311,16 +4311,16 @@ export const decades = [
       },
       {
         "grc": "οὐ λήψῃ ἄρτι κομητᾶτον",
-        "en": "You will not receive a komitaton now.",
+        "en": "You will not receive a place in the imperial retinue now.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue. Manuscript L here reads a different answer entirely: 'You will gain a little from the matter.'",
         "filler": false
       },
       {
         "grc": "ἀποκατασταθήσῃ εἰς τὸν τόπον σου",
         "en": "You will be restored to your place.",
         "answersQuestion": 77,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will have a good end.'",
         "filler": false
       },
       {
@@ -4334,28 +4334,28 @@ export const decades = [
         "grc": "οὐ πωλήσεις ἐπὶ τῷ συμφέροντί σου",
         "en": "You will not sell to your advantage.",
         "answersQuestion": 83,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'Your wife will remain with you until old age.'",
         "filler": false
       },
       {
         "grc": "ὠφεληθήσῃ ἀπὸ τοῦ φίλου σου πολύ",
         "en": "You will be much helped by your friend.",
         "answersQuestion": 75,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You do not sell to your advantage.'",
         "filler": false
       },
       {
         "grc": "μενεῖς ὅπου ὑπάγεις, ἐὰν σπεύσῃς",
         "en": "You will stay where you are going, if you hurry.",
         "answersQuestion": 73,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will soon complete what you undertake.'",
         "filler": false
       },
       {
         "grc": "λήψῃ ὀψώνιον καλῶς",
         "en": "You will receive pay well.",
         "answersQuestion": 72,
-        "apparatus": null,
+        "apparatus": "Manuscript L here reads a different answer entirely: 'You will advance for the better, and you will be honoured.'",
         "filler": false
       }
     ]
@@ -4442,7 +4442,7 @@ export const decades = [
         "grc": "πωληθήσῃ, ἄρτι δὲ οὔ",
         "en": "You will be sold, but not now.",
         "answersQuestion": 74,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the active πωλήσεις, 'You will sell'; Hercher prints the passive, 'You will be sold', translated here.",
         "filler": false
       },
       {
@@ -4468,7 +4468,7 @@ export const decades = [
       },
       {
         "grc": "γαμήσεις τὴν φίλην, νῦν δὲ οὔ",
-        "en": "You will marry your girlfriend, but not now.",
+        "en": "You will marry the woman you love, but not now.",
         "answersQuestion": 70,
         "apparatus": null,
         "filler": false
@@ -4489,7 +4489,7 @@ export const decades = [
       },
       {
         "grc": "ἐπιτεύξῃ τῆς ἐπικλήσεως ταχέως",
-        "en": "You will obtain the invocation soon.",
+        "en": "You will soon succeed in the appeal.",
         "answersQuestion": 67,
         "apparatus": null,
         "filler": false
@@ -4695,7 +4695,7 @@ export const decades = [
         "grc": "ἀπαλλαγήσῃ τῆς φίλης ἐπ’ ὠφελείᾳ",
         "en": "You will be rid of the beloved, to your advantage.",
         "answersQuestion": 102,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read καταλλαγήσῃ τῇ φιλῇ, 'You will be reconciled to the woman you love' — the opposite of the printed text.",
         "filler": false
       },
       {
@@ -4754,9 +4754,9 @@ export const decades = [
       },
       {
         "grc": "λήψῃ κομητάτον ὡς θέλεις",
-        "en": "You will receive a komitaton as you wish.",
+        "en": "You will receive a place in the imperial retinue as you wish.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -4836,9 +4836,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ταχύ",
-        "en": "You will become dekaprotos quickly.",
+        "en": "You will become one of the ten chief men quickly.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -4890,9 +4890,9 @@ export const decades = [
     "lines": [
       {
         "grc": "γενήσῃ βιοπράγος",
-        "en": "You will become a biopragos.",
+        "en": "You will become a merchant.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -4939,9 +4939,9 @@ export const decades = [
       },
       {
         "grc": "οὐ λήψῃ ἄρτι κομητάτον",
-        "en": "You will not receive a komitaton now.",
+        "en": "You will not receive a place in the imperial retinue now.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -4972,9 +4972,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ τελείως βιοπράγος",
-        "en": "You will not fully become a biopragos.",
+        "en": "You will not fully become a merchant.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -5021,9 +5021,9 @@ export const decades = [
       },
       {
         "grc": "οὐ λήψῃ κομητάτον νῦν",
-        "en": "You will not receive a komitaton now.",
+        "en": "You will not receive a place in the imperial retinue now.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -5178,9 +5178,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ δεκάπρωτός ποτε",
-        "en": "You will never become dekaprotos.",
+        "en": "You will never become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": true
       }
     ]
@@ -5347,7 +5347,7 @@ export const decades = [
       },
       {
         "grc": "οὐ πρεσβεύσεις μόνος· οὐ γὰρ συμφέρει σοι",
-        "en": "You will not go on an embassy alone; for it does not profit you.",
+        "en": "You will not intercede alone; for it does not profit you.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -5361,9 +5361,9 @@ export const decades = [
       },
       {
         "grc": "οὐ γενήσῃ βιοπράγος τὸ σύνολον",
-        "en": "You will not become a man of business at all.",
+        "en": "You will not become a merchant at all.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -5382,7 +5382,7 @@ export const decades = [
       },
       {
         "grc": "προσγραφήσεται τὰ σά. πρόσεχε",
-        "en": "Your property will be proscribed. Pay attention.",
+        "en": "Your property will be confiscated. Pay attention.",
         "answersQuestion": 82,
         "apparatus": null,
         "filler": false
@@ -5436,16 +5436,16 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τοῦ κλήρου μετὰ γήρως",
-        "en": "You will be freed from the lot in old age.",
+        "en": "You will be freed from the clergy in old age.",
         "answersQuestion": 96,
         "apparatus": null,
         "filler": false
       },
       {
         "grc": "γενήσῃ δεκάπρωτος ἐξαπίνης",
-        "en": "You will suddenly become a dekaprotos.",
+        "en": "You will suddenly become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -5471,7 +5471,7 @@ export const decades = [
       },
       {
         "grc": "οὐ πεφαρμάκευσαι. τί ἀκαιρεῖς;",
-        "en": "You have not been poisoned. Why are you ill-timed?",
+        "en": "You have not been poisoned. Why is your timing wrong?",
         "answersQuestion": 91,
         "apparatus": null,
         "filler": false
@@ -5715,16 +5715,16 @@ export const decades = [
     "lines": [
       {
         "grc": "οὐ παραμενεῖ σοι ὁ κλῆρος",
-        "en": "The lot will not remain with you.",
+        "en": "The clergy will not remain with you.",
         "answersQuestion": 96,
         "apparatus": null,
         "filler": false
       },
       {
         "grc": "γενήσῃ δεκάπρωτος, ὅτε οὐκ οἶδας",
-        "en": "You will become a dekaprotos, when you do not know.",
+        "en": "You will become one of the ten chief men, when you do not know.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -5778,7 +5778,7 @@ export const decades = [
       },
       {
         "grc": "πρεσβεύσῃ μόνος καὶ δοξασθήσῃ",
-        "en": "You will go on an embassy alone, and you will be honoured.",
+        "en": "You will intercede alone, and you will be honoured.",
         "answersQuestion": 87,
         "apparatus": null,
         "filler": false
@@ -5811,7 +5811,7 @@ export const decades = [
       },
       {
         "grc": "μισθώσῃ καὶ κερδανεῖς ὅσον ἐπιθυμεῖς",
-        "en": "You will hire, and you will gain as much as you desire.",
+        "en": "You will hire yourself out, and you will gain as much as you desire.",
         "answersQuestion": 61,
         "apparatus": null,
         "filler": false
@@ -5907,7 +5907,7 @@ export const decades = [
       },
       {
         "grc": "πλεύσεις μετὰ τὸ ἐκκοπῆναι καὶ καλῶς",
-        "en": "You will sail after [it] is cut off, and well.",
+        "en": "You will sail after being hindered, and well.",
         "answersQuestion": 12,
         "apparatus": null,
         "filler": false
@@ -5968,7 +5968,7 @@ export const decades = [
       },
       {
         "grc": "θὲς παραβόλιον· νικήσεις γάρ",
-        "en": "Put down a deposit; for you will win.",
+        "en": "Put down a stake, for you will win.",
         "answersQuestion": 69,
         "apparatus": null,
         "filler": false
@@ -6050,9 +6050,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ βιοπράγος καὶ κτήσῃ πολλὰ ἀγαθά",
-        "en": "You will become a biopragos and acquire many goods.",
+        "en": "You will become a merchant and acquire many goods.",
         "answersQuestion": 85,
-        "apparatus": null,
+        "apparatus": "βιοπράγος (biopragos), rendered 'merchant'; the word may mean a slave-dealer.",
         "filler": false
       },
       {
@@ -6181,7 +6181,7 @@ export const decades = [
         "grc": "σωθήσεται τῆς ἀσθενείας ταχέως, εἰ προσέχεις",
         "en": "He will recover from the illness soon, if you pay attention.",
         "answersQuestion": 54,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the second person, σωθήσῃ ('You will recover'); Hercher prints the third person, of the sick man.",
         "filler": false
       },
       {
@@ -6343,9 +6343,9 @@ export const decades = [
       },
       {
         "grc": "λήψῃ κομητᾶτον",
-        "en": "You will receive a komitaton.",
+        "en": "You will receive a place in the imperial retinue.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -6417,8 +6417,8 @@ export const decades = [
         "filler": false
       },
       {
-        "grc": "ὁ ἀσθενῶν μακρονοσήσας ὑγιάνει",
-        "en": "The sick man, after being ill a long time, is well.",
+        "grc": "ὁ ἀσθενῶν μακρονοσήσας ὑγιανεῖ",
+        "en": "The sick man, after being ill a long time, will get well.",
         "answersQuestion": 54,
         "apparatus": null,
         "filler": false
@@ -6500,9 +6500,9 @@ export const decades = [
       },
       {
         "grc": "οὐ λήψῃ ἄρτι κομητᾶτον, ἐκδέχου δέ",
-        "en": "You will not receive a komitaton now, but wait for it.",
+        "en": "You will not receive a place in the imperial retinue now, but wait for it.",
         "answersQuestion": 78,
-        "apparatus": null,
+        "apparatus": "κομητάτον (komitaton, from Latin comitatus): a place in the imperial retinue.",
         "filler": false
       },
       {
@@ -6584,7 +6584,7 @@ export const decades = [
         "grc": "ἀπαλλαγήσῃ τῆς φίλης σου ἐπὶ ζημίᾳ",
         "en": "You will be rid of the woman you love, at a loss.",
         "answersQuestion": 102,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read καταλλαγήσῃ τῇ φιλῇ, 'You will be reconciled to the woman you love' — the opposite of the printed text.",
         "filler": false
       },
       {
@@ -6615,9 +6615,9 @@ export const decades = [
     "lines": [
       {
         "grc": "γενήσῃ δεκάπρωτος",
-        "en": "You will become dekaprotos.",
+        "en": "You will become one of the ten chief men.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": false
       },
       {
@@ -6652,7 +6652,7 @@ export const decades = [
         "grc": "οὐκ ἀπαλλαγήσῃ τῆς γυναικὸς καλῶς",
         "en": "You will not be well rid of your wife.",
         "answersQuestion": 90,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read κακῶς ('badly') for the printed καλῶς ('well').",
         "filler": false
       },
       {
@@ -6814,9 +6814,9 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τῆς φίλης καὶ βλαβήσῃ",
-        "en": "You will be parted from your girlfriend, and you will be harmed.",
+        "en": "You will be parted from the woman you love, and you will be harmed.",
         "answersQuestion": 102,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read διαλλαγήσῃ τῇ φίλῃ, 'You will be reconciled to the woman you love' — the opposite of the printed text.",
         "filler": false
       },
       {
@@ -6896,7 +6896,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἀπαλλαγήσῃ τῆς φίλης σου",
-        "en": "You will not be parted from your girlfriend.",
+        "en": "You will not be parted from the woman you love.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": false
@@ -6964,7 +6964,7 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τῆς φίλης καὶ μεταμεληθήσῃ",
-        "en": "You will be parted from your girlfriend, and you will regret it.",
+        "en": "You will be parted from the woman you love, and you will regret it.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": true
@@ -7013,7 +7013,7 @@ export const decades = [
         "grc": "σωθήσεται τῆς ἀσθενείας ταχέως",
         "en": "He will recover from the illness soon.",
         "answersQuestion": 54,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the second person, σωθήσῃ ('You will recover'); Hercher prints the third person, of the sick man.",
         "filler": false
       },
       {
@@ -7065,13 +7065,13 @@ export const decades = [
     "lines": [
       {
         "grc": "θὲς παραβόλιον· νικήσεις γάρ",
-        "en": "Put down the deposit, for you will win.",
+        "en": "Put down a stake, for you will win.",
         "answersQuestion": 69,
         "apparatus": null,
         "filler": false
       },
       {
-        "grc": "ἔξεις ἐλπίδα πίστεως",
+        "grc": "ἕξεις ἐλπίδα πίστεως",
         "en": "You will have hope of faith.",
         "answersQuestion": 68,
         "apparatus": null,
@@ -7079,7 +7079,7 @@ export const decades = [
       },
       {
         "grc": "ἐπιτεύξῃ τῆς ἐπικλήσεως",
-        "en": "You will obtain the invocation.",
+        "en": "You will succeed in the appeal.",
         "answersQuestion": 67,
         "apparatus": null,
         "filler": false
@@ -7107,9 +7107,9 @@ export const decades = [
       },
       {
         "grc": "οἱ νικήσεις. σιώπα",
-        "en": "You will win. Keep silent.",
+        "en": "You will not win. Keep silent.",
         "answersQuestion": 63,
-        "apparatus": "The printed οἱ does not construe with νικήσεις; the opening word is corrupt as printed.",
+        "apparatus": "Hercher prints οἱ, which does not construe with νικήσεις; read οὐ ('You will not win'), as at 42.1, where the same pairing with σιώπα ('Keep silent') is negative. Every σιώπα line in the book follows a negative answer; the English translates the sense so restored, and the Greek is left as printed.",
         "filler": false
       },
       {
@@ -7278,9 +7278,9 @@ export const decades = [
       },
       {
         "grc": "ἀπαλλαγήσῃ τῆς φίλης. μωροποιεῖ. συμφέρει σοι",
-        "en": "You will be parted from your girlfriend. She is acting foolishly. It profits you.",
+        "en": "You will be parted from the woman you love. She is acting foolishly. It profits you.",
         "answersQuestion": 102,
-        "apparatus": "Hercher notes that μωροποιεῖ may be doubted.",
+        "apparatus": "Hercher notes that μωροποιεῖ may be doubted. Manuscript M reads διαλλάσσῃ, 'You are being reconciled to her' — the opposite of the printed text; L has a different line again (about the man in custody).",
         "filler": false
       }
     ]
@@ -7325,7 +7325,7 @@ export const decades = [
       },
       {
         "grc": "οὐκ ἀπαλλαγήσῃ τῆς φίλης",
-        "en": "You will not be parted from your girlfriend.",
+        "en": "You will not be parted from the woman you love.",
         "answersQuestion": 102,
         "apparatus": null,
         "filler": true
@@ -7374,7 +7374,7 @@ export const decades = [
         "grc": "οὐ σωθήσῃ ἀσθενῶν",
         "en": "You will not recover from your illness.",
         "answersQuestion": 42,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the third person, σωθήσεται ('He will not recover'); Hercher prints the second person, of the enquirer.",
         "filler": false
       },
       {
@@ -7463,7 +7463,7 @@ export const decades = [
         "grc": "οὐ καταλλαγήσῃ τοῖς κυρίοις σου ἐπὶ συμφέροντι",
         "en": "You will not be reconciled with your masters on advantageous terms.",
         "answersQuestion": 46,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read ἀπαλλαγήσῃ, 'You will not be rid of your masters'; Hercher prints καταλλαγήσῃ, 'be reconciled', translated here.",
         "filler": false
       },
       {
@@ -7491,7 +7491,7 @@ export const decades = [
         "grc": "σωθήσῃ ἀσθενῶν. μὴ ἀγωνία",
         "en": "You will recover from your illness. Do not be anxious.",
         "answersQuestion": 42,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the third person, σωθήσεται ('He will recover'); Hercher prints the second person, of the enquirer.",
         "filler": false
       },
       {
@@ -7620,7 +7620,7 @@ export const decades = [
         "grc": "δάνεισαι καὶ οὐ ζημιωθήσῃ, κερδανεῖς δέ",
         "en": "Borrow, and you will not lose; you will gain.",
         "answersQuestion": 25,
-        "apparatus": null,
+        "apparatus": "Manuscripts LM read the active imperative δάνεισον, 'Lend!'; Hercher prints the middle δάνεισαι, 'Borrow!', translated here.",
         "filler": false
       },
       {
@@ -7714,9 +7714,9 @@ export const decades = [
       },
       {
         "grc": "γενήσῃ δεκάπρωτος καὶ εὐδοκιμήσεις",
-        "en": "You will become a dekaprotos, and you will be in good repute.",
+        "en": "You will become one of the ten chief men, and you will be in good repute.",
         "answersQuestion": 95,
-        "apparatus": null,
+        "apparatus": "δεκάπρωτος (dekaprotos): one of the ten leading councillors of a city, liable for its taxes.",
         "filler": true
       },
       {

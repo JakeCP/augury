@@ -234,13 +234,13 @@ export const passages = [
   },
   {
     "id": "hom-il-12-237-243",
-    "citation": "Homer, Iliad 12.237–243",
+    "citation": "Homer, Iliad 12.231–243",
     "speaker": "Hector, in Homer",
     "date": "c. 8th century BC (traditional)",
     "tier": "poetry",
     "original": {
       "lang": "grc",
-      "text": "Πουλυδάμα, σὺ μὲν οὐκέτ᾽ ἐμοὶ φίλα ταῦτ᾽ ἀγορεύεις· οἶσθα καὶ ἄλλον μῦθον ἀμείνονα τοῦδε νοῆσαι. εἰ δ᾽ ἐτεὸν δὴ τοῦτον ἐτήτυμον ἔκφατο μῦθον, σοὶ δέ τε θυμὸν ὄλεσσαν ἐνὶ φρεσὶ δαίμονες αὐτοί, ὅς κέ με φῇς Διὸς ἐκλελαθέσθαι ἐφετμέων, ἥν τέ μοι αὐτὸς ὑπέσχετο καὶ κατένευσεν· τὺ δέ μ᾽ οἰωνοῖσι τανυπτερύγεσσι κελεύεις πείθεσθαι, τῶν οὔ τι μετατρέπομ᾽ οὐδ᾽ ἀλεγίζω, εἴτ᾽ ἐπὶ δεξί᾽ ἴωσι πρὸς ἠῶ τ᾽ ἠέλιόν τε, εἴτ᾽ ἐπ᾽ ἀριστερὰ τοί γε ποτὶ ζόφον ἠερόεντα. ἡμεῖς δὲ μεγάλοιο Διὸς πειθώμεθα βουλῇ, ὃς πᾶσι θνητοῖσι καὶ ἀθανάτοισιν ἀνάσσει. εἷς οἰωνὸς ἄριστος ἀμύνεσθαι περὶ πάτρης.",
+      "text": "Πουλυδάμα, σὺ μὲν οὐκ ἔτ' ἐμοὶ φίλα ταῦτ' ἀγορεύεις· οἶσθα καὶ ἄλλον μῦθον ἀμείνονα τοῦδε νοῆσαι. εἰ δ' ἐτεὸν δὴ τοῦτον ἀπὸ σπουδῆς ἀγορεύεις, ἐξ ἄρα δή τοι ἔπειτα θεοὶ φρένας ὤλεσαν αὐτοί, ὃς κέλεαι Ζηνὸς μὲν ἐριγδούποιο λαθέσθαι βουλέων, ἅς τέ μοι αὐτὸς ὑπέσχετο καὶ κατένευσε· τύνη δ' οἰωνοῖσι τανυπτερύγεσσι κελεύεις πείθεσθαι, τῶν οὔ τι μετατρέπομ' οὐδ' ἀλεγίζω εἴτ' ἐπὶ δεξί' ἴωσι πρὸς ἠῶ τ' ἠέλιόν τε, εἴτ' ἐπ' ἀριστερὰ τοί γε ποτὶ ζόφον ἠερόεντα. ἡμεῖς δὲ μεγάλοιο Διὸς πειθώμεθα βουλῇ, ὃς πᾶσι θνητοῖσι καὶ ἀθανάτοισιν ἀνάσσει. εἷς οἰωνὸς ἄριστος ἀμύνεσθαι περὶ πάτρης.",
       "licence": "Public domain — ancient text (Monro–Allen, Oxford Classical Texts, Homeri Opera vol. I (1902)); see scripts/provenance.json"
     },
     "translations": [
@@ -258,7 +258,7 @@ export const passages = [
     "rules": [
       "R-SIDE"
     ],
-    "orthography": "Greek polytonic as in the Monro–Allen OCT received text. The cache scan (bwb_Y0-BSA-064_1.txt, archive.org owb_YO-BSA-064_1) is Monro–Allen OCT vol. I (Iliad 1–12, 1902); its OCR of the Greek is illegible, so the text above follows the received OCT wording with Butler as control and must be letter-checked against the scan image in phase 4c. Butler excerpt trimmed to the quoted span; line 237 opening words are covered by the literal note's context.",
+    "orthography": "Greek polytonic as in the Monro–Allen OCT received text. The cache scan (bwb_Y0-BSA-064_1.txt, archive.org owb_YO-BSA-064_1) is Monro–Allen OCT vol. I (Iliad 1–12, 1902); its OCR of the Greek is illegible, the text above was letter-checked in phase 4c against the Perseus TEI of the same Monro–Allen text (cache perseus-iliad-grc2.xml) and corrected to it (the 4b Greek had three lines in a different form); the scan image itself remains to be checked. Butler excerpt trimmed to the quoted span; lines 231–240 are outside the Butler excerpt.",
     "source": {
       "edition": "Monro–Allen, Oxford Classical Texts, Homeri Opera vol. I (1902)",
       "page": "Iliad 12.237–243 (scan owb_YO-BSA-064_1; printed page to confirm from image in 4c)",
@@ -286,7 +286,7 @@ export const passages = [
     "rules": [
       "R-TEMPLUM"
     ],
-    "orthography": "u/i normalised. Wording as quoted in PLAN §3.2 (R-TEMPLUM) from Servius on Aeneid 6.191. The cache holds Thilo–Hagen vol. II OCR (Aeneid 6–12: serviigrammatic02thilgoog.txt); the OCR at this locus is too corrupt to letter-verify the sentence, so the text is printed as received and flagged for image collation in 4c. No PD English exists (SOURCES); translation ours.",
+    "orthography": "u/i normalised. Wording as quoted in PLAN §3.2 (R-TEMPLUM) from Servius on Aeneid 6.191. The cache holds Thilo–Hagen vol. II OCR (Aeneid 6–12: serviigrammatic02thilgoog.txt); the OCR at this locus is too corrupt to letter-verify the sentence, so the text is printed as received and flagged for image collation in 4c. No PD English exists (SOURCES); translation ours. Phase 4c: the local Thilo PDFs proved to be the Aeneid IV–V (vol. I) and IX–XII (vol. II) fascicles only, so this locus could not be collated locally; the wording remains unverified and must not be quoted as letter-exact.",
     "source": {
       "edition": "Thilo–Hagen, Servii grammatici commentarii, vol. II (1884)",
       "page": "ad Aen. 6.191 (Thilo–Hagen II; OCR locus corrupt, page to confirm from scan in 4c)",
@@ -314,7 +314,7 @@ export const passages = [
     "rules": [
       "R-ASK"
     ],
-    "orthography": "u/i normalised; inpetratiua spelling retained as quoted in PLAN §3.2 (R-ASK). Same Thilo–Hagen vol. II cache and same collation caveat as serv-aen-6-191. Translation ours (no PD English).",
+    "orthography": "u/i normalised; inpetratiua spelling retained as quoted in PLAN §3.2 (R-ASK). Same Thilo–Hagen vol. II cache and same collation caveat as serv-aen-6-191. Translation ours (no PD English). Phase 4c: the local Thilo PDFs proved to be the Aeneid IV–V (vol. I) and IX–XII (vol. II) fascicles only, so this locus could not be collated locally; the wording remains unverified and must not be quoted as letter-exact.",
     "source": {
       "edition": "Thilo–Hagen, vol. II (1884)",
       "page": "ad Aen. 6.190 (page to confirm from scan in 4c)",
@@ -340,7 +340,7 @@ export const passages = [
       }
     ],
     "rules": [],
-    "orthography": "u/i normalised. The five-genera list as cited in PLAN §3.1 scope note. The cache Servius volume covers Aeneid 6–12 only, so Aen. 3.89 cannot be verified from local sources; the locus itself was already marked verify: in PLAN/SOURCES and remains open (see docs/PILOT.md, 4b passages). Text printed in the received form; translation ours.",
+    "orthography": "u/i normalised. The five-genera list as cited in PLAN §3.1 scope note. The cache Servius volume covers Aeneid 6–12 only, so Aen. 3.89 cannot be verified from local sources; the locus itself was already marked verify: in PLAN/SOURCES and remains open (see docs/PILOT.md, 4b passages). Text printed in the received form; translation ours. Phase 4c: the local Thilo PDFs proved to be the Aeneid IV–V (vol. I) and IX–XII (vol. II) fascicles only, so this locus could not be collated locally; the wording remains unverified and must not be quoted as letter-exact.",
     "source": {
       "edition": "Thilo–Hagen, vol. I (1881) — not in local cache",
       "page": "ad Aen. 3.89 (unverified; no local scan)",
@@ -355,20 +355,20 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "Oblatiua auguria refutari possunt: non enim necesse est ea quae non poscuntur accipere.",
+      "text": "Quod saepe petiui: quasi inpetratiuum hoc augurium uult uideri. Accipio agnoscoque deos: modo quasi de oblatiuo loquitur: nam in oblatiuis auguriis in potestate uidentis est, utrum id ad se pertinere uelit, an refutet et abominetur. Ergo nunc dicit se augurium libenter amplecti et agnoscere circa se fauorem deorum.",
       "licence": "Public domain — ancient text (Thilo–Hagen, vol. II (1884)); see scripts/provenance.json"
     },
     "translations": [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "Oblative auguries can be refused: there is no necessity to accept signs that were not asked for."
+        "text": "\"'What I often sought': he wants this augury to seem, as it were, impetrative [asked-for]. 'I accept and acknowledge the gods': now he speaks as if of an oblative [unasked] augury: for in oblative auguries it is in the seer's power whether he wishes it to pertain to him, or refuses and rejects it. So now he says that he gladly embraces the augury and acknowledges the gods' favour towards him.\" Servius is commenting on Tolumnius' words at Aeneid 12.259; the power to refuse an unasked sign is stated as the seer's."
       }
     ],
     "rules": [
       "R-DECLINE"
     ],
-    "orthography": "u/i normalised. Sense as cited for R-DECLINE in PLAN §3.2; the exact lemma wording at Aen. 12.259 could not be letter-verified in the corrupt Thilo vol. II OCR and is printed in received form for 4c image collation. This record must not be quoted as letter-exact until then. Translation ours.",
+    "orthography": "u/i normalised; lemmata sentence-cased. Letter-verified in phase 4c against the Thilo–Hagen vol. II scan image (printed p. 602, rendered from serviigrammatic02thilgoog.pdf). The 4b text was a received-form paraphrase and has been replaced by Servius' words. Translation ours.",
     "source": {
       "edition": "Thilo–Hagen, vol. II (1884)",
       "page": "ad Aen. 12.259 (lemma wording unverified in OCR; confirm from scan in 4c)",
@@ -598,7 +598,7 @@ export const passages = [
     "tier": "legend",
     "original": {
       "lang": "la",
-      "text": "Palatium Romulus, Remus Auentinum ad inaugurandum templa capiunt. Priori Remo augurium uenisse fertur, sex uoltures; iamque nuntiato augurio cum duplex numerus Romulo se ostendisset, utrumque regem sua multitudo consaluutauerat: tempore illi praecepto, at hi numero auium regnum trahebant. Inde cum altercatione congressi certamine irarum ad caedem uertuntur; ibi in turba ictus Remus cecidit.",
+      "text": "Palatium Romulus, Remus Auentinum ad inaugurandum templa capiunt. Priori Remo augurium uenisse fertur, sex uoltures; iamque nuntiato augurio cum duplex numerus Romulo se ostendisset, utrumque regem sua multitudo consalutauerat: tempore illi praecepto, at hi numero auium regnum trahebant. Inde cum altercatione congressi certamine irarum ad caedem uertuntur; ibi in turba ictus Remus cecidit.",
       "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
     "translations": [
@@ -610,7 +610,7 @@ export const passages = [
       {
         "label": "Augury literal note",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "Literally: \"those [Remus' men] dragged the kingship to themselves by priority of time, these [Romulus'] by the number of the birds\" (tempore illi praecepto, at hi numero auium regnum trahebant). Livy's finding-aid spelling uoltures/consaluutauerat is normalised in the Latin above to uoltures retained, consaluutauerat retained as transmitted. Two observers, two favourable signs, rival criteria — the Romulus/Remus gloss in the engine is an analogy, honestly labelled."
+        "text": "Literally: \"those [Remus' men] dragged the kingship to themselves by priority of time, these [Romulus'] by the number of the birds\" (tempore illi praecepto, at hi numero auium regnum trahebant). The finding aid's spelling uoltures is retained in the Latin above. Two observers, two favourable signs, rival criteria — the Romulus/Remus gloss in the engine is an analogy, honestly labelled."
       }
     ],
     "rules": [
@@ -921,7 +921,7 @@ export const passages = [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"Let this be enough, so that it may appear from examples that the force of ostenta is also in our power, and that they hold good only as each has been accepted. In the augurs' discipline at any rate it is agreed that neither dire signs nor any auspices pertain to those who, on entering upon any matter, have declared that they will not observe them — than which gift of divine indulgence there is none greater.\" Pliny's sentence would let even dire signs be disclaimed in advance; the engine takes the stricter course (a pertinent dire sign cannot be declined) and says so — see PLAN R-DECLINE."
+        "text": "\"Let this be enough, so that it may appear from examples that the force of ostenta is also in our power, and that they are effective as each has been accepted. In the augurs' discipline at any rate it is agreed that neither dire signs nor any auspices pertain to those who, on entering upon any matter, have declared that they will not observe them — than which gift of divine indulgence there is none greater.\" Pliny's sentence would let even dire signs be disclaimed in advance; the engine takes the stricter course (a pertinent dire sign cannot be declined) and says so — see PLAN R-DECLINE."
       }
     ],
     "rules": [
@@ -949,7 +949,7 @@ export const passages = [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"For as to [auspices] from sharp points [the military auspice from the standards' points? — the phrase ex acuminibus is obscure], which is the whole military auspice, that famous Marcus Marcellus, five times consul, gave it up altogether — the same man commander and best of augurs. And indeed he used to say that, whenever he wished to transact business, so as not to be hindered by auspices, he habitually travelled in a closed litter. Like to this is what we augurs prescribe, lest a yoked-team auspice occur, that they order the draught animals to be unyoked.\" Marcellus avoids seeing signs at all; that is refusal by blindness, and the engine's narrower decline of a single oblative sign is a reconstruction beside it."
+        "text": "\"For as to [auspices] from points (ex acuminibus), which is the whole military auspice, that famous Marcus Marcellus, five times consul, gave it up altogether — the same man commander and best of augurs. And indeed he used to say that, whenever he wished to transact business, so as not to be hindered by auspices, he habitually travelled in a closed litter. Like to this is what we augurs prescribe, lest a yoked-team auspice occur, that they order the draught animals to be unyoked.\" The phrase ex acuminibus (from points — of spears or standards) is obscure; Marcus calls it the whole military auspice. Marcellus avoids seeing signs at all; that is refusal by blindness, and the engine's narrower decline of a single oblative sign is a reconstruction beside it."
       }
     ],
     "rules": [
@@ -1056,20 +1056,20 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "Iulius Hyginus in libro quem de Vergilio fecit temere reprehendit Vergilium, quod Daedali pennas 'praepetibus' dixerit, quasi non omnes aues praepetes dici possint. Aues enim, inquit Nigidius, praepetes sunt quae prospera ac secunda faciunt auguria ac praeteruolando ante conspectum nostrum feruntur; 'inferae' autem, quae humili et depresso uolatu aduersa significant.",
+      "text": "In his Vergilii uersibus reprehendit Iulius Hyginus 'pennis praepetibus' quasi inproprie et inscite dictum. 'Nam praepetes' inquit 'aues ab auguribus appellantur, quae aut opportune praeuolant aut idoneas sedes capiunt.' Auibus autem 'praepetibus' contrarias aues 'inferas' appellari Nigidius Figulus in libro primo augurii priuati ita dicit: 'Discrepat dextra sinistrae, praepes inferae.' Ex quo est coniectare 'praepetes' appellatas, quae altius sublimiusque uolitent, cum differre a 'praepetibus' Nigidius 'inferas' dixerit.",
       "licence": "Public domain — ancient text (Hertz–Hosius, Teubner 1903 (OCR agelliinoctiumat01gelluoft, bks 1–10)); see scripts/provenance.json"
     },
     "translations": [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"Julius Hyginus in the book he wrote on Vergil rashly faulted Vergil for calling Daedalus' wings 'praepetes' [Aeneid 6.15], as if not all birds could be called praepetes. For birds, says Nigidius [as Gellius reports the debate], are praepetes which make favourable and prosperous auguries and in flying past are borne before our sight; 'inferae' [low ones] are those which with low, sunken flight signify adverse things.\" Gellius' chapter is a defence of Vergil's word-choice through the augural terminology; its value here is the praepes/infera opposition — onward/favourable against low/adverse — behind the engine's single flight factor."
+        "text": "\"In these verses of Vergil [Aeneid 6.14–15, Daedalus 'on praepetes wings'] Julius Hyginus finds fault with 'pennis praepetibus' as improperly and ignorantly said. 'For birds are called praepetes by the augurs,' he says, 'which either fly in front at the right moment or take suitable settling-places.' But that birds opposite to the praepetes are called 'inferae' [low ones], Nigidius Figulus in the first book of his Private Augury says as follows: 'Right differs from left, the praepes from the infera.' From which one may infer that birds are called praepetes which fly higher and more aloft, since Nigidius said that the inferae differ from the praepetes.\" Gellius' chapter (7.6 in Hertz's numbering, 6.6 vulgo) defends Vergil's word-choice; Hyginus' augural definition and Nigidius' praepes/infera opposition are the evidence behind the engine's single flight factor."
       }
     ],
     "rules": [
       "R-PRAEPES"
     ],
-    "orthography": "u/i normalised. Chapter heading verified in Hertz–Hosius OCR (agelliinoctiumat01gelluoft.txt, Capitula lib. VII: \"Temere inepteque reprehensum esse a Iulio Hygino Vergilium, quod 'praepetes' Daedali pennas dixerit; atque inibi, quid sint aves praepetes et quid illae sint aves, quas Nigidius 'inferas' appellavit\"). Body wording above follows the received Hertz text in summary-quotation form; the OCR body at this chapter was not legible enough for letter-verification, so 4c must check every word against the scan. Do not quote as letter-exact until then. Translation ours (Rolfe Loeb not used, per SOURCES).",
+    "orthography": "u/i normalised. Transcribed in phase 4c from the Hertz–Hosius OCR (agelliinoctiumat01gelluoft.txt), where the chapter stands at printed pp. 289–290 (VII (VI) 6, §§2–3 and 10–11, quoted here); OCR spellings such as VergiHum, pemiis, uimis are corrected against sense and recorded here per STYLE §9. The 4b text was a summary in Latin dress and has been replaced by Gellius' words. Chapter heading verified in the same OCR (Capitula lib. VII: \"Temere inepteque reprehensum esse a Iulio Hygino Vergilium, quod 'praepetes' Daedali pennas dixerit; atque inibi, quid sint aves praepetes et quid illae sint aves, quas Nigidius 'inferas' appellavit\"). Translation ours (Rolfe Loeb not used, per SOURCES).",
     "source": {
       "edition": "Hertz–Hosius, Teubner 1903 (OCR agelliinoctiumat01gelluoft, bks 1–10)",
       "page": "Noctes Atticae 7.6 [vulgo 6.6] (heading OCR-verified; body page to confirm in 4c)",
@@ -1196,20 +1196,20 @@ export const passages = [
     "tier": "technical",
     "original": {
       "lang": "la",
-      "text": "Admissiuae aues dicebantur ab auguribus, quae consulentem iuberent. Cliuiae aues, quae fieri aliquid prohibent.",
+      "text": "Admissiuae aues dicebantur ab auguribus, quae consulentem iuberent. Cliuia auspicia dicebant, quae aliquid fieri prohibebant; omnia enim difficilia cliuia uocabant, unde et cliui loca ardua.",
       "licence": "Public domain — ancient text (Lindsay, Teubner 1913); see scripts/provenance.json"
     },
     "translations": [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"'Allowing' birds (admissiuae) were so called by the augurs, [birds] which bid the consulter [proceed]. 'Prohibiting' birds (cliuiae), which prohibit something from being done.\" Admissiuae is verbatim from Paulus (Lindsay p. 9: \"Admissivae aves dicebantur ab auguribus, quae consulentem iuberent\"). The Cliuiae lemma could not be located letter-for-letter in the Lindsay OCR in the cache; the wording printed is the received Paulus gloss and is flagged unverified — it must be checked against the scan (or Thewrewk) in 4c before being quoted as exact."
+        "text": "\"'Allowing' birds (admissiuae) were so called by the augurs, [birds] which bid the consulter [proceed]. 'Prohibiting' auspices (cliuia auspicia) they called those which prohibited something from being done; for they called all difficult things cliuia, whence also cliui [slopes] are steep places.\" Admissiuae is Paulus (Lindsay p. 9); Cliuia auspicia is Lindsay p. 56, located in phase 4c in both Festus OCRs — the lemma is about auspicia, not aues, and the 4b wording ('Cliuiae aues, quae fieri aliquid prohibent') has been replaced by Lindsay's text."
       }
     ],
     "rules": [
       "R-CLEAR"
     ],
-    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR where Lindsay's OCR fails; OCR corrections are listed here per STYLE §9. No PD English exists; translation ours. Admissiuae OCR-confirmed (\"consulen-tem iuberent\", hyphen rejoined). Cliuiae: search of both Festus OCR files found no legible lemma (see docs/PILOT.md, 4b passages) — received form printed, unverified.",
+    "orthography": "u/i normalised. Transcribed from Lindsay 1913 OCR (bwb_C0-AXI-081.txt), cross-checked against Thewrewk 1889 OCR; hyphenation in consulen-tem rejoined. Cliuia auspicia located in phase 4c at Lindsay p. 56 in both OCRs (the 4b search missed it). Translation ours (no PD English).",
     "source": {
       "edition": "Lindsay, Teubner 1913",
       "page": "s.v. Admissivae (Pauli exc. p. 31–22 M, Lindsay p. 9); s.v. Cliviae (unlocated in OCR)",
@@ -1272,7 +1272,7 @@ export const passages = [
   },
   {
     "id": "valmax-1-4-3",
-    "citation": "Valerius Maximus, Facta et dicta memorabilia 1.4.3",
+    "citation": "Valerius Maximus, Facta et dicta memorabilia 1.4.3–4",
     "speaker": "Valerius Maximus",
     "date": "c. AD 30",
     "tier": "history",
@@ -1330,18 +1330,18 @@ export const passages = [
     "tier": "history",
     "original": {
       "lang": "la",
-      "text": "P. Claudius Pulcher consul, aduersis auspiciis, iussis immergi pullis qui in auspicium exire noluerant, contra Poenos infeliciter classe pugnauit et, reuocatus a senatu dictatorem dicere iussus, Claudium Glyciam dixit.",
+      "text": "Claudius Pulcher cos. contra auspicia profectus — iussit mergi pullos, qui cibari nolebant — infeliciter aduersus Carthaginienses classe pugnauit, et reuocatus a senatu iussusque dictatorem dicere Claudium Glyciam dixit.",
       "licence": "Public domain — ancient text (Rossbach, Teubner 1910); see scripts/provenance.json"
     },
     "translations": [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"The consul Publius Claudius Pulcher, with the auspices adverse — having ordered the chickens which had refused to come out for the auspice to be plunged [into the sea] — fought unsuccessfully at sea against the Carthaginians and, recalled by the senate and ordered to name a dictator, named Claudius Glycias.\" The epitome compresses the whole Drepana story into refusal + plunging + defeat; again no flap/cry/fly outcome."
+        "text": "\"Claudius Pulcher the consul, having set out against the auspices — he had ordered the chickens, which would not be fed, to be drowned — fought unsuccessfully at sea against the Carthaginians and, recalled by the senate and ordered to name a dictator, named Claudius Glycias.\" The epitome compresses the whole Drepana story into refusal + drowning + defeat; again no flap/cry/fly outcome. Rossbach's apparatus records Heinsius' conjecture 'iussis immergi pullis' for the transmitted 'iussit mergi pullos' printed here."
       }
     ],
     "rules": [],
-    "orthography": "u/i normalised. Rossbach 1910 OCR (tliviperiochaeom00unse.txt): the Per. 19 text stands at printed pp. 23–24; the apparatus there confirms \"iussis immergi pullis\" but the OCR text-line is corrupt, so the wording above follows Rossbach's received text and every word is owed an image check in 4c. Do not quote as letter-exact until then. Translation ours.",
+    "orthography": "u/i normalised. Transcribed in phase 4c from Rossbach 1910 OCR (tliviperiochaeom00unse.txt), Periocha 19 (EX LIBRO XVIIII), printed pp. 23–24; OCR hyphenation (dicta-torem) rejoined. The 4b wording followed Heinsius' conjectured variant in Rossbach's apparatus and has been replaced by Rossbach's text. Translation ours.",
     "source": {
       "edition": "Rossbach, Teubner 1910",
       "page": "Periocha 19, printed pp. 23–24 (OCR apparatus confirms immergi pullis; text-line corrupt)",
@@ -1350,24 +1350,24 @@ export const passages = [
   },
   {
     "id": "cic-div-2-85",
-    "citation": "Cicero, De divinatione 2.85",
+    "citation": "Cicero, De divinatione 2.84",
     "speaker": "Marcus, in Cicero, De divinatione 2",
     "date": "44 BC",
     "tier": "marcus",
     "original": {
       "lang": "la",
-      "text": "Cum M. Crassus exercitum Brundisii imponeret, quidam in portu caricas Cauno aduectas uendens \"Cauneas\" clamabat. Dicamus, si placet, monitum ab eo Crassum caue ne eas, id est, ne iret; non fuisse periturum, si omini paruisset.",
+      "text": "Cum M. Crassus exercitum Brundisii imponeret, quidam in portu caricas Cauno aduectas uendens \"Cauneas\" clamitabat. Dicamus, si placet, monitum ab eo Crassum, caueret ne iret; non fuisse periturum, si omini paruisset.",
       "licence": "Public domain — ancient text (Latin Library text (finding aid only; no pinned scan in cache)); see scripts/provenance.json"
     },
     "translations": [
       {
         "label": "Augury (literal)",
         "licence": "CC BY 4.0 — Augury (Jake Proctor)",
-        "text": "\"When Marcus Crassus was embarking his army at Brundisium, a man in the harbour selling figs brought from Caunus was crying 'Cauneas' [Caunian (figs)]. Let us say, if you please, that Crassus was warned by him 'caue ne eas' — take care not to go, that is, not to set out; [and] that he would not have perished if he had obeyed the omen.\" Marcus tells the fig-seller pun to ridicule verbal omens (omina), a kind this instrument does not take; the passage is quoted so the exclusion can be seen in the source, not as authority for any rule."
+        "text": "\"When Marcus Crassus was embarking his army at Brundisium, a man in the harbour selling figs brought from Caunus kept crying 'Cauneas' [Caunian (figs)]. Let us say, if you please, that Crassus was warned by him to take care not to go; [and] that he would not have perished if he had obeyed the omen.\" The cry Cauneas sounds like caue ne eas, 'take care not to go' — that pun is the whole omen, and Cicero's Latin only paraphrases it (caueret ne iret). Marcus tells the fig-seller pun to ridicule verbal omens (omina), a kind this instrument does not take; the passage is quoted so the exclusion can be seen in the source, not as authority for any rule."
       }
     ],
     "rules": [],
-    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). Span begins at §84 end in the finding aid ('Cum M. Crassus...'); cited as 2.85 in PLAN's reading list — section boundary to confirm in 4c.",
+    "orthography": "u/i normalised (docs/STYLE.md §5). Transcribed from the Latin Library HTML finding aid in scripts/.cache/sources/ (UTF-16 files decoded where needed); under the provenance rule the pinned scan is copy-text and this remains provisional until phase 4c collation. Our literal translation is printed; the PD Yonge/Spillan version in the cache is not reproduced verbatim in this record (see docs/PILOT.md, 4b passages). The span is §84 in the finding aid ('Cum M. Crassus...' stands under its section number 84; §85 begins 'Sortes restant'); PLAN's reading list cited it as 2.85 in error — citation corrected in the phase 4c collation, which also restored clamitabat and caueret ne iret (the 4b Latin had the pun's gloss written into the text). The record id keeps the old number.",
     "source": {
       "edition": "Latin Library text (finding aid only; no pinned scan in cache)",
       "page": "Cic. Div. 2.84–85 (fig-seller omen)",

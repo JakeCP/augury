@@ -42,9 +42,12 @@ const TAG_DEFECTS = [
 // six bare "you will inherit" lines (all routed to q62) and four
 // deleted filler lines about working.
 const NULL_TAGS = ['1:7', '6:1', '7:6', '17:10', '59:5', '63:2', '82:3', '88:4', '90:9', '91:5'];
-// Lines carrying an apparatus note (Hercher deletion / conjecture /
-// corrupt printed text; docs/STYLE.md §8, docs/PILOT.md §7).
-const APPARATUS_LINES = ['36:1', '40:3', '43:9', '46:1', '47:5', '51:1', '63:2', '63:7', '68:3', '82:3', '88:4', '88:5', '91:5', '92:8', '95:4', '95:7', '97:10', '103:1', '103:10'];
+// Lines carrying an apparatus note: the 19 Hercher deletion /
+// conjecture / corrupt-print lines of phase 4b (docs/PILOT.md §7),
+// plus phase 4c additions under the lead's rules (docs/REVIEW_4C.md):
+// loanword glosses (komitaton/biopragos/dekaprotos/phyratēs lines)
+// and reachable sense-reversing manuscript splits.
+const APPARATUS_LINES = ['2:8', '8:2', '9:3', '9:10', '12:7', '13:5', '16:7', '20:10', '25:7', '25:10', '26:7', '28:10', '29:9', '30:2', '32:6', '36:1', '40:3', '43:9', '46:1', '47:5', '51:1', '51:9', '54:3', '55:1', '55:5', '57:3', '57:7', '57:8', '57:10', '58:1', '58:2', '58:4', '58:5', '58:7', '58:8', '58:9', '58:10', '60:1', '63:2', '63:5', '63:7', '64:3', '65:4', '66:1', '66:8', '67:2', '67:9', '68:3', '69:10', '72:4', '73:5', '77:2', '81:6', '82:3', '83:3', '85:5', '87:6', '88:4', '88:5', '88:7', '89:1', '89:6', '91:5', '91:8', '92:8', '94:4', '95:4', '95:7', '97:10', '99:2', '100:4', '100:8', '102:5', '103:1', '103:8', '103:10'];
 const KNOWN_RULE_IDS = new Set([...Object.keys(RULE_EVIDENCE), ...Object.values(BIRDS).map((b) => b.ruleId)]);
 // 'balbus' (ND 2.7) has no tier in PLAN §3 yet; see docs/PILOT.md.
 const KNOWN_TIERS = new Set(['technical', 'quintus', 'marcus', 'draft-law', 'legend', 'history', 'comedy', 'natural-history', 'poetry', 'reconstruction', 'balbus']);

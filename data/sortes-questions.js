@@ -560,7 +560,7 @@ export const questions = [
   {
     "n": 78,
     "grc": "εἰ λήψομαι κομητάτον",
-    "en": "Will I receive a komitaton?",
+    "en": "Will I receive a place in the imperial retinue?",
     "themes": [
       "status-and-office",
       "business-and-money"
@@ -714,7 +714,7 @@ export const questions = [
   {
     "n": 96,
     "grc": "εἰ ἀπαλλαγήσομαι τοῦ κλήρου",
-    "en": "Will I be rid of the lot?",
+    "en": "Will I be rid of the clergy?",
     "themes": [
       "religion",
       "status-and-office"
