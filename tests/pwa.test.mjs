@@ -14,24 +14,16 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const exists = (rel) => fs.existsSync(path.join(ROOT, rel));
 
-// Explicit pending lists (phase 5 runs while phase 4 writes data/ and
-// before the lead rasterizes the icon PNGs with a browser). A path on
-// one of these lists may be absent — and is REPORTED by name below —
-// anything else missing fails, because one 404 in cache.addAll kills
-// the whole offline install. Empty these lists as the files land.
-const PENDING_CONTENT = [
-  'data/passages.js', 'data/sortes-questions.js', 'data/sortes-table.js', 'data/sortes-decades.js',
-];
-const PENDING_ICONS = [
+// All content and icons have landed (phase 4b): every precached and
+// manifest path must exist, because one 404 in cache.addAll kills
+// the whole offline install. No pending allowance remains.
+const SHIPPED_ICONS = [
   'icons/apple-touch-icon.png', 'icons/favicon-32.png', 'icons/icon-192.png', 'icons/icon-512.png',
   'icons/icon-maskable-192.png', 'icons/icon-maskable-512.png', 'icons/icon-monochrome-512.png',
 ];
-const PENDING = new Set([...PENDING_CONTENT, ...PENDING_ICONS]);
 
-function existsOrPending(t, rel, what) {
-  if (exists(rel)) return;
-  assert.ok(PENDING.has(rel), `${what} missing from repo (and not on the pending list): ${rel}`);
-  t.diagnostic(`pending ${what}: ${rel} — on the explicit pending list; the app shell points at its final path`);
+function mustExist(rel, what) {
+  assert.ok(exists(rel), `${what} missing from repo: ${rel}`);
 }
 
 // The precache list is a plain string array in sw.js so it can be checked
@@ -54,17 +46,15 @@ test('sw.js: parses, versioned augury-v<N> cache, no waiting worker', () => {
     'activate deletes every older cache');
 });
 
-test('sw.js: every precached path exists on disk or is pending (reported)', (t) => {
+test('sw.js: every precached path exists on disk', () => {
   const urls = precacheUrls();
   assert.ok(urls.length > 0, 'precache list is empty');
   for (const url of urls) {
     assert.ok(!url.startsWith('/'), `precache path must be relative: ${url}`);
     assert.ok(!url.startsWith('http'), `precache path must not be absolute: ${url}`);
     const rel = url === './' ? 'index.html' : url.split('?')[0];
-    existsOrPending(t, rel, 'precached path');
+    mustExist(rel, 'precached path');
   }
-  const stillPending = [...PENDING].filter((rel) => !exists(rel));
-  t.diagnostic(`pending list: ${PENDING.size} paths; still missing: ${stillPending.join(', ') || 'none'}`);
 });
 
 test('sw.js: app shell and all data modules precached', () => {
@@ -77,6 +67,7 @@ test('sw.js: app shell and all data modules precached', () => {
     'js/views/sortes.js', 'js/views/texts.js', 'js/views/dome.js', 'js/views/helpers.js',
     'fonts/cinzel.woff2', 'fonts/eb-garamond.woff2', 'fonts/eb-garamond-italic.woff2',
     'data/passages.js', 'data/sortes-questions.js', 'data/sortes-table.js', 'data/sortes-decades.js',
+    'data/sortes-moon.js', 'data/sortes-frame.js',
     'img/birds/raven.svg', 'img/birds/chickens.svg',
     'manifest.webmanifest', 'favicon.svg', 'icons/apple-touch-icon.png',
   ]) {
@@ -107,7 +98,7 @@ test('sw.js: total precache weight within budget (2 MB)', (t) => {
   assert.ok(total < 2_000_000, `precache too heavy: ${total} bytes`);
 });
 
-test('manifest: installable, relative, one fallback theme colour, icons exist or pending', (t) => {
+test('manifest: installable, relative, one fallback theme colour, icons exist', () => {
   const man = JSON.parse(read('manifest.webmanifest'));
   assert.equal(man.short_name, 'Augury');
   assert.match(man.name, /^Augury/);
@@ -123,7 +114,7 @@ test('manifest: installable, relative, one fallback theme colour, icons exist or
   assert.ok(anySizes.has('192x192') && anySizes.has('512x512'), 'any icons at 192 and 512');
   for (const icon of man.icons) {
     assert.ok(!icon.src.startsWith('/'), `manifest icon must be relative: ${icon.src}`);
-    existsOrPending(t, icon.src, 'manifest icon');
+    mustExist(icon.src, 'manifest icon');
   }
 });
 
@@ -144,7 +135,7 @@ test('icons: lituus seal sources + build script cover the full shipped set', () 
   // The build script rasterizes exactly the shipped PNG set.
   const build = read('scripts/build-icons.mjs');
   const outs = [...build.matchAll(/out: '([^']+)'/g)].map((m) => m[1]).sort();
-  assert.deepEqual(outs, [...PENDING_ICONS].map((p) => path.basename(p)).sort());
+  assert.deepEqual(outs, [...SHIPPED_ICONS].map((p) => path.basename(p)).sort());
   assert.match(build, /icons\/src\/icon\.svg/, 'builds from icons/src/');
 });
 

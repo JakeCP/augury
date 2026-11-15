@@ -1,6 +1,12 @@
 // Pure view helpers (tested): escaping, dome geometry, sign inventory, formatting.
 import { norm, sideOf, quarterOf } from '../compass.js';
 export const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// Blank-line-separated text as paragraphs (single newlines become spaces).
+export function parasHTML(text, attrs = '') {
+  const a = attrs ? ` ${attrs}` : '';
+  return String(text ?? '').split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)
+    .map((part) => `<p${a}>${esc(part.replace(/\s*\n\s*/g, ' '))}</p>`).join('');
+}
 export function fracText(f) { if (!f) return '0'; return f.den === 1 ? String(f.num) : `${f.num}/${f.den}`; }
 export function relToXY(relDeg, r = 0.78, cx = 100, cy = 100, R = 92) {
   const a = (norm(relDeg) - 90) * Math.PI / 180; // front (rel 0) at top
@@ -34,6 +40,7 @@ const TIERS = Object.freeze({
   technical: Object.freeze({ label: 'technical', title: 'Antiquarian and technical gloss of augural practice — Festus, Varro, Servius.' }),
   'draft-law': Object.freeze({ label: 'Cicero’s draft laws', title: 'Cicero’s proposed law-code in De Legibus — his draft, not recorded augural law.' }),
   reconstruction: Object.freeze({ label: 'our reconstruction', title: 'Our decision where the sources are silent — every weight, factor and threshold.' }),
+  'sortes-frame': Object.freeze({ label: 'the Sortes book itself', title: 'The frame of the Sortes Astrampsychi in Hercher’s 1863 edition — the book’s own letter, method, prayer and instructions.' }),
 });
 export const TIER_LABELS = Object.freeze(Object.fromEntries(Object.entries(TIERS).map(([k, v]) => [k, v.label])));
 export const TIER_TITLES = Object.freeze(Object.fromEntries(Object.entries(TIERS).map(([k, v]) => [k, v.title])));

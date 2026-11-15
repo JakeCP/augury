@@ -68,6 +68,12 @@ def subset(src, dest, chars):
     if r.returncode != 0:
         print(r.stdout); print(r.stderr); raise SystemExit(f"subset failed for {src}")
     print(f"  wrote   {dest.relative_to(ROOT)} ({dest.stat().st_size} bytes)")
+# Astrological planet glyphs (data/sortes-frame.js, transcribing
+# Hercher's printed glyphs — symbols, not Greek/Latin letters).
+# Upstream EB Garamond has no glyphs for them, so no subset can
+# contain them; browsers render them by per-glyph fallback in the
+# serif stack. Listed here so the check reports them, not hides them.
+FALLBACK_GLYPHS = set("☉♂♃♄")
 def check_coverage():
     from fontTools.ttLib import TTFont
     ok = True
@@ -82,7 +88,9 @@ def check_coverage():
         gap = [c for c in probes if ord(c) not in cmap]
         if gap: ok = False; print(f"  FAIL    {fname} missing polytonic: {''.join(gap)}")
         else: print(f"  ok      {fname} covers polytonic Greek probes")
-        nonascii_missing = [c for c in missing if ord(c) > 0x7F]
+        fallback = [c for c in missing if c in FALLBACK_GLYPHS]
+        if fallback: print(f"  note    {fname}: {''.join(fallback)} have no EB Garamond glyph upstream — serif fallback renders them")
+        nonascii_missing = [c for c in missing if ord(c) > 0x7F and c not in FALLBACK_GLYPHS]
         if nonascii_missing: ok = False; print(f"  FAIL    {fname} missing source chars: {''.join(nonascii_missing[:40])}")
     cz = FONTS_DIR / "cinzel.woff2"
     if not cz.exists(): print("  FAIL    cinzel.woff2 missing"); ok = False

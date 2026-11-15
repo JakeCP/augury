@@ -20,7 +20,7 @@ test('contrast math: known ratios', () => {
   assert.ok(Math.abs(contrastRatio('#000000', '#ffffff') - 21) < 0.01, 'black on white is 21:1');
   assert.equal(contrastRatio('#9b2a1a', '#9b2a1a'), 1);
   const redOnPaper = contrastRatio(SCHEMES.light.red, SCHEMES.light.paper);
-  assert.ok(redOnPaper > 6 && redOnPaper < 7, `red ink on paper ~6.5:1 (got ${redOnPaper.toFixed(2)})`);
+  assert.ok(redOnPaper > 7 && redOnPaper < 7.5, `Pompeian red on paper ~7.1:1 (Phase 6; got ${redOnPaper.toFixed(2)})`);
   // PLAN §8's stated figures: rule 1.55:1 decoration-only, bronze 5.4:1.
   assert.ok(Math.abs(contrastRatio(SCHEMES.light.rule, SCHEMES.light.paper) - 1.55) < 0.05);
   assert.ok(Math.abs(contrastRatio(SCHEMES.light.bronze, SCHEMES.light.paper) - 5.4) < 0.1);

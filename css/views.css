@@ -1,10 +1,43 @@
-/* Home: a quiet threshold — mark, one line, a horizon; hairline list, no boxes. */
+/* Home: a quiet threshold — mark, one line, the garden fresco; hairline list, no boxes. */
 .home{padding-top:1.2rem}
 .home-hero{text-align:center}
 .home-mark .lituus{width:72px;height:72px;color:var(--red)}
 .wordmark{font-size:2.7rem;margin:.1em 0}
 .home .lede{max-width:32rem;margin:.5rem auto 1.4rem}
 .home-figure{margin:1rem auto 0;max-width:460px}
+/* The home fresco panel: the painting matted on the card cream inside
+   a red frame with a gold inner rule, like a panel on the wall. */
+.fresco-frame{border:1px solid var(--red);box-shadow:inset 0 0 0 3px var(--card),inset 0 0 0 4px var(--gold);background:var(--card);padding:.55rem;border-radius:2px}
+.fresco-frame img{display:block;width:100%;height:auto}
+/* Dim the painted fresco at night so it does not glare. */
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .fresco-frame img,:root:not([data-theme=light]) .stage-art,:root:not([data-theme=light]) .side-figure{filter:brightness(.82) saturate(.9)}}
+:root[data-theme=dark] .fresco-frame img,:root[data-theme=dark] .stage-art,:root[data-theme=dark] .side-figure{filter:brightness(.82) saturate(.9)}
+/* Desktop side walls (1200px+). main becomes a three-column grid —
+   wall | the view | wall — and each wall slot is painted Pompeian red
+   from the frieze down to the dado, like the content is a cream panel
+   set into a painted wall. A figure stands in each wall (sticky, so it
+   stays in view while scrolling); the right one faces back toward the
+   column. body[data-section] (js/app.js) picks the figure per section;
+   for now the rite has the augur on both walls, confronted. Below
+   1200px the slots are display:none and the phone layout is unchanged.
+   Wide views keep their 1148px measure and only gain walls at 1700px+. */
+.side-figure{display:none}
+@media(min-width:1200px){
+  main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,720px) minmax(0,1fr);max-width:none;align-items:start;column-gap:clamp(1.5rem,3vw,3rem)}
+  main:has(.view.templum),main:has(.view.watch),main:has(.view.verdict-view),main:has(.view.text-page),main:has(.view.home){grid-template-columns:minmax(0,1fr) minmax(0,1148px) minmax(0,1fr)}
+  #app{grid-column:2;grid-row:1;min-width:0}
+  main>noscript{grid-column:2}
+  .side-figure{grid-row:1;align-self:stretch;width:min(260px,100%);margin:-1rem 0 -3rem;background:#8f2a1c;box-shadow:inset 0 0 0 6px #8f2a1c,inset 0 0 0 7px rgba(217,164,65,.55)}
+  .side-figure--left{grid-column:1;justify-self:end}
+  .side-figure--right{grid-column:3;justify-self:start}
+  body[data-section="rite"] .side-figure{display:block}
+  .side-panel{display:block;margin:0;position:sticky;top:4.5rem;padding:1.5rem 0 1rem}
+  .side-panel img{display:block;width:100%;height:auto;max-height:calc(100dvh - 7rem);object-fit:contain;object-position:bottom}
+  .side-figure--right .side-panel img{transform:scaleX(-1)}
+}
+@media(min-width:1200px) and (max-width:1699px){
+  main:has(.view.templum) .side-figure,main:has(.view.watch) .side-figure,main:has(.view.verdict-view) .side-figure,main:has(.view.text-page) .side-figure,main:has(.view.home) .side-figure{display:none}
+}
 .horizon{width:100%;height:auto;display:block}
 .horizon .hz-wash{fill:var(--wash)}
 .horizon .hz-line{stroke:var(--ink);stroke-width:1.6;fill:none}
@@ -15,14 +48,15 @@
 .home-links{margin:2rem 0 1rem;text-align:left}
 .home-links a{display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .9rem;padding:.75rem .1rem;border-top:1px solid var(--rule);color:var(--ink);text-decoration:none;min-height:48px;min-width:0}
 .home-links a:last-child{border-bottom:1px solid var(--rule)}
-.home-links a:hover .hl-name,.home-links a:focus-visible .hl-name{text-decoration:underline;text-underline-offset:.18em}
+.home-links a:hover .hl-name,.home-links a:focus-visible .hl-name{color:var(--red);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--gold)}
 .hl-name{font-family:Cinzel,serif;font-size:1.12rem;letter-spacing:.05em}
 .hl-gloss{font-style:italic;font-size:.98rem;opacity:.75;margin-left:auto;text-align:right;min-width:0}
 @media(min-width:960px){
   /* Fill the tall screen instead of huddling in its top half: the home
      view stretches between header and footer and centres within it. */
   .view.home{max-width:1120px;min-height:calc(100dvh - 12rem);display:flex;flex-direction:column;justify-content:center;padding-top:2rem;padding-bottom:1rem}
-  .home-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:3rem;align-items:center;text-align:left;padding-top:1.5rem}
+  /* Fresco and hero roughly equal in height, fresco a touch larger. */
+  .home-hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:3rem;align-items:center;text-align:left;padding-top:1.5rem}
   .home-hero>*{min-width:0}
   .home .lede{margin-left:0}
   .home-figure{margin:0;max-width:none}
@@ -46,28 +80,38 @@
 .bearing-line{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;min-width:0}
 .bearing-line>span{min-width:0;overflow-wrap:break-word}
 .conceptio{font-size:1.3rem;text-align:center;margin:1.2rem 0 .2rem;overflow-wrap:break-word}
-.there{width:100%;min-height:84px;font-family:Cinzel,serif;font-size:1.8rem;background:var(--red);border-color:var(--red);color:#fff8ee;border-radius:16px}
+/* The great red button of the watch, gold-ruled within. */
+.there{width:100%;min-height:84px;font-family:Cinzel,serif;font-size:1.8rem;background:var(--red-fill);border:1px solid var(--red-fill);box-shadow:inset 0 0 0 3px var(--red-fill),inset 0 0 0 4.5px var(--gold);color:var(--on-red);border-radius:4px}
 .timer-arc{width:100%;height:auto}.arc-bg{fill:var(--rule)}.arc-fg{fill:var(--red)}
 .watch-clock{font-size:1.2rem}.sign-list{list-style:none;padding:0}
 .sign-row{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px solid var(--rule);padding:.5rem 0;flex-wrap:wrap;min-width:0}
 .sign-row>span{min-width:0;overflow-wrap:anywhere}
 /* Sign sheet: a scrolling body between a fixed heading and a sticky
-   action footer, so "Enter the sign" is never clipped or scrolled away. */
+   action footer, so "Enter the sign" is never clipped or scrolled away.
+   Fresco treatment: a red frame and a gold rule under the heading. */
 .sheet-backdrop{position:fixed;inset:0;background:rgba(20,16,10,.55);z-index:10;display:flex;align-items:flex-end;justify-content:center;min-width:0}
-.sheet{background:var(--paper);color:var(--ink);width:100%;max-width:760px;max-height:92dvh;overflow:hidden;border-radius:16px 16px 0 0;padding:0;min-width:0;display:flex;flex-direction:column}
+.sheet{background:var(--paper);color:var(--ink);width:100%;max-width:760px;max-height:92dvh;overflow:hidden;border:1px solid var(--red);border-bottom:none;border-radius:6px 6px 0 0;padding:0;min-width:0;display:flex;flex-direction:column}
 .sheet>h2{flex:none;margin:.9rem 1rem .3rem}
 .sheet-form{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0}
 .sheet-scroll{overflow:auto;flex:1;min-height:0;min-width:0;padding:.2rem 1rem 1rem;-webkit-overflow-scrolling:touch}
-.sheet-actions{position:sticky;bottom:0;flex:none;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;background:var(--paper);border-top:1px solid var(--rule);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom))}
+.sheet-actions{position:sticky;bottom:0;flex:none;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;background:var(--paper);border-top:2px solid var(--red);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom))}
 .sheet-actions .btn{min-width:0}
 .sheet-actions .btn.primary{flex:1}
-@media(min-width:760px){.sheet-backdrop{align-items:center}.sheet{border-radius:16px}.sheet-actions{border-radius:0 0 16px 16px}}
+@media(min-width:760px){.sheet-backdrop{align-items:center}.sheet{border-radius:6px;border-bottom:1px solid var(--red)}.sheet-actions{border-radius:0 0 6px 6px}}
 .bird-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;min-width:0}
 .bird-grid>*{min-width:0}
-.bird-pick{position:relative;display:flex;flex-direction:column;gap:.25rem;border:1.5px solid var(--ink);border-radius:10px;padding:.45rem .5rem;cursor:pointer;align-items:stretch;min-width:0;min-height:48px}
-.bird-pick:has(input:checked){outline:3px solid var(--red);outline-offset:-1px}
+/* Bird picks: framed fresco tiles like the other radios. The ink bird
+   (an <img>) is filtered to cream on the red ground when picked, and
+   to cream on the dark ground at night, where black ink would vanish. */
+.bird-pick{position:relative;display:flex;flex-direction:column;gap:.25rem;border:1px solid var(--red);box-shadow:inset 0 0 0 3px var(--card),inset 0 0 0 4px var(--gold);background:var(--card);border-radius:2px;padding:.5rem 1.3rem .5rem .55rem;cursor:pointer;align-items:stretch;min-width:0;min-height:48px}
+.bird-pick:has(input:checked){background:var(--red-fill);color:var(--on-red);box-shadow:inset 0 0 0 3px var(--red-fill),inset 0 0 0 4px var(--gold)}
+.bird-pick:has(input:checked)::after{content:"";position:absolute;top:.55rem;right:.55rem;width:8px;height:8px;transform:rotate(45deg);background:var(--gold-pale)}
+.bird-pick:has(input:checked) img{filter:invert(93%) sepia(22%) saturate(55%)}
 .bird-pick:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
 .bird-pick input{position:absolute;opacity:0;width:1px;height:1px}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .bird-pick img{filter:invert(88%) sepia(16%) saturate(60%)}:root:not([data-theme=light]) .bird-pick:has(input:checked) img{filter:invert(93%) sepia(22%) saturate(55%)}}
+:root[data-theme=dark] .bird-pick img{filter:invert(88%) sepia(16%) saturate(60%)}
+:root[data-theme=dark] .bird-pick:has(input:checked) img{filter:invert(93%) sepia(22%) saturate(55%)}
 .bird-head{display:flex;align-items:center;gap:.45rem;min-width:0}
 .bird-head img{flex:none;width:28px;height:28px}
 .bird-names{min-width:0;line-height:1.2}
@@ -75,11 +119,14 @@
 .bird-latin{font-size:.75rem;font-style:italic;opacity:.8;overflow-wrap:break-word}
 .bird-desc{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.76rem;line-height:1.25;overflow-wrap:break-word}
 @media(min-width:640px){.bird-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-/* Templum asked-for chips */
+/* Templum asked-for chips: small fresco tiles, red when asked for.
+   No checkbox box: the fill plus a gold lozenge in the corner of the
+   picked chip only, like the other tiles. */
 .asked-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem;min-width:0}
 .asked-grid>*{min-width:0}
-.chip{display:flex;gap:.45rem;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:.35rem .65rem;min-height:48px;cursor:pointer;min-width:0;font-size:.95rem;line-height:1.25}
-.chip input{width:20px;height:20px;flex:none;accent-color:var(--red)}
+.chip{position:relative;display:flex;gap:.5rem;align-items:center;border:1px solid var(--red);box-shadow:inset 0 0 0 2.5px var(--card),inset 0 0 0 3.5px var(--gold);background:var(--card);border-radius:2px;padding:.4rem 1.4rem .4rem .6rem;min-height:48px;cursor:pointer;min-width:0;font-size:.95rem;line-height:1.25}
+.chip:has(>input:checked){background:var(--red-fill);color:var(--on-red);box-shadow:inset 0 0 0 2.5px var(--red-fill),inset 0 0 0 3.5px var(--gold)}
+.chip:has(>input:checked)::after{content:"";position:absolute;top:.5rem;right:.55rem;width:8px;height:8px;transform:rotate(45deg);background:var(--gold-pale)}
 .chip>span{min-width:0;overflow-wrap:break-word}
 @media(min-width:720px){.asked-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Verdict */
@@ -114,19 +161,39 @@
 .meta>*{min-width:0}.meta dt{font-weight:700}.meta dd{margin:0;overflow-wrap:anywhere}
 .table-scroll{overflow:auto;max-width:100%}table{border-collapse:collapse;width:100%;font-size:.9rem}
 th,td{border-bottom:1px solid var(--rule);padding:.35rem .4rem;text-align:left;overflow-wrap:anywhere}
+/* Sortes tokens: struck medallions, red-rimmed with a gold inner ring. */
 .tokens{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin:1.2rem 0}
-.token{min-height:64px;min-width:0;font-family:Cinzel,serif;font-size:1.5rem;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+.token{min-height:64px;min-width:0;font-family:Cinzel,serif;font-size:1.5rem;border-radius:50%;border:1.5px solid var(--red);background:var(--card);color:var(--ink);cursor:pointer}
+.token:hover{background:var(--wash)}
 .q-list{list-style:none;padding:0}.q-item{width:100%;text-align:left;display:flex;gap:.8rem;background:none;border:none;border-bottom:1px solid var(--rule);font:inherit;color:var(--ink);padding:.7rem .2rem;min-height:48px;cursor:pointer;text-decoration:none;min-width:0}
 .q-item>span{min-width:0;overflow-wrap:break-word}
 .q-item small{display:block;opacity:.75}.q-n{font-family:Cinzel,serif;color:var(--red);flex:none}
 .answer-grc{font-size:1.45rem;line-height:1.6;overflow-wrap:anywhere}.answer-en{font-size:1.25rem}
-.wax{border:1px solid var(--bronze);border-radius:8px;padding:.6rem .9rem;font-size:.95rem;background:var(--card);overflow-wrap:anywhere}
+/* The wax tablet: an ordinary content panel — a single hairline
+   with a gold rule above, like .card. */
+.wax{border:1px solid var(--rule);border-top:2px solid var(--gold);border-radius:2px;padding:.6rem .9rem;font-size:.95rem;background:var(--card);overflow-wrap:anywhere}
 .facing .original{font-size:1.15rem;overflow-wrap:anywhere}.licence{font-size:.8rem;opacity:.7}
+[lang="grc"]{font-family:'EB Garamond',Georgia,serif}
+.facing .original[lang="grc"]{line-height:1.65}
+.author-group{margin:1.8rem 0;min-width:0}
+.author-group h2{margin-bottom:.2rem}
+.author-group h3{font-size:1.15rem;font-style:italic;font-weight:600;margin:1rem 0 .2rem}
+.source-line{overflow-wrap:anywhere}
+.orthography{margin:1rem 0}
+.apparatus{margin:.4rem 0}
+.book-frame .frame-item{border-top:1px solid var(--rule);margin-top:1.1rem;padding-top:.6rem;min-width:0}
+.book-frame .frame-grc{line-height:1.65;overflow-wrap:anywhere}
 .prose .closing{font-size:1.2rem;text-align:center;margin-top:2rem}
-.chicken-stage{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem 1rem;padding:1.5rem 0;position:relative;min-width:0}
-.chick{width:min(96px,27vw);height:auto;aspect-ratio:1}.feeding .chick{animation:peck .55s ease-in-out infinite alternate}
+/* The chicken stage is itself a little fresco panel: the painted
+   cage-and-garland vignette behind the painted chickens. */
+.chicken-stage{display:flex;justify-content:center;align-items:flex-end;flex-wrap:wrap;gap:.6rem 1rem;padding:1.5rem 0 .8rem;position:relative;min-width:0;min-height:170px;border:1px solid var(--red);box-shadow:inset 0 0 0 3px var(--card),inset 0 0 0 4px var(--gold);background:var(--card);border-radius:2px;overflow:hidden}
+.stage-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.chick{width:min(96px,27vw);height:auto;aspect-ratio:1;position:relative;z-index:1}.feeding .chick{animation:peck .55s ease-in-out infinite alternate}
+/* One painted chicken, three plumages: ochre, paler cream, russet. */
+.chick.c2{filter:brightness(1.12) saturate(.72)}
+.chick.c3{filter:hue-rotate(-14deg) saturate(1.25) brightness(.94)}
 .feeding .c2{animation-delay:.18s}.feeding .c3{animation-delay:.36s}
-.crumb{position:absolute;bottom:18px;width:8px;height:8px;border-radius:50%;background:var(--bronze);opacity:0}
+.crumb{position:absolute;bottom:18px;width:8px;height:8px;border-radius:50%;background:var(--bronze);opacity:0;z-index:1}
 .feeding .crumb{opacity:1;animation:fall .8s ease-in infinite}.feeding .crumb.two{animation-delay:.4s;margin-left:60px}
 @keyframes peck{from{transform:rotate(-3deg)}to{transform:rotate(5deg) translateY(5px)}}
 @keyframes fall{from{transform:translateY(-22px);opacity:0}30%{opacity:1}to{transform:translateY(8px)}}

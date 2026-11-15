@@ -33,6 +33,7 @@ The site is called **Augury**, the repo is `augury`, the service-worker cache is
 | 4b. Texts in bulk | Passage data (Latin/Greek + PD English + our translations), Sortes transcription and translation in batches, About page. Augury + tripudium texts first; the Sortes may ship as a follow-on release behind the finished engine | per batch |
 | 4c. Fidelity review | Independent check of every quotation and translation against the pinned scans (`scripts/provenance.json`); resolve every `verify:` note in this file | yes |
 | 5. PWA + polish | Manifest, icons, service worker, CI, README, accessibility audit, performance | yes |
+| 6. Fresco redesign | Pompeian-fresco look per `docs/DESIGN_FRESCO.md` — palette, painted bands, choice tiles, garden panel (visual only; supersedes §8 on the look) | done — awaiting visual review |
 
 ### The four questions, decided
 

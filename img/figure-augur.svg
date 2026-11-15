@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 600" role="img" aria-label="A Roman augur, head veiled, raising the lituus to mark the sky">
+<title>An augur in the trabea, capite velato, raising the lituus</title>
+<!-- Original hand-built figure panel: an augur on a Pompeian red
+     ground, in the striped trabea, head veiled with a fold of the
+     toga, the lituus raised toward the sky. Painted in flat tones
+     with dark outlines, in the manner of a red-ground wall panel;
+     copied from no wall. -->
+<defs>
+<radialGradient id="glow" cx=".48" cy=".4" r=".78">
+<stop offset="0" stop-color="#a53822"/><stop offset=".55" stop-color="#97331f"/><stop offset="1" stop-color="#8f2a1c"/>
+</radialGradient>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch" result="n"/>
+<feColorMatrix in="n" type="matrix" values="0 0 0 0 .23  0 0 0 0 .17  0 0 0 0 .1  0 0 0 .06 0"/>
+</filter>
+<clipPath id="drape"><path d="M102 126 Q84 130 76 146 Q68 172 70 224 Q66 296 70 362 Q66 428 70 468 Q71 484 88 485 L168 486 Q182 485 181 468 Q178 398 176 330 Q172 250 165 190 Q161 150 148 136 L134 127 Q118 137 102 126Z"/></clipPath>
+</defs>
+<ellipse cx="127" cy="563" rx="63" ry="8" fill="#5f1c11" opacity=".42"/>
+<path d="M24 96 Q32 88 39 94 Q42 90 46 94 Q53 88 60 96 Q52 93 44 99 Q42 100.5 40 99 Q32 93 24 96Z" fill="#f3e3c2" opacity=".65"/>
+<g stroke="#4a2413" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+<!-- veil falling behind the shoulder -->
+<path d="M96 92 L82 118 L84 182 Q85 202 95 204 L108 200 L106 140 L108 102Z" fill="#d8c194"/>
+<path d="M94 126 Q93 162 95 194 M101 132 Q101 164 102 192" fill="none" stroke="#a8854f" stroke-width="1.5"/>
+<!-- lower legs: weight on the right, the left relaxed and slanting -->
+<path d="M94 480 L117 480 L121 512 Q125 532 122 547 L106 549 Q100 528 96 508Z" fill="#cf9464"/>
+<path d="M145 482 L169 482 L166 516 Q168 536 162 549 L148 549 Q143 530 144 510Z" fill="#d9a06c"/>
+<path d="M104 506 Q102 528 106 548 L114 547 Q111 526 112 508Z M152 512 Q150 532 150 548 L158 548 Q157 530 159 514Z" fill="#b97e52" stroke="none" opacity=".8"/>
+<path d="M104 544 Q100 555 109 559 L139 559 Q142 555 132 549 Q121 541 112 542 L107 542Z" fill="#7c3a24"/>
+<path d="M146 546 Q144 558 154 561 L188 560 Q191 556 182 550 Q170 542 160 543 L150 543Z" fill="#7c3a24"/>
+<path d="M108 551 L132 552 M150 552 L180 552 M112 540 L120 547 M158 541 L166 548" fill="none" stroke="#4a2413" stroke-width="1.3"/>
+<!-- neck -->
+<path d="M110 106 L132 107 L134 141 L106 141 L108 118Z" fill="#cf9464"/>
+<path d="M110 110 Q121 120 132 110 L133 124 Q121 132 109 122Z" fill="#b97e52" stroke="none"/>
+<!-- drapery mass: the trabea -->
+<path d="M102 126 Q84 130 76 146 Q68 172 70 224 Q66 296 70 362 Q66 428 70 468 Q71 484 88 485 L168 486 Q182 485 181 468 Q178 398 176 330 Q172 250 165 190 Q161 150 148 136 L134 127 Q118 137 102 126Z" fill="#e7d8b8"/>
+<g clip-path="url(#drape)">
+<!-- horizontal trabea stripes, curving with the cloth -->
+<path d="M62 352 Q124 374 184 348 L185 365 Q124 391 63 369Z" fill="#71313f"/>
+<path d="M63 373 Q124 395 185 369" fill="none" stroke="#a83a22" stroke-width="3"/>
+<path d="M64 414 Q125 436 185 412 L186 426 Q125 450 65 428Z" fill="#71313f"/>
+<path d="M65 432 Q125 454 186 430" fill="none" stroke="#a83a22" stroke-width="2.6"/>
+<!-- fold shading over cloth and stripes alike -->
+<g fill="#b89a62" stroke="none">
+<path d="M94 322 Q99 392 96 472 L109 472 Q107 394 106 324Z" opacity=".38"/>
+<path d="M130 330 Q137 398 139 470 L152 468 Q147 396 142 328Z" opacity=".34"/>
+<path d="M154 214 Q160 268 162 326 L172 324 Q169 264 164 212Z" opacity=".3"/>
+<path d="M78 180 Q76 260 78 330 L87 330 Q85 258 87 182Z" opacity=".3"/>
+<path d="M88 404 Q104 394 118 406 Q104 418 89 414Z" opacity=".3"/>
+</g>
+<g fill="none" stroke="#8a6d42" stroke-width="1.8">
+<path d="M117 328 Q120 398 121 464"/><path d="M158 324 Q163 390 165 442"/>
+<path d="M84 336 Q85 384 86 424"/><path d="M98 196 Q97 244 98 288"/>
+</g>
+<g fill="none" stroke="#f8efdb" stroke-width="2.6" opacity=".8">
+<path d="M125 336 Q128 400 130 456"/><path d="M103 214 Q103 252 104 284"/>
+</g>
+<!-- purple border at the hem -->
+<path d="M64 456 Q124 476 186 454 L186 492 L64 492Z" fill="#632839"/>
+<path d="M65 451 Q124 471 185 449" fill="none" stroke="#a83a22" stroke-width="2.6"/>
+</g>
+<!-- tunic at the neck, with purple clavi -->
+<path d="M102 126 Q118 137 134 127 L140 150 Q120 161 98 150Z" fill="#e2cfa4"/>
+<path d="M107 133 L105 152 M130 133 L132 152" fill="none" stroke="#71313f" stroke-width="3.2"/>
+<!-- hanging fold over the left side, its corner pointed -->
+<path d="M70 212 L100 204 L102 332 Q101 398 90 436 Q83 446 76 434 L68 326Z" fill="#dfcda2"/>
+<path d="M99 208 L101 330 Q100 392 92 428" fill="none" stroke="#71313f" stroke-width="4"/>
+<path d="M82 230 Q81 316 84 404 M90 224 Q90 310 91 382" fill="none" stroke="#a8854f" stroke-width="1.6"/>
+<!-- diagonal band of the toga, striped on its lower edge -->
+<path d="M82 138 Q98 130 114 133 L175 248 Q178 272 167 291 L141 287 Q108 216 82 168Z" fill="#eeddbe"/>
+<path d="M86 166 Q114 224 143 283" fill="none" stroke="#71313f" stroke-width="6.5"/>
+<path d="M91 158 Q120 218 149 276" fill="none" stroke="#a83a22" stroke-width="2.4"/>
+<path d="M116 138 Q146 192 170 242" fill="none" stroke="#b89a62" stroke-width="1.8"/>
+<!-- sinus: the pouch fold at the waist -->
+<path d="M68 288 Q122 318 175 286 L177 320 Q122 352 69 324Z" fill="#e2cfa0"/>
+<path d="M72 304 Q122 334 173 303 M76 318 Q122 344 170 316" fill="none" stroke="#a8854f" stroke-width="1.7"/>
+<!-- folds bunched toward the gripping hand -->
+<path d="M126 286 L104 268 M128 292 L112 306 M124 280 L116 262" fill="none" stroke="#8a6d42" stroke-width="1.7"/>
+</g>
+<g stroke="#4a2413" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+<!-- left forearm out of the drape, hand clutching the cloth -->
+<path d="M90 262 L114 282" fill="none" stroke="#4a2413" stroke-width="21"/>
+<path d="M90 262 L114 282" fill="none" stroke="#e2cfa0" stroke-width="17"/>
+<path d="M94 258 L112 276 M90 268 L104 282" fill="none" stroke="#a8854f" stroke-width="1.5"/>
+<path d="M112 276 Q124 271 130 280 Q131 294 119 298 Q108 296 107 286Z" fill="#e0aa74"/>
+<path d="M110 282 Q118 279 127 282 M110 289 Q118 287 126 289 M113 295 Q119 294 124 294" fill="none" stroke="#8a5632" stroke-width="1.3"/>
+<!-- right arm raised: short sleeve, then one bare arm bent at the elbow -->
+<path d="M148 136 Q170 138 181 156 L187 175 L164 187 Q149 164 148 136Z" fill="#e7d8b8"/>
+<path d="M160 146 L179 172" fill="none" stroke="#71313f" stroke-width="4"/>
+<path d="M166 182 L195 209 L204 151" fill="none" stroke="#4a2413" stroke-width="21"/>
+<path d="M166 182 L195 209 L204 151" fill="none" stroke="#dda26e" stroke-width="17"/>
+<path d="M186 196 L197 156" fill="none" stroke="#b97e52" stroke-width="3" opacity=".7"/>
+</g>
+<!-- the lituus, raised to the sky -->
+<path d="M200 184 L214 132 L235 55 Q239 37 252 37 Q265 37 265 50 Q265 61 254 61" fill="none" stroke="#5a3a22" stroke-width="6.2" stroke-linecap="round" transform="translate(-13 0)"/>
+<path d="M203 178 L216 134 L236 60" fill="none" stroke="#a87c48" stroke-width="1.7" stroke-linecap="round" transform="translate(-13 0)"/>
+<g stroke="#4a2413" stroke-width="2" stroke-linejoin="round">
+<path d="M203 128 Q203 114 214 112 Q225 112 226 124 L224 139 Q212 144 205 138Z" fill="#e0aa74" transform="translate(-13 0)"/>
+<path d="M205 122 Q214 118 224 121 M205 130 Q214 126 224 129" fill="none" stroke="#8a5632" stroke-width="1.3" transform="translate(-13 0)"/>
+</g>
+<!-- head in profile, face lifted to the right -->
+<g stroke="#4a2413" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+<path d="M118 50 Q134 52 140 66 L141 76 Q144 83 150 88 Q153 93 149 97 Q144 98 143 100 Q145 103 143 106 Q145 111 141 115 Q132 122 121 120 Q108 117 103 104 Q98 88 102 70 Q106 54 118 50Z" fill="#dda26e"/>
+<path d="M139 69 Q145 82 147 89 Q143 87 141 79Z" fill="#ecc09a" stroke="none"/>
+<path d="M136 63 Q124 51 109 57 Q121 54 131 62 Q135 66 136 72Z" fill="#4a2e1c"/>
+<path d="M126 79 Q133 75 139 78" fill="none" stroke="#4a2e1c" stroke-width="2.2"/>
+<path d="M127 85 Q132 81 138 84 Q132 88 127 85Z" fill="#f6ecd8"/>
+<circle cx="134.5" cy="84" r="1.9" fill="#33200f" stroke="none"/>
+<path d="M136 103 Q140 104 141 103" fill="none" stroke="#8a5632" stroke-width="1.5"/>
+</g>
+<!-- the veil over the head, capite velato -->
+<g stroke="#4a2413" stroke-width="2" stroke-linejoin="round">
+<path d="M140 66 Q138 42 118 36 Q94 31 84 52 Q76 68 82 98 L88 124 Q90 133 100 129 L105 124 L100 96 Q97 68 108 56 Q123 44 140 66Z" fill="#ecdcb8"/>
+<path d="M91 60 Q104 45 123 45 M89 82 Q95 58 112 49" fill="none" stroke="#b89a62" stroke-width="1.7"/>
+<path d="M139 64 Q122 45 109 57 Q98 69 101 95 L104 121" fill="none" stroke="#71313f" stroke-width="3.4"/>
+<path d="M110 43 Q123 45 132 55" fill="none" stroke="#f8efdb" stroke-width="2.3"/>
+</g>
+</svg>

@@ -1,18 +1,103 @@
-import { esc, tierLabel, tierTitle, TIER_LABELS, TIER_TITLES } from './helpers.js';
+import { esc, parasHTML, tierLabel, tierTitle, TIER_LABELS, TIER_TITLES } from './helpers.js';
+
+// Authors in chronological order (by floruit): the index reads as a
+// short history of the evidence, Homer first and Servius last.
+const AUTHOR_ORDER = [
+  'Homer', 'Plautus', 'Ennius', 'Varro', 'Cicero', 'Livy',
+  'Valerius Maximus', 'Pliny', 'Suetonius', 'Festus', 'Gellius', 'Servius',
+];
+export function passageAuthor(p) {
+  const citation = String(p?.citation ?? p?.id ?? '');
+  const head = citation.split(',')[0].trim();
+  if (/^(Festus|Paulus)(\s*\/\s*(Festus|Paulus))?$/.test(head)) return 'Festus';
+  if (/^Servius\b/.test(head)) return 'Servius';
+  if (/^Pliny\b/.test(head)) return 'Pliny';
+  if (head && !/\d/.test(head)) return head;
+  // Citation does not open with an author (fixtures): fall back to speaker.
+  return String(p?.speaker ?? 'Unknown').split(',')[0].trim() || 'Unknown';
+}
+export function passageWork(p) {
+  const citation = String(p?.citation ?? p?.id ?? '');
+  const author = passageAuthor(p);
+  if (author === 'Servius') return 'Commentary on Vergil’s Aeneid';
+  const rest = citation.includes(',') ? citation.slice(citation.indexOf(',') + 1).trim() : citation;
+  if (/^Annales\b/.test(rest)) return 'Annales';
+  return rest
+    .replace(/\s+s\.vv?\.\s+.*$/, '') // Festus lemmata follow the work title
+    .replace(/\s+\d[\d.;–\- ]*$/, '') // trailing book/chapter/line locator
+    .trim() || rest;
+}
+function citationKey(p) {
+  return (String(p?.citation ?? '').match(/\d+/g) ?? []).map(Number);
+}
+function comparePassages(a, b) {
+  const ka = citationKey(a);
+  const kb = citationKey(b);
+  for (let i = 0; i < Math.min(ka.length, kb.length); i += 1) {
+    if (ka[i] !== kb[i]) return ka[i] - kb[i];
+  }
+  if (ka.length !== kb.length) return ka.length - kb.length;
+  // No locator numbers (e.g. Festus lemmata): order by what follows the
+  // author head, so dictionary entries read alphabetically by lemma.
+  const rest = (p) => {
+    const c = String(p.citation ?? p.id);
+    return c.includes(',') ? c.slice(c.indexOf(',') + 1) : c;
+  };
+  return rest(a).localeCompare(rest(b));
+}
+/** Group passages by author, then work; passages in citation order. */
+export function groupPassages(passages) {
+  const byAuthor = new Map();
+  for (const p of passages ?? []) {
+    const author = passageAuthor(p);
+    const work = passageWork(p);
+    if (!byAuthor.has(author)) byAuthor.set(author, new Map());
+    const byWork = byAuthor.get(author);
+    if (!byWork.has(work)) byWork.set(work, []);
+    byWork.get(work).push(p);
+  }
+  const rank = (author) => {
+    const i = AUTHOR_ORDER.indexOf(author);
+    return i === -1 ? AUTHOR_ORDER.length : i;
+  };
+  return [...byAuthor.entries()]
+    .sort(([a], [b]) => (rank(a) - rank(b)) || a.localeCompare(b))
+    .map(([author, byWork]) => ({
+      author,
+      works: [...byWork.entries()]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([work, ps]) => ({ work, passages: [...ps].sort(comparePassages) })),
+    }));
+}
 export function textsHTML(passages) {
-  if (!passages?.length) return `<section class="view"><h1 tabindex="-1">Texts</h1><p class="lede">The ancient passages behind every rule — Latin and Greek facing English, each with its speaker, date, evidence tier and licence.</p><p class="card">Text in preparation. Passages are being transcribed from pinned page scans; rules in a verdict will open them here.</p><a class="btn" href="#/">Home</a></section>`;
-  const items = passages.map((p) => `<li><a class="q-item" href="#/texts/${encodeURIComponent(p.id)}"><span>${esc(p.citation || p.id)}<small>${esc(p.speaker ?? '')} · ${esc(p.date ?? '')} · ${esc(tierLabel(p.tier ?? ''))}</small></span></a></li>`).join('');
-  return `<section class="view"><h1 tabindex="-1">Texts</h1><p class="lede">Every rule is cited. “Attested” always says what kind of witness attests it.</p><ol class="q-list">${items}</ol></section>`;
+  if (!passages?.length) return `<section class="view"><h1 tabindex="-1">Texts</h1><p class="lede">The ancient passages behind every rule — Latin and Greek facing English, each with its speaker, date, evidence tier and licence.</p><p class="card">The passages could not be loaded. Rules in a verdict open them here when they are to hand.</p><a class="btn" href="#/">Home</a></section>`;
+  const groups = groupPassages(passages).map((g) => {
+    const works = g.works.map((w) => {
+      const items = w.passages.map((p) => `<li><a class="q-item" href="#/texts/${encodeURIComponent(p.id)}"><span>${esc(p.citation || p.id)}<small>${esc(p.speaker ?? '')} · ${esc(p.date ?? '')} · ${esc(tierLabel(p.tier ?? ''))}</small></span></a></li>`).join('');
+      return `<h3>${esc(w.work)}</h3><ol class="q-list">${items}</ol>`;
+    }).join('');
+    return `<section class="author-group"><h2>${esc(g.author)}</h2>${works}</section>`;
+  }).join('');
+  return `<section class="view texts-index"><h1 tabindex="-1">Texts</h1><p class="lede">Every rule is cited. “Attested” always says what kind of witness attests it.</p><p class="note">Grouped by author and work, authors in the order they wrote; passages within a work in citation order.</p>${groups}</section>`;
+}
+function sourceLine(p) {
+  if (!p?.source) return '';
+  const text = typeof p.source === 'string'
+    ? p.source
+    : [p.source.edition, p.source.page].filter(Boolean).join(' · ');
+  return text ? `<p class="note source-line">${esc(text)}</p>` : '';
 }
 export function textHTML(p) {
-  if (!p) return `<section class="view"><h1 tabindex="-1">Text in preparation</h1><p class="card">This passage has not arrived yet.</p><a class="btn" href="#/texts">All texts</a></section>`;
+  if (!p) return `<section class="view"><h1 tabindex="-1">No such passage</h1><p class="card">There is no passage at this address.</p><a class="btn" href="#/texts">All texts</a></section>`;
   const orig = p.original ?? {};
-  const trans = (p.translations ?? []).map((t) => `<div class="facing"><h2>${esc(t.label ?? 'English')}</h2><p>${t.text ? esc(t.text) : '<em>Text in preparation.</em>'}</p><p class="licence">${esc(t.licence ?? '')}</p></div>`).join('');
-  return `<section class="view"><p class="step">${esc(p.citation ?? '')}</p><h1 tabindex="-1">${esc(p.citation ?? p.id)}</h1>
+  const trans = (p.translations ?? []).map((t) => `<div class="facing"><h2>${esc(t.label ?? 'English')}</h2>${parasHTML(t.text)}<p class="licence">${esc(t.licence ?? '')}</p></div>`).join('');
+  return `<section class="view text-page"><p class="step">${esc(p.citation ?? '')}</p><h1 tabindex="-1">${esc(p.citation ?? p.id)}</h1>
   <p class="note">${esc(p.speaker ?? '')} · ${esc(p.date ?? '')} · <span class="tag" title="${esc(tierTitle(p.tier ?? ''))}">${esc(tierLabel(p.tier ?? ''))}</span> · rules: ${esc((p.rules ?? []).join(', '))}</p>
+  ${sourceLine(p)}
   <div class="spread"><div class="facing"><h2>${orig.lang === 'grc' ? 'Greek' : 'Latin'}</h2>
-  <p lang="${esc(orig.lang ?? 'la')}" class="original">${orig.text ? esc(orig.text) : '<em>Text in preparation.</em>'}</p><p class="licence">${esc(orig.licence ?? '')}</p></div>
-  <div>${trans || '<p class="card">Translation in preparation.</p>'}</div></div>
+  ${parasHTML(orig.text, `lang="${esc(orig.lang ?? 'la')}" class="original"`)}<p class="licence">${esc(orig.licence ?? '')}</p></div>
+  <div>${trans}</div></div>
+  ${p.orthography ? `<details class="note orthography"><summary>How the text is printed</summary>${parasHTML(p.orthography)}</details>` : ''}
   <a class="btn" href="#/texts">All texts</a></section>`;
 }
 const TIER_ORDER = ['technical', 'quintus', 'marcus', 'balbus', 'draft-law', 'legend', 'history', 'comedy', 'natural-history', 'poetry', 'reconstruction'];

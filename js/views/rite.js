@@ -29,7 +29,7 @@ export function homeHTML(resume) {
   <p class="lede">Take the auspices in the Roman manner: mark a quarter of sky, keep silence, watch the birds, and read what they allow.</p>
   ${resume ? `<div class="card resume-card"><p>A watch is in progress.</p><div class="row"><button class="btn primary" data-act="resume">Resume the watch</button><button class="btn" data-act="discard">Discard it</button></div></div>` : ''}
   <a class="btn primary big" href="#/rite/question">Begin the auspices</a></div>
-  <figure class="home-figure">${HORIZON}<figcaption>The templum — a quarter of sky, marked out and watched.</figcaption></figure></div>
+  <figure class="home-figure fresco-frame"><img src="img/fresco-garden.svg" alt="A painted garden wall: birds among laurel and fruit trees above a low lattice fence." width="640" height="420"><figcaption>A garden wall in the Roman manner — mark the templum, and the birds are already there.</figcaption></figure></div>
   <nav class="home-links" aria-label="Companion rites and texts">
     <a href="#/tripudium"><span class="hl-name">Tripudium</span> <span class="hl-gloss">the sacred chickens</span></a>
     <a href="#/sortes"><span class="hl-name">Sortes</span> <span class="hl-gloss">the lots of Astrampsychus</span></a>
@@ -57,6 +57,7 @@ export function traditionHTML(sel = {}) {
    <label class="choice"><input type="radio" name="orientation" value="greek"><span><strong>Greek</strong> — face <strong>north</strong>. <span class="tag">Reconstruction</span></span></label>
    <label class="choice"><input type="radio" name="orientation" value="own"><span><strong>Own bearing</strong> — fix the front on a landmark. <span class="tag">Reconstruction</span></span></label>
   </fieldset>
+  <p class="note">Texts: <a href="#/texts/varro-ll-7-7-8">Varro on the templum in the sky</a> · <a href="#/texts/livy-1-18-6-10">Livy on Numa’s inauguration</a> · <a href="#/texts/hom-il-12-237-243">Homer on the right and the dawn</a></p>
   <div class="row"><a class="btn" href="#/rite/question">Back</a><button class="btn primary" data-act="next">Mark the templum</button></div></section>`;
 }
 export function templumHTML(w) {
@@ -79,7 +80,7 @@ export function templumHTML(w) {
    <p class="note">Bounds are declared now, before the watch — never per sign.</p></details>
   <fieldset class="card"><legend>Signs asked for <span lang="la">(impetrativa)</span></legend><p class="note">Others that come are <em lang="la">oblativa</em> and may be declined — unless dire. Ask for none, and every sign will be oblative.</p><div class="row"><button type="button" class="btn small" data-asked="all">All</button><button type="button" class="btn small" data-asked="none">None</button></div><div class="asked-grid">${birdBoxes}</div></fieldset>
   <label class="field"><span>Suggested watch length</span><select id="watch-len"><option value="10">10 minutes</option><option value="20" selected>20 minutes</option><option value="30">30 minutes</option></select></label>
-  <p class="conceptio" lang="la">Templa tescaque me ita sunto…</p><p class="note">The words of the <em lang="la">conceptio</em>, adapted from Varro.</p>
+  <p class="conceptio" lang="la">Templa tescaque me ita sunto…</p><p class="note">The words of the <em lang="la">conceptio</em>, adapted from <a href="#/texts/varro-ll-7-7-8">Varro</a>.</p>
   <label class="check"><input type="checkbox" id="daylight" ${w.isDaylight ? 'checked' : ''}><span>It is daylight</span></label>
   <div class="row"><a class="btn" href="#/rite/tradition">Back</a><button class="btn primary big" data-act="begin-watch">Begin the watch — <em lang="la">silentium</em></button></div>
   </div></div></section>`;
@@ -100,7 +101,7 @@ export function watchHTML(w, elapsedSec = 0) {
   <div><button class="btn there" id="there">There!</button>
   <p class="note">Point the phone at the bird and tap. Bearing, height and time are captured at once — even mid-sheet, as a stub for later.</p>
   <p class="note" lang="la">Qui auspicio adest, si quid falsi nuntiat, in semet ipsum religionem recipit.</p>
-  <p class="note">A false report falls on the one who makes it. (Livy)</p>
+  <p class="note">A false report falls on the one who makes it. (<a href="#/texts/livy-10-40">Livy</a>)</p>
   <h2>Signs${tallyText ? ` <span class="note">${esc(tallyText)}</span>` : ''}</h2>
   ${w.signs.length ? `<ul class="sign-list">${rows}</ul>` : '<p class="note">Keep watching.</p>'}
   <div id="undo-bar" hidden><span>Sign deleted.</span> <button class="btn small" id="undo">Undo</button></div>

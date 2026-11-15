@@ -39,8 +39,16 @@ async function loadPassages() {
 async function loadSortes() {
   sortesPromise ??= (async () => {
     try {
-      const [q, t, d] = await Promise.all([import('../data/sortes-questions.js'), import('../data/sortes-table.js'), import('../data/sortes-decades.js')]);
-      return { questions: q.questions ?? q.default, table: t.table ?? t.default, decades: d.decades ?? d.default };
+      const [q, t, d, m, f] = await Promise.all([
+        import('../data/sortes-questions.js'), import('../data/sortes-table.js'), import('../data/sortes-decades.js'),
+        import('../data/sortes-moon.js'), import('../data/sortes-frame.js'),
+      ]);
+      return {
+        questions: q.questions ?? q.default, table: t.table ?? t.default, decades: d.decades ?? d.default,
+        moonAdvice: m.moonAdvice ?? null, moonDays: m.moonDays ?? [],
+        favourableHours: m.favourableHours ?? [], moonSource: m.moonSource ?? '',
+        framePassages: f.framePassages ?? f.default ?? [],
+      };
     } catch { return null; }
   })();
   return sortesPromise;
@@ -90,8 +98,17 @@ function markNav() {
     if (current) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
 }
+// Which painted margin figure (if any) flanks the column on desktop:
+// a class hook for css/views.css only (body[data-section] -> .side-panel).
+const SECTION_BY_ROUTE = {
+  question: 'rite', tradition: 'rite', templum: 'rite', watch: 'rite', verdict: 'rite',
+  record: 'rite', 'shared-record': 'rite', tripudium: 'tripudium',
+  sortes: 'sortes', 'sortes-questions': 'sortes', 'sortes-lot': 'sortes', 'sortes-answer': 'sortes',
+  texts: 'texts', text: 'texts',
+};
 async function dispatch() {
   const seq = ++routeSeq; const route = parseRoute(location.hash); markNav();
+  document.body.dataset.section = SECTION_BY_ROUTE[route.name] ?? '';
   if (!['templum', 'watch'].includes(route.name)) stopSensor();
   const stale = () => seq !== routeSeq;
   switch (route.name) {
@@ -183,10 +200,11 @@ async function dispatch() {
       // Deliberately never read KEYS.question here.
       render(R.recordHTML(dec.observation, result, { shared: true, recordedVerdict: dec.recordedVerdict }));
       break; }
-    case 'tripudium': renderTripudium(); break;
-    case 'sortes': render(S.sortesHomeHTML());
+    case 'tripudium': { const p = await loadPassages(); if (stale()) break; renderTripudium(p); break; }
+    case 'sortes': { const data = await loadSortes(); if (stale()) break;
+      render(S.sortesHomeHTML(new Date(), data ?? {}));
       app.querySelector('[data-hour]')?.addEventListener('click', () => { sessionStore.set(KEYS.sortes, { q: 13 }); navigate('#/sortes/lot'); });
-      break;
+      break; }
     case 'sortes-questions': {
       const data = await loadSortes(); if (stale()) break;
       render(S.sortesQuestionsHTML(data?.questions ?? null));
@@ -265,8 +283,8 @@ function openSheet(idx) {
     if (!document.querySelector('.sheet')) document.getElementById('there')?.focus();
   });
 }
-function renderTripudium() {
-  render(tripudiumHTML(peekAttempts(localStore, 'tripudium')));
+function renderTripudium(passages = null) {
+  render(tripudiumHTML(peekAttempts(localStore, 'tripudium'), passages));
   const run = () => {
     const hunger = app.querySelector('input[name=hunger]:checked')?.value ?? 'hungry';
     const attempt = bumpAttempts(localStore, 'tripudium');

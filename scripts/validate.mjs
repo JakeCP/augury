@@ -122,6 +122,27 @@ async function checkSortes() {
       }
     });
   });
+  // The moon table and the book's frame (phase 4b modules, PLAN §7).
+  for (const rel of ['data/sortes-moon.js', 'data/sortes-frame.js']) {
+    if (!exists(rel)) pending(rel);
+  }
+  if (exists('data/sortes-moon.js') && exists('data/sortes-frame.js')) {
+    try {
+      const moon = await import(pathToFileURL(path.join(ROOT, 'data/sortes-moon.js')).href);
+      if (!Array.isArray(moon.moonDays) || moon.moonDays.length !== 30) err('sortes moon: expected 30 moonDays');
+      if (!Array.isArray(moon.moonAdvice) || moon.moonAdvice.length !== 30 || !moon.moonAdvice.every(nonEmpty)) err('sortes moon: expected 30 non-empty moonAdvice strings');
+      if (!Array.isArray(moon.favourableHours) || moon.favourableHours.length !== 4) err('sortes moon: expected 4 favourableHours');
+      const frame = await import(pathToFileURL(path.join(ROOT, 'data/sortes-frame.js')).href);
+      if (!Array.isArray(frame.framePassages) || frame.framePassages.length === 0) err('sortes frame: expected a non-empty framePassages array');
+      (frame.framePassages ?? []).forEach((fp, i) => {
+        const where = `sortes frame ${fp?.id ?? `#${i}`}`;
+        if (!nonEmpty(fp?.original?.text) || !nonEmpty(fp?.original?.licence)) err(`${where}: original text and licence required`);
+        if (!(fp?.translations ?? []).some((t) => nonEmpty(t.text) && nonEmpty(t.licence))) err(`${where}: a translation with text and licence required`);
+      });
+    } catch (e) {
+      err(`sortes moon/frame: cannot import (${e.message})`);
+    }
+  }
   try {
     const { validateSortesData } = await import(pathToFileURL(path.join(ROOT, 'js/sortes.js')).href);
     const report = validateSortesData(data);

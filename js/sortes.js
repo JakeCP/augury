@@ -14,7 +14,8 @@
 
 export const HOUR_QUESTION = 13;
 // Byzantine favourable hours by weekday (0=Sun..6=Sat): day-hour numbers,
-// counted from sunrise. verify: against Hercher p.1 in phase 4a.
+// counted from sunrise. Hercher 1863, printed p. 3; the same values are
+// transcribed as data in data/sortes-moon.js (kept in agreement by tests).
 export const FAVOURABLE_HOURS = Object.freeze({ 0: 3, 2: 3, 4: 5, 6: 6 });
 export const SYNODIC_MONTH_DAYS = 29.530588853;
 
@@ -77,6 +78,9 @@ export function consult(data, q, k) {
   return {
     question, q, k, sum,
     prophet: row.prophet,
+    // The table row's own note, when it has one (sum 13: Hercher prints
+    // no prophet name, and the blank is recorded, not filled).
+    note: row.note ?? null,
     interpretation: row.interpretation,
     decade: row.decade,
     line: k,

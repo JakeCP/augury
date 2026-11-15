@@ -22,14 +22,12 @@
 // into the new cache name and — on activate — deletes every older
 // cache (skipWaiting + clients.claim: no waiting-worker prompt a user
 // can ignore forever while holding a stale engine).
-const APP_VERSION = '1';
+const APP_VERSION = '6';
 const CACHE_NAME = `augury-v${APP_VERSION}`;
 
 // Relative to the worker's scope ("./" = repo root = /augury/ on Pages).
-// tests/pwa.test.mjs asserts every entry exists in the repo (or is on
-// its explicit pending list while phase 4 content / the icon build
-// lands): a 404 in cache.addAll fails the whole install, so a typo
-// here means no offline.
+// tests/pwa.test.mjs asserts every entry exists in the repo: a 404 in
+// cache.addAll fails the whole install, so a typo here means no offline.
 const PRECACHE_URLS = [
   './',
   'index.html',
@@ -58,6 +56,8 @@ const PRECACHE_URLS = [
   'data/sortes-questions.js',
   'data/sortes-table.js',
   'data/sortes-decades.js',
+  'data/sortes-moon.js',
+  'data/sortes-frame.js',
   'img/birds/buzzard.svg',
   'img/birds/chickens.svg',
   'img/birds/crow.svg',
@@ -68,6 +68,10 @@ const PRECACHE_URLS = [
   'img/birds/raven.svg',
   'img/birds/vulture.svg',
   'img/birds/woodpecker.svg',
+  'img/fresco-garden.svg',
+  'img/figure-augur.svg',
+  'img/tripudium-chicken.svg',
+  'img/tripudium-vignette.svg',
   'manifest.webmanifest',
   'favicon.svg',
   'icons/apple-touch-icon.png',

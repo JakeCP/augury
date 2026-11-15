@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-label="The sacred chickens' cage under a garland, grain scattered on the ground">
+<title>The cage of the pulli, in the manner of a Roman fresco</title>
+<!-- Original hand-built vignette (Phase 6): the cavea of the sacred
+     chickens. The living chickens are the animated painted birds
+     laid over this ground by the view; the cage itself stands empty. -->
+<defs>
+  <pattern id="wv" width="28" height="14" patternUnits="userSpaceOnUse">
+    <path d="M1 11 C7 11 7 3 13.5 3 C19 3 19 9.5 14.5 9.5 C11.5 9.5 11.5 6.5 13.5 6.5 M13.5 3 C20 3 21 11 27 11" fill="none" stroke="#d9a441" stroke-width="1.8"/>
+  </pattern>
+  <path id="lf2" d="M0 0 Q6 -5 13 0 Q6 5 0 0Z"/>
+</defs>
+<rect width="640" height="240" fill="#f2e8d3"/>
+<ellipse cx="480" cy="120" rx="150" ry="50" fill="#eadfc4" opacity=".5"/>
+<!-- red frieze strip with the running wave -->
+<rect width="640" height="26" fill="#8f2a1c"/>
+<rect y="5" width="640" height="14" fill="url(#wv)"/>
+<rect y="26" width="640" height="2.4" fill="#d9a441"/>
+<!-- garland swag -->
+<path d="M40 44 Q170 96 320 52 Q470 96 600 44" fill="none" stroke="#5f6b3a" stroke-width="6" stroke-linecap="round"/>
+<g fill="#77854c">
+  <use href="#lf2" transform="translate(108 62) rotate(28)"/><use href="#lf2" transform="translate(180 72) rotate(-16)"/>
+  <use href="#lf2" transform="translate(258 64) rotate(20)"/><use href="#lf2" transform="translate(380 64) rotate(-22)"/>
+  <use href="#lf2" transform="translate(458 72) rotate(14)"/><use href="#lf2" transform="translate(528 60) rotate(-28)"/>
+</g>
+<g fill="#d9a441"><circle cx="150" cy="76" r="4"/><circle cx="320" cy="60" r="4.4"/><circle cx="492" cy="76" r="4"/></g>
+<g fill="#a03324"><circle cx="222" cy="70" r="3.6"/><circle cx="416" cy="70" r="3.6"/></g>
+<g fill="#8f2a1c"><path d="M40 44 L24 34 L26 52Z"/><path d="M40 44 L56 34 L54 52Z"/><path d="M600 44 L584 34 L586 52Z"/><path d="M600 44 L616 34 L614 52Z"/></g>
+<!-- ground -->
+<rect y="196" width="640" height="44" fill="#dcc79e"/>
+<rect y="196" width="640" height="3" fill="#b89a63"/>
+<!-- the cavea: an arched wicker cage, door open -->
+<g stroke="#8a6a34" fill="none" stroke-linecap="round">
+  <path d="M96 198 V128 Q96 76 150 76 Q204 76 204 128 V198" stroke-width="6"/>
+  <g stroke-width="3.2">
+    <path d="M112 198 V118 M128 198 V98 M144 198 V86 M160 198 V86 M176 198 V98 M192 198 V118"/>
+    <path d="M97 158 H203 M100 118 Q150 106 200 118"/>
+  </g>
+  <path d="M204 198 L238 184 V128 L204 120" stroke-width="4"/>
+  <path d="M214 180 L214 126 M226 176 L226 124" stroke-width="2.6"/>
+</g>
+<circle cx="150" cy="70" r="6" fill="none" stroke="#8a6a34" stroke-width="3.4"/>
+<!-- shrubs either side -->
+<g fill="#5f6b3a">
+  <use href="#lf2" transform="translate(36 186) scale(2.2) rotate(-30)"/><use href="#lf2" transform="translate(52 196) scale(2) rotate(14)"/>
+  <use href="#lf2" transform="translate(572 186) scale(2.2) rotate(-160)"/><use href="#lf2" transform="translate(558 196) scale(2) rotate(-190)"/>
+</g>
+<g fill="#43502c"><use href="#lf2" transform="translate(44 176) scale(1.7) rotate(-70)"/><use href="#lf2" transform="translate(566 176) scale(1.7) rotate(-110)"/></g>
+<!-- scattered grain -->
+<g fill="#c99a3f">
+  <circle cx="300" cy="212" r="2.6"/><circle cx="326" cy="220" r="2.4"/><circle cx="352" cy="210" r="2.6"/>
+  <circle cx="382" cy="218" r="2.4"/><circle cx="410" cy="212" r="2.6"/><circle cx="436" cy="220" r="2.4"/>
+  <circle cx="314" cy="226" r="2.2"/><circle cx="368" cy="226" r="2.2"/><circle cx="422" cy="226" r="2.2"/>
+</g>
+<g fill="#8a6a34"><circle cx="338" cy="216" r="2"/><circle cx="396" cy="222" r="2"/><circle cx="448" cy="214" r="2"/></g>
+<rect x="4" y="4" width="632" height="232" fill="none" stroke="#8f2a1c" stroke-width="2"/>
+<rect x="8.5" y="8.5" width="623" height="223" fill="none" stroke="#d9a441" stroke-width="1"/>
+</svg>

@@ -1,9 +1,13 @@
 @font-face{font-family:Cinzel;src:url(../fonts/cinzel.woff2) format('woff2');font-weight:400 700;font-display:swap}
 @font-face{font-family:'EB Garamond';src:url(../fonts/eb-garamond.woff2) format('woff2');font-weight:400 700;font-display:swap}
 @font-face{font-family:'EB Garamond';src:url(../fonts/eb-garamond-italic.woff2) format('woff2');font-style:italic;font-weight:400 700;font-display:swap}
-:root{--paper:#f3ece0;--ink:#1d1a16;--red:#9b2a1a;--bronze:#7a5a2b;--rule:#cbbfa9;--wash:rgba(155,42,26,.13);--card:#faf5ea;--focus:#9b2a1a}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--bronze:#c49a5c;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#1f1b14;--focus:#e0705a}}
-:root[data-theme=dark]{--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--bronze:#c49a5c;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#1f1b14;--focus:#e0705a}
+/* Phase 6 tokens (docs/DESIGN_FRESCO.md): a Pompeian wall — red, ochre
+   gold, dado black, garland green on the warm cream. Gold is a hairline
+   accent only, never text and never a fill; scripts/check-contrast.mjs
+   audits every pair below per use. */
+:root{--paper:#f3ece0;--ink:#2a1a12;--red:#8f2a1c;--red-fill:#8f2a1c;--gold:#d9a441;--gold-pale:#e8c26a;--bronze:#7a5a2b;--green:#5f6b3a;--dado:#1d1410;--rule:#cbbfa9;--wash:rgba(143,42,28,.12);--card:#f7eedd;--focus:#8f2a1c;--on-red:#f7eedd;--on-dado:#f3ece0;--frieze-red:#8f2a1c;--frieze-cream:#f7eedd}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--red-fill:#8f2a1c;--gold:#d9a441;--gold-pale:#e8c26a;--bronze:#c49a5c;--green:#9aa66a;--dado:#100b08;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#241a12;--focus:#e0705a;--on-red:#f7eedd;--on-dado:#ece3d3;--frieze-red:#6e2015;--frieze-cream:#f7eedd}}
+:root[data-theme=dark]{--paper:#16130f;--ink:#ece3d3;--red:#e0705a;--red-fill:#8f2a1c;--gold:#d9a441;--gold-pale:#e8c26a;--bronze:#c49a5c;--green:#9aa66a;--dado:#100b08;--rule:#3d372c;--wash:rgba(224,112,90,.16);--card:#241a12;--focus:#e0705a;--on-red:#f7eedd;--on-dado:#ece3d3;--frieze-red:#6e2015;--frieze-cream:#f7eedd}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;overflow-x:clip}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.5;overflow-x:clip;display:flex;flex-direction:column;min-height:100dvh}
 img,svg{max-width:100%}
@@ -13,45 +17,91 @@ h1{font-size:1.7rem;line-height:1.2;margin:.2em 0 .4em;overflow-wrap:break-word}
 a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--ink) 45%,transparent)}
 a:hover{text-decoration-color:var(--red)}:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 /* Header: brand + theme always on the first row; nav wraps to its own
-   short row on phones so nothing is pushed off-screen (320-430px). */
-.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand theme" "nav nav";align-items:center;column-gap:.8rem;row-gap:.1rem;padding:.45rem 1rem .55rem;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:5}
+   short row on phones so nothing is pushed off-screen (320-430px).
+   Fresco treatment: a red rule under the bar with a gold hairline. */
+.topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand theme" "nav nav";align-items:center;column-gap:.8rem;row-gap:.1rem;padding:.45rem 1rem .55rem;border-bottom:2px solid var(--red);box-shadow:0 3px 0 -1px var(--gold);position:sticky;top:0;background:var(--paper);z-index:5}
 .brand{grid-area:brand;display:flex;align-items:center;gap:.4rem;min-width:0;min-height:48px;color:var(--ink);text-decoration:none;font-family:Cinzel,serif;font-size:1.1rem}
 .brand .lituus{width:26px;height:26px;flex:none;color:var(--red)}
 .topbar nav{grid-area:nav;display:flex;flex-wrap:wrap;gap:.15rem .85rem;min-width:0}
 .topbar nav a{color:var(--ink);text-decoration:none;padding:.3rem 0;min-height:48px;display:inline-flex;align-items:center}
-.topbar nav a:hover,.topbar nav a:focus-visible{text-decoration:underline;text-underline-offset:.18em}
-.topbar nav a[aria-current="page"]{color:var(--red);text-decoration:underline;text-underline-offset:.18em}
-.theme-cycle{grid-area:theme;justify-self:end;min-height:48px;min-width:48px;background:none;border:1px solid var(--ink);color:var(--ink);border-radius:999px;font:inherit;font-size:.95rem;padding:.3rem .9rem;cursor:pointer}
+.topbar nav a:hover,.topbar nav a:focus-visible{text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--red)}
+.topbar nav a[aria-current="page"]{color:var(--red);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--gold);text-decoration-thickness:2px}
+/* The theme toggle: a single red rule, no double frame. */
+.theme-cycle{grid-area:theme;justify-self:end;min-height:48px;min-width:48px;background:var(--card);border:1px solid var(--red);color:var(--ink);border-radius:2px;font:inherit;font-family:Cinzel,serif;font-size:.82rem;letter-spacing:.05em;padding:.3rem .9rem;cursor:pointer}
 @media(min-width:700px){.topbar{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand nav theme";row-gap:0}.topbar nav{margin-left:1.2rem;flex-wrap:nowrap}}
+/* Painted bands (Phase 6): an SVG frieze under the header and a dado
+   above the footer, on every page. The pattern tiles in CSS pixels at
+   any width; inner pages get the slim pattern, home the full one
+   (body:has(.view.home)). Decoration only — aria-hidden in the HTML. */
+.frieze{display:block;width:100%;height:30px;flex:none;animation:band-in .7s ease-out}
+.dado{display:block;width:100%;height:24px;flex:none;animation:band-in .7s ease-out}
+/* Pattern fills are fill attributes in index.html (in-document paint
+   servers resolve there, not reliably from an external stylesheet);
+   CSS only switches which rect shows: slim inside, full at home. */
+.frieze-full-rect{display:none}
+body:has(.view.home) .frieze{height:58px}
+body:has(.view.home) .frieze-slim-rect{display:none}
+body:has(.view.home) .frieze-full-rect{display:block}
+@keyframes band-in{from{opacity:0}to{opacity:1}}
+.fz-dado{fill:var(--dado)}.fz-red{fill:var(--frieze-red)}.fz-gold{fill:var(--gold)}
+.fz-gold-line{stroke:var(--gold);fill:none}.fz-garland{stroke:var(--green);fill:none}
+.fz-leaf{fill:var(--green)}.fz-cream{fill:var(--frieze-cream);color:var(--frieze-cream)}
+.fz-bird-detail{fill:var(--frieze-red);stroke:var(--frieze-red)}
 main{max-width:1180px;margin:0 auto;padding:1rem 1rem 3rem;min-width:0;width:100%;flex:1 0 auto}
 footer{flex:none}
-.view{max-width:720px;margin:0 auto;min-width:0}.view.templum,.view.watch,.view.verdict-view{max-width:1180px}
+.view{max-width:720px;margin:0 auto;min-width:0}.view.templum,.view.watch,.view.verdict-view,.view.text-page{max-width:1180px}
 .lede{font-size:1.22rem}.note{font-size:.95rem;opacity:.85}.fine{font-size:.9rem;text-align:center;opacity:.8}
 .step{font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;max-width:100%;padding:.55rem 1.2rem;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:inherit;text-decoration:none;cursor:pointer;text-align:center}
-.btn.primary{background:var(--red);border-color:var(--red);color:#fff8ee}
-:root[data-theme=dark] .btn.primary{color:#16130f}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.primary{color:#16130f}}
+/* Buttons: primary in Pompeian red with Cinzel lettering and a gold
+   hairline inside the red; secondary framed in red on the cream. */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;max-width:100%;padding:.55rem 1.2rem;border:1px solid var(--red);border-radius:2px;background:var(--card);color:var(--ink);font:inherit;text-decoration:none;cursor:pointer;text-align:center}
+.btn:hover{background:var(--wash)}
+.btn.primary{background:var(--red-fill);border-color:var(--red-fill);box-shadow:inset 0 0 0 2px var(--red-fill),inset 0 0 0 3px var(--gold);color:var(--on-red);font-family:Cinzel,serif;letter-spacing:.04em}
+.btn.primary:hover{background:var(--red-fill);filter:brightness(1.08)}
 .btn.big{width:100%;font-size:1.15rem;padding:.8rem 1.2rem}.btn.small{min-height:48px;padding:.3rem .8rem;font-size:.95rem}
 .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.8rem 0;min-width:0}
 .row>*{min-width:0}
-.card{border:1px solid var(--ink);border-radius:10px;padding:1rem;margin:1rem 0;background:var(--card);min-width:0}
+/* Ordinary content cards: a single hairline with a gold rule above.
+   The double rule is reserved for choice tiles, the primary button
+   and the fresco panels. */
+.card{border:1px solid var(--rule);border-top:2px solid var(--gold);border-radius:2px;padding:1rem;margin:1rem 0;background:var(--card);min-width:0}
 .field{display:block;margin:1rem 0;min-width:0}.field>span{display:block;font-weight:600;margin-bottom:.3rem}
-input[type=text],input[type=number],input[type=search],textarea,select{max-width:100%;min-width:0;min-height:48px;font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:8px;padding:.5rem .7rem}
+input[type=text],input[type=number],input[type=search],textarea,select{max-width:100%;min-width:0;min-height:48px;font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:2px;padding:.5rem .7rem}
 input[type=text],input[type=search],textarea,select{width:100%}
 input[type=number]{width:5.5rem}
-.choice,.check{display:flex;gap:.6rem;align-items:flex-start;padding:.5rem 0;min-height:48px;min-width:0;cursor:pointer}
+/* Choice tiles (Phase 6): every radio group and checkbox is a framed
+   fresco tile. The real <input> stays inside its label — visually
+   hidden, still keyboard- and screen-reader-operable. No radio dot
+   and no checkbox box: the picked tile fills red with cream text,
+   and carries a small gold lozenge in its top corner as the
+   non-colour cue. Right padding reserves the lozenge's corner so
+   text never runs under it. */
+.choice,.check{position:relative;display:flex;gap:.65rem;align-items:center;padding:.6rem 1.7rem .6rem .8rem;margin:.5rem 0;min-height:48px;min-width:0;cursor:pointer;border:1px solid var(--red);box-shadow:inset 0 0 0 3px var(--card),inset 0 0 0 4px var(--gold);border-radius:2px;background:var(--card);color:var(--ink)}
 .choice>span,.check>span{min-width:0;overflow-wrap:break-word}
-.choice input,.check input{width:24px;height:24px;flex:none;margin-top:.15rem;accent-color:var(--red)}
-/* A boxed check (the vitium control) keeps the card's padding: the plain
-   .check rule above would otherwise leave the box flush to its border. */
-.check.card{padding:.75rem .9rem;align-items:center}
-.check.card input{margin-top:0}
-fieldset{border:1px solid var(--ink);border-radius:10px;margin:1rem 0;padding:.6rem 1rem 1rem;background:var(--card);min-width:0}
-legend{max-width:100%}
-.tag{display:inline-block;font-size:.8rem;border:1px solid currentColor;border-radius:999px;padding:.05rem .5rem;overflow-wrap:anywhere}
+.choice input,.check input,.chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0;flex:none}
+.choice:has(>input:checked),.check:has(>input:checked){background:var(--red-fill);color:var(--on-red);box-shadow:inset 0 0 0 3px var(--red-fill),inset 0 0 0 4px var(--gold)}
+.choice:has(>input:checked)::after,.check:has(>input:checked)::after{content:"";position:absolute;top:.6rem;right:.62rem;width:9px;height:9px;transform:rotate(45deg);background:var(--gold-pale)}
+.choice:has(>input:focus-visible),.check:has(>input:focus-visible),.chip:has(>input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+/* The vitium check carries .card too; keep the tile's own padding. */
+.check.card{padding:.75rem 1.7rem .75rem .9rem;align-items:center}
+/* Fieldsets get no box: a red Cinzel heading over a single hairline.
+   With no frame there is nothing for a wrapped legend to collide
+   with at 320px or wider. */
+fieldset{border:none;margin:1.4rem 0 1rem;padding:0;background:none;min-width:0}
+fieldset.card{border:none;background:none;padding:0;margin:1.4rem 0 1rem}
+legend{display:block;width:100%;max-width:100%;font-family:Cinzel,serif;font-size:.95rem;letter-spacing:.05em;color:var(--red);padding:0 0 .35rem;margin-bottom:.7rem;border-bottom:1px solid var(--rule);overflow-wrap:break-word}
+/* Badges have no box: small italic text in red. Inside a tile the
+   middot joins it to the label ("Greek — face north. · Reconstruction");
+   on the picked (red) tile it turns cream with the rest of the text. */
+.tag{font-style:italic;font-size:.9em;color:var(--red);overflow-wrap:anywhere}
+.choice .tag::before,.check .tag::before{content:"· "}
+.choice:has(>input:checked) .tag,.check:has(>input:checked) .tag{color:var(--on-red)}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.skip-link{position:absolute;left:-9999px;font:inherit;min-height:48px;padding:.5rem 1.1rem;border:1.5px solid var(--ink);border-radius:999px;color:var(--ink);cursor:pointer}.skip-link:focus{left:1rem;top:1rem;z-index:20;background:var(--paper)}
-footer{border-top:1px solid var(--rule);padding:1rem;display:flex;gap:.4rem 1rem;justify-content:space-between;font-size:.9rem;flex-wrap:wrap;min-width:0}
-footer a{display:inline-flex;align-items:center;min-height:48px}
+.skip-link{position:absolute;left:-9999px;font:inherit;min-height:48px;padding:.5rem 1.1rem;border:1.5px solid var(--red);border-radius:2px;color:var(--ink);cursor:pointer}.skip-link:focus{left:1rem;top:1rem;z-index:20;background:var(--paper)}
+/* The footer stands on the dado: solid near-black, cream text, a gold
+   underline — no text on the patterned band above it. */
+footer{background:var(--dado);color:var(--on-dado);padding:1rem;display:flex;gap:.4rem 1rem;justify-content:space-between;font-size:.9rem;flex-wrap:wrap;min-width:0}
+footer a{color:var(--on-dado);text-decoration-color:var(--gold);display:inline-flex;align-items:center;min-height:48px}
+footer a:focus-visible{outline-color:var(--gold-pale)}
 summary{min-height:48px;display:flex;align-items:center;cursor:pointer}
 @media(min-width:960px){.spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:start}.spread>*{min-width:0}}
